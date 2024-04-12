@@ -1,0 +1,22 @@
+# Dependency directories
+node_modules/
+
+# Next.js build output
+.next/
+
+# Environment files
+.env*
+
+# Editor directories
+.idea/
+.vscode/ 
+
+# Compiled TypeScript files
+*.tsbuildinfo
+
+# Package manager lock files
+package-lock.json
+pnpm-lock.yaml
+
+# Logs
+npm-debug.log*
