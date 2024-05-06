@@ -6,14 +6,17 @@ import ProfileIcon from "../icons/profile-icon";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import SideBarIcon from "../icons/sidebar-icon";
 
 function Navbar() {
   const { setTheme } = useTheme();
-  const [isTablet, setIsTablet] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsTablet(window.innerWidth < 1025);
+      setIsSmallScreen(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 568);
     };
 
     handleResize(); // Check the initial viewport width
@@ -26,9 +29,22 @@ function Navbar() {
   }, []);
 
   return (
-    <header className="flex flex-row justify-between h-[3.75rem] px-20 bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground">
-      <div className="flex items-center gap-[4px]">
-        <div className="w-8 h-8">
+    <header
+      className={`flex flex-row justify-between h-[3.75rem] ${
+        !isSmallScreen ? "px-[5rem]" : "px-0"
+      } bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground`}
+    >
+      <div className="flex items-center">
+        {isSmallScreen && (
+          <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
+            <SideBarIcon
+              width={24}
+              height={24}
+              className="stroke-primary-foreground"
+            />
+          </div>
+        )}
+        <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
           <Image
             src="/assets/images/manga-logo.png"
             alt="logo"
@@ -36,33 +52,33 @@ function Navbar() {
             height={32}
           ></Image>
         </div>
-        {!isTablet && (
+        {!isMobile && (
           <div className="text-[1.375rem] font-bold">MangaPunch</div>
         )}
       </div>
-      {!isTablet && (
-        <nav className="flex items-center gap-[60px] text-lg font-bold">
+      {!isSmallScreen && (
+        <nav className="flex items-center gap-[3.75rem] text-lg font-bold">
           <div>Home</div>
           <div>Top Manga</div>
           <div>Library</div>
         </nav>
       )}
       <nav className="flex items-center">
-        <div className="flex items-center justify-center [60px] w-[60px]">
+        <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
           <SearchIcon
             width={24}
             height={24}
             className="stroke-primary-foreground"
           />
         </div>
-        <div className="flex items-center justify-center [60px] w-[60px]">
+        <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
           <ProfileIcon
             width={24}
             height={24}
             className="stroke-primary-foreground"
           />
         </div>
-        <div className="flex items-center justify-center [60px] w-[60px]">
+        <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
           <MoonIcon
             width={24}
             height={24}
