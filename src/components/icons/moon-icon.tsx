@@ -1,4 +1,4 @@
-const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const MoonIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -11,8 +11,8 @@ const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
-      d="M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM21 21l-6-6"
+      d="M12 3a6.364 6.364 0 0 0 9 9 9 9 0 1 1-9-9Z"
     />
   </svg>
 );
-export default SearchIcon;
+export default MoonIcon;

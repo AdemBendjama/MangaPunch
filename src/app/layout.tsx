@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { Inter as FontSans } from "next/font/google";
+import { Overpass as FontSans } from "next/font/google";
 
 import { cn } from "../lib/utils";
 import Navbar from "@/components/ui/navbar";
@@ -20,7 +20,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background dark:bg-background-secondary font-sans antialiased",
           fontSans.variable
         )}
       >
