@@ -45,6 +45,7 @@ function Navbar({
       } bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground`}
     >
       <div className="flex items-center relative">
+        {/* sidebar */}
         {isSmallScreen && (
           <>
             {isSideBarOpen && (
@@ -54,12 +55,12 @@ function Navbar({
               ></div>
             )}
             <div
-              className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold ${
+              className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold h-screen ${
                 isMobile ? "w-screen" : "w-[18.75rem]"
               } ${
                 isSideBarOpen
-                  ? "translate-x-0 opacity-100 transition-all duration-600 ease-in-out"
-                  : "-translate-y-[5%] opacity-0 transition-all duration-600 ease-in-out -z-10"
+                  ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out"
+                  : "-translate-y-1 opacity-0 transition-all duration-300 ease-in-out -z-10"
               }`}
             >
               <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
@@ -86,6 +87,8 @@ function Navbar({
             </div>
           </>
         )}
+
+        {/* logo */}
         <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
           <Image
             src="/assets/images/manga-logo.png"
@@ -98,6 +101,8 @@ function Navbar({
           <div className="text-[1.375rem] font-bold">MangaPunch</div>
         )}
       </div>
+
+      {/* title navigation */}
       {!isSmallScreen && (
         <nav className="flex items-center gap-[3.75rem] text-lg font-bold">
           <div>Home</div>
@@ -105,6 +110,8 @@ function Navbar({
           <div>Library</div>
         </nav>
       )}
+
+      {/* icon navigation */}
       <nav className="flex items-center">
         <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
           <SearchIcon
