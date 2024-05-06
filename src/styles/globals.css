@@ -30,6 +30,7 @@
     --background-secondary: 201 100% 98%;
     --primary-bright: 201 90% 46%;
     --card-footer: 201 50% 74%;
+    --sidebar: 201 90% 24%;
   }
 
   .dark {
@@ -58,6 +59,7 @@
     --background-secondary: 201 50% 8%;
     --primary-bright: 201 90% 50%;
     --card-footer: 201 50% 14%;
+    --sidebar: 0 0% 3%;
   }
 
 }

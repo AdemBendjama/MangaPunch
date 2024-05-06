@@ -12,6 +12,7 @@ function Navbar() {
   const { setTheme } = useTheme();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,19 +29,46 @@ function Navbar() {
     };
   }, []);
 
+  const toggleSideBar = () => {
+    setIsSideBarOpen((prevState) => !prevState);
+  };
+
   return (
     <header
       className={`flex flex-row justify-between h-[3.75rem] ${
         !isSmallScreen ? "px-[5rem]" : "px-0"
       } bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground`}
     >
-      <div className="flex items-center">
+      <div className="flex items-center relative">
+        {isSideBarOpen && isSmallScreen && (
+          <div
+            className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold ${
+              isMobile ? "w-screen" : "w-[18.75rem]"
+            }`}
+          >
+            {/* Dropdown content */}
+            <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+              Home
+            </div>
+            <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+              Top Manga
+            </div>
+            <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+              Library
+            </div>
+          </div>
+        )}
         {isSmallScreen && (
-          <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
+          <div
+            className={`flex items-center justify-center h-[3.75rem] w-[3.75rem] ${
+              isSideBarOpen && "bg-sidebar"
+            }`}
+          >
             <SideBarIcon
               width={24}
               height={24}
-              className="stroke-primary-foreground"
+              className="stroke-primary-foreground hover:cursor-pointer"
+              onClick={toggleSideBar}
             />
           </div>
         )}
