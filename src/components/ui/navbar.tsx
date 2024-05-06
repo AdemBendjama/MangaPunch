@@ -5,14 +5,19 @@ import SearchIcon from "../icons/search-icon";
 import ProfileIcon from "../icons/profile-icon";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import SideBarIcon from "../icons/sidebar-icon";
 
-function Navbar() {
+function Navbar({
+  isSideBarOpen,
+  setIsSideBarOpen,
+}: {
+  isSideBarOpen: boolean;
+  setIsSideBarOpen: Dispatch<SetStateAction<boolean>>;
+}) {
   const { setTheme } = useTheme();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,7 +25,7 @@ function Navbar() {
       setIsMobile(window.innerWidth < 568);
     };
 
-    handleResize(); // Check the initial viewport width
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
@@ -42,22 +47,19 @@ function Navbar() {
       <div className="flex items-center relative">
         {isSmallScreen && (
           <>
-            <div
-              className={`w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem]
-              ${
-                isSideBarOpen
-                  ? "opacity-100 transition-all ease-in-out"
-                  : "opacity-0 transition-all ease-in-out"
-              }`}
-              onClick={toggleSideBar}
-            ></div>
+            {isSideBarOpen && (
+              <div
+                className="w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem]"
+                onClick={toggleSideBar}
+              ></div>
+            )}
             <div
               className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold ${
                 isMobile ? "w-screen" : "w-[18.75rem]"
               } ${
                 isSideBarOpen
-                  ? "translate-x-0 opacity-100 transition-all duration-200 ease-in-out"
-                  : "-translate-y-[5%] opacity-0 transition-all duration-200 ease-in-out"
+                  ? "translate-x-0 opacity-100 transition-all duration-600 ease-in-out"
+                  : "-translate-y-[5%] opacity-0 transition-all duration-600 ease-in-out -z-10"
               }`}
             >
               <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
