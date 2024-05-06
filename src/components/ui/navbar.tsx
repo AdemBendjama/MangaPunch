@@ -40,37 +40,49 @@ function Navbar() {
       } bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground`}
     >
       <div className="flex items-center relative">
-        {isSideBarOpen && isSmallScreen && (
-          <div
-            className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold ${
-              isMobile ? "w-screen" : "w-[18.75rem]"
-            }`}
-          >
-            {/* Dropdown content */}
-            <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
-              Home
-            </div>
-            <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
-              Top Manga
-            </div>
-            <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
-              Library
-            </div>
-          </div>
-        )}
         {isSmallScreen && (
-          <div
-            className={`flex items-center justify-center h-[3.75rem] w-[3.75rem] ${
-              isSideBarOpen && "bg-sidebar"
-            }`}
-          >
-            <SideBarIcon
-              width={24}
-              height={24}
-              className="stroke-primary-foreground hover:cursor-pointer"
+          <>
+            <div
+              className={`w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem]
+              ${
+                isSideBarOpen
+                  ? "opacity-100 transition-all ease-in-out"
+                  : "opacity-0 transition-all ease-in-out"
+              }`}
               onClick={toggleSideBar}
-            />
-          </div>
+            ></div>
+            <div
+              className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold ${
+                isMobile ? "w-screen" : "w-[18.75rem]"
+              } ${
+                isSideBarOpen
+                  ? "translate-x-0 opacity-100 transition-all duration-200 ease-in-out"
+                  : "-translate-y-[5%] opacity-0 transition-all duration-200 ease-in-out"
+              }`}
+            >
+              <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+                Home
+              </div>
+              <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+                Top Manga
+              </div>
+              <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+                Library
+              </div>
+            </div>
+            <div
+              className={`flex items-center justify-center h-[3.75rem] w-[3.75rem] ${
+                isSideBarOpen && "bg-sidebar"
+              }`}
+            >
+              <SideBarIcon
+                width={24}
+                height={24}
+                className="stroke-primary-foreground hover:cursor-pointer"
+                onClick={toggleSideBar}
+              />
+            </div>
+          </>
         )}
         <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
           <Image
