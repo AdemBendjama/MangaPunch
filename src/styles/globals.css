@@ -27,7 +27,7 @@
     --radius: 0.5rem;
     --hover: 201 65% 35%;
     --hover-foreground: 0 0% 90%;
-    --light-background: 201 100% 98%;
+    --background-secondary: 201 100% 98%;
     --primary-bright: 201 90% 46%;
     --card-footer: 201 50% 74%;
   }
@@ -53,8 +53,9 @@
     --input: 201 30% 18%;
     --ring: 201 90% 27.5%;
     --radius: 0.5rem;
-    --dark-background: 201 50% 8%;
-    --dark-background: 201 50% 8%;
+    --hover: 201 65% 35%;
+    --hover-foreground: 0 0% 90%;
+    --background-secondary: 201 50% 8%;
     --primary-bright: 201 90% 50%;
     --card-footer: 201 50% 14%;
   }
