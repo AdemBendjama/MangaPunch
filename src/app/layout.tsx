@@ -28,7 +28,11 @@ export default function RootLayout({
           type="image/png"
           sizes="32x32"
         />
-        <title>MangaPunch</title>
+        <title>MangaPunch: Track, Explore, Discover Manga</title>
+        <meta
+          name="description"
+          content="Track and explore a vast manga library on <strong>MangaPunch</strong>, discover popular manga titles through recommendations and reviews. Create an Account!"
+        />
       </head>
       <body
         className={cn(
