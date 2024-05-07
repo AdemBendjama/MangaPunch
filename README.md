@@ -1,4 +1,4 @@
-# MangaPunch
+# ![manga-logo](https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/235e7e8f-ab01-486c-bc08-82016d64124f) MangaPunch
 
 ## Overview
 
