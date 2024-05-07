@@ -18,6 +18,7 @@ function Navbar({
   const { setTheme } = useTheme();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,6 +27,7 @@ function Navbar({
     };
 
     handleResize();
+    setIsReady(true);
 
     window.addEventListener("resize", handleResize);
 
@@ -33,6 +35,10 @@ function Navbar({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  if (!isReady) {
+    return <header className="h-[3.75rem] bg-primary  dark:bg-card"></header>;
+  }
 
   const toggleSideBar = () => {
     setIsSideBarOpen((prevState) => !prevState);
