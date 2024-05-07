@@ -21,7 +21,15 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <link
+          rel="icon"
+          href="/assets/images/manga-logo.png"
+          type="image/png"
+          sizes="32x32"
+        />
+        <title>MangaPunch</title>
+      </head>
       <body
         className={cn(
           `min-h-screen bg-background dark:bg-background-secondary font-sans antialiased ${
