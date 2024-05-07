@@ -1,8 +1,9 @@
-# Manga Tracker App
+# MangaPunch
 
 ## Overview
 
-This is a website that lists metadata about manga, allowing users to search, filter, track, and rate manga. Users can sign up for an account to access additional features such as adding manga to their library and rating manga.
+This is a website that lists metadata about manga, allowing users to search, discover manga, read reviews and get recommendations. Users can sign up for an account to access additional features such as adding manga to their library, tracking , rating and reviewing.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -27,6 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **User Authentication**: Users can sign up for an account and log in to access personalized features such as adding manga to their library and rating manga.
 - **Manga Library**: Each user has a personal manga library where they can track manga they are interested in. They can add manga to their library, mark manga as read, and track their progress.
 - **Rating System**: Users can rate manga they have read and provide reviews.
+- **Recommendation System**: Users can discover new recommendations based on the manga they choose.
 
 ## Technologies Used
 
