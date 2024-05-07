@@ -1,6 +1,7 @@
-# ![manga-logo](https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/235e7e8f-ab01-486c-bc08-82016d64124f =16x16) MangaPunch
+# ![manga_32x32](https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/fa7e56f4-f634-467a-994d-be36574d4415) MangaPunch
 
 ## Overview
+
 
 This is a website that lists metadata about manga, allowing users to search, discover manga, read reviews and get recommendations. Users can sign up for an account to access additional features such as adding manga to their library, tracking , rating and reviewing.
 
