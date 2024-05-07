@@ -22,12 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link
-          rel="icon"
-          href="/assets/images/manga-logo.png"
-          type="image/png"
-          sizes="32x32"
-        />
+        <link rel="icon" href="/icon.png" type="image/png" sizes="32x32" />
         <title>MangaPunch: Track, Explore, Discover Manga</title>
         <meta
           name="description"
