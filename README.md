@@ -2,13 +2,10 @@
 
 ## Overview
 
-
-
 This is a website that lists metadata about manga, allowing users to search, discover manga, read reviews and get recommendations. Users can sign up for an account to access additional features such as adding manga to their library, tracking , rating and reviewing.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
@@ -43,3 +40,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **MongoDB**: A general-purpose, document-based, distributed database.
 - **AniList API**: An API for accessing manga metadata using GraphQL.
 - **Vercel**: A cloud platform for static sites and serverless functions.
+
+> Logo designed by [FreePik](https://www.freepik.com/) 
