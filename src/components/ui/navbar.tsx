@@ -19,6 +19,7 @@ function Navbar({
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  console.log("hello");
 
   useEffect(() => {
     const handleResize = () => {
