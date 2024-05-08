@@ -56,7 +56,7 @@ function Navbar({
           <>
             {isSideBarOpen && (
               <div
-                className="w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem]"
+                className="w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem] z-10"
                 onClick={toggleSideBar}
               ></div>
             )}
@@ -65,8 +65,8 @@ function Navbar({
                 isMobile ? "w-screen" : "w-[18.75rem]"
               } ${
                 isSideBarOpen
-                  ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out"
-                  : "-translate-y-1 opacity-0 transition-all duration-300 ease-in-out -z-10"
+                  ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out z-20"
+                  : "-translate-y-2 opacity-0 transition-all duration-300 ease-in-out -z-10"
               }`}
             >
               <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
