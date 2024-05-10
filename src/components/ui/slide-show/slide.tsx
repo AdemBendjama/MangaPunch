@@ -19,13 +19,17 @@ function Slide({ src }: { src: string }) {
                 But he&apos;s got a lot to learn about his new job and chainsaw
                 powers!
               </div>
-              <div className="flex gap-[0.5rem]">
+              <div className="h-[1.5rem] flex items-center gap-[0.5rem]">
                 <StarIcon />
-                <span>8.7/100</span>
+                <span className="text-[1.125rem] leading-[1.125rem] pt-1">
+                  8.7/100
+                </span>
               </div>
               <div className="flex gap-[0.5rem]">
                 <HeartIcon />
-                <span>#1 Most Popular All time</span>
+                <span className="text-[1.125rem] leading-[1.125rem] pt-1">
+                  #1 Most Popular All time
+                </span>
               </div>
             </div>
             <ButtonWithIcon>Read More</ButtonWithIcon>
