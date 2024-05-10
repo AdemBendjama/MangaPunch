@@ -27,6 +27,7 @@ const config = {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         sidebar: "hsl(var(--sidebar))",
+        slide: "hsl(201 ,5% ,90%)",
         background: {
           DEFAULT: "hsl(var(--background))",
           secondary: "hsl(var(--background-secondary))",
@@ -85,6 +86,9 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        "slide-inner": "inset 60vw 0 250px 0 rgba(0, 0, 0, 0.9)",
       },
     },
   },

@@ -11,12 +11,12 @@ interface arrowProps {
 function SlideArrow({ className, type, onClick, style }: arrowProps) {
   const arrow =
     (type === "next" && (
-      <div className="absolute right-5 top-1/2" onClick={onClick}>
+      <div className="absolute right-3 top-[45%]" onClick={onClick}>
         <NextArrowIcon />
       </div>
     )) ||
     (type === "prev" && (
-      <div className="absolute left-5 top-1/2 z-10" onClick={onClick}>
+      <div className="absolute left-2 top-[45%] z-10" onClick={onClick}>
         <PrevArrowIcon />
       </div>
     ));
