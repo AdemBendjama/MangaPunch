@@ -69,13 +69,13 @@ function Navbar({
                   : "-translate-y-2 opacity-0 transition-all duration-300 ease-in-out -z-10"
               }`}
             >
-              <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+              <div className="flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]">
                 Home
               </div>
-              <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+              <div className="flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]">
                 Top Manga
               </div>
-              <div className="flex items-center h-[3.75rem] w-full pl-[1rem]">
+              <div className="flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]">
                 Library
               </div>
             </div>

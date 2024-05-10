@@ -7,7 +7,7 @@ function Slide({ src }: { src: string }) {
     <div className="w-screen h-[400px] block relative shadow-slide-inner  text-slide">
       <div className="w-[70%] py-[1rem] px-[4rem]">
         <div className="py-[1rem] flex gap-[1rem]">
-          <div className="bg-orange-500 w-[210px] h-[325px] rounded-[0.375rem]"></div>
+          <div className="bg-orange-500 w-[13.125rem] h-[20.3125rem] rounded-[0.375rem]"></div>
           <div className="w-[31.25rem] flex flex-col gap-[1rem]">
             <div className="text-[1.875rem]">Chainsaw Man</div>
             <div className="text-[1rem]">

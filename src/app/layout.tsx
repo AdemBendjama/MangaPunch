@@ -1,15 +1,15 @@
 "use client";
 import "@/styles/globals.css";
-import { Overpass as FontSans } from "next/font/google";
+import { Overpass } from "next/font/google";
 
 import { cn } from "../lib/utils";
 import Navbar from "@/components/ui/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useState } from "react";
 
-const fontSans = FontSans({
+const overpass = Overpass({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-overpass",
 });
 
 export default function RootLayout({
@@ -31,10 +31,10 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          `min-h-screen bg-background dark:bg-background-secondary font-sans antialiased ${
+          `min-h-screen bg-background dark:bg-background-secondary font-overpass antialiased ${
             isSideBarOpen && "h-screen overflow-hidden"
           }`,
-          fontSans.variable
+          overpass.variable
         )}
       >
         <ThemeProvider
