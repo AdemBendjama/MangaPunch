@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import { Overpass } from "next/font/google";
 
 import { cn } from "../lib/utils";
-import Navbar from "@/components/ui/navbar";
+import Navbar from "@/components/ui/navbar/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useState } from "react";
 

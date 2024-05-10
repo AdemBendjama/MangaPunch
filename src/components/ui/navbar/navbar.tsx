@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import SearchIcon from "../icons/search-icon";
-import ProfileIcon from "../icons/profile-icon";
+import SearchIcon from "../../icons/search-icon";
+import ProfileIcon from "../../icons/profile-icon";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import SideBarIcon from "../icons/sidebar-icon";
+import SideBarIcon from "../../icons/sidebar-icon";
 
 function Navbar({
   isSideBarOpen,
