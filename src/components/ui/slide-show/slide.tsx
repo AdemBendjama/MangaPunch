@@ -32,8 +32,7 @@ function Slide({ src }: { src: string }) {
         src={src}
         alt="background slide image"
         fill={true}
-        objectFit="cover"
-        className="-z-10"
+        className="object-cover -z-10"
       />
     </div>
   );

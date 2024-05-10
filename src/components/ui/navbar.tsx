@@ -50,7 +50,7 @@ function Navbar({
         !isSmallScreen ? "px-[5rem]" : "px-0"
       } bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground`}
     >
-      <div className="flex items-center relative">
+      <div className="flex items-center relative gap-[0.25rem]">
         {/* sidebar */}
         {isSmallScreen && (
           <>
@@ -95,7 +95,7 @@ function Navbar({
         )}
 
         {/* logo */}
-        <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
+        <div className="flex items-center justify-center h-[3.75rem]">
           <Image
             src="/assets/images/manga-logo.png"
             alt="logo"
