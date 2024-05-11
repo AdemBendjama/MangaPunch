@@ -28,7 +28,7 @@ function SlideShow() {
           he's living in the big city and an official Devil Hunter.
           But he's got a lot to learn about his new job and chainsaw
           powers!"
-          averageScore={83}
+          averageScore={8.3}
           popularity={1}
         />
         <Slide
@@ -40,7 +40,7 @@ function SlideShow() {
           he's living in the big city and an official Devil Hunter.
           But he's got a lot to learn about his new job and chainsaw
           powers!"
-          averageScore={83}
+          averageScore={8.3}
           popularity={1}
         />
         <Slide
@@ -52,7 +52,7 @@ function SlideShow() {
           he's living in the big city and an official Devil Hunter.
           But he's got a lot to learn about his new job and chainsaw
           powers!"
-          averageScore={83}
+          averageScore={8.3}
           popularity={1}
         />
         <Slide
@@ -64,7 +64,7 @@ function SlideShow() {
           he's living in the big city and an official Devil Hunter.
           But he's got a lot to learn about his new job and chainsaw
           powers!"
-          averageScore={83}
+          averageScore={8.3}
           popularity={1}
         />
         <Slide
@@ -76,7 +76,7 @@ function SlideShow() {
           he's living in the big city and an official Devil Hunter.
           But he's got a lot to learn about his new job and chainsaw
           powers!"
-          averageScore={83}
+          averageScore={8.3}
           popularity={1}
         />
       </Slider>
