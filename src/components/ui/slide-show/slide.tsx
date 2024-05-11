@@ -3,12 +3,25 @@ import StarIcon from "@/components/icons/star-icon";
 import Image from "next/image";
 import { ButtonWithIcon } from "../button-variants/button-with-icon";
 
-function Slide({ src }: { src: string }) {
+function Slide({
+  backgroundImage,
+  coverImage,
+}: {
+  backgroundImage: string;
+  coverImage: string;
+}) {
   return (
     <div className="w-screen h-[400px] block relative shadow-slide-inner  text-slide">
       <div className="w-[70%] py-[1rem] px-[4rem]">
         <div className="py-[1rem] flex gap-[1rem]">
-          <div className="bg-orange-500 w-[13.125rem] h-[20.3125rem] rounded-[0.375rem]"></div>
+          <div className="w-[13.125rem] h-[20.3125rem] rounded-[0.375rem] relative overflow-hidden">
+            <Image
+              src={coverImage}
+              alt="cover image of manga title"
+              fill={true}
+              className="object-cover"
+            />
+          </div>
           <div className="w-[31.25rem] flex flex-col justify-between">
             <div className="flex flex-col gap-[1rem]">
               <div className="text-[1.875rem]">Chainsaw Man</div>
@@ -37,7 +50,7 @@ function Slide({ src }: { src: string }) {
         </div>
       </div>
       <Image
-        src={src}
+        src={backgroundImage}
         alt="background slide image"
         fill={true}
         className="object-cover -z-10"
