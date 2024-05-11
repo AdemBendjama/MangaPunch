@@ -8,8 +8,7 @@ function CoverImage({ coverImage }: { coverImage: string }) {
         alt="cover image of manga title"
         fill={true}
         className="object-cover"
-        blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8+R8AArcB2pIvCSwAAAAASUVORK5CYII="
-        placeholder="blur"
+        loading="eager"
       />
     </div>
   );
