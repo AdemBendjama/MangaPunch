@@ -11,12 +11,14 @@ export function ButtonWithIcon({ children }: { children: React.ReactNode }) {
       <Button
         size="icon"
         className="bg-hover rounded-s-[0] w-[2rem] p-[0.5rem]"
+        aria-label="Read More"
       >
         <ChevronRight
           size={16}
           className="stroke-hover-foreground"
           absoluteStrokeWidth
         />
+        <span>Read More</span>
       </Button>
     </div>
   );
