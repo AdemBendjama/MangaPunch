@@ -8,6 +8,7 @@ function CoverImage({ coverImage }: { coverImage: string }) {
         alt="cover image of manga title"
         fill={true}
         className="object-cover"
+        loading="eager"
       />
     </div>
   );
