@@ -18,7 +18,6 @@ export function ButtonWithIcon({ children }: { children: React.ReactNode }) {
           className="stroke-hover-foreground"
           absoluteStrokeWidth
         />
-        <span>Read More</span>
       </Button>
     </div>
   );
