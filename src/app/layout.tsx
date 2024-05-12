@@ -6,6 +6,7 @@ import { cn } from "../lib/utils";
 import Navbar from "@/components/ui/navbar/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useState } from "react";
+import Footer from "@/components/ui/footer/footer";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
             setIsSideBarOpen={setIsSideBarOpen}
           />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
