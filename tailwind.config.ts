@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "3xl": "1920px",
+      },
       fontFamily: {
         overpass: ["var(--font-overpass)", ...fontFamily.sans],
         // sans: ["var(--font-sans)", ...fontFamily.sans],

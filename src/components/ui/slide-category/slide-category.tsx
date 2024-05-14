@@ -24,10 +24,26 @@ function SlideCategory({
     slidesToScroll: 1,
     nextArrow: <SlideArrow type="next" slide="slideCategory" />,
     prevArrow: <SlideArrow type="prev" slide="slideCategory" />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="w-screen flex flex-col py-[1rem] px-[7%] items-center gap-[1rem] slider-container">
+    <div className="w-screen flex flex-col pt-[1rem] lg:px-[7%] px-[9.9vw] items-start lg:gap-[1rem] sm:[0.75rem] gap-[0.5rem]  slider-container">
       <SlideCategoryHeader title={title} />
       <Slider {...settings} className="w-full">
         {slides.map((slide, index) => (

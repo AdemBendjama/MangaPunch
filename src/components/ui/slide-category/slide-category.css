@@ -5,3 +5,15 @@
 .slider-container .slick-list {
     overflow: visible;
 }
+
+@media (max-width:1024px) {
+    .slider-container .slick-slide {
+        width: 20vw !important;
+    }
+}
+
+@media (max-width:640px) {
+    .slider-container .slick-slide {
+        width: 40vw !important;
+    }
+}

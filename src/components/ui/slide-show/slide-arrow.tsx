@@ -1,5 +1,4 @@
-import { NextArrowIcon } from "@/components/icons/next-arrow-icon";
-import { PrevArrowIcon } from "@/components/icons/prev-arrow-icon";
+import { ArrowIcon } from "@/components/icons/arrow-icon";
 
 interface arrowProps {
   className?: string;
@@ -16,8 +15,10 @@ function SlideArrow({ className, type, onClick, style, slide }: arrowProps) {
     nextClassName = "absolute right-3 top-[45%]";
     prevClassName = "absolute left-2 top-[45%] z-10";
   } else if (slide === "slideCategory") {
-    nextClassName = "absolute right-[-5rem] top-[35%]";
-    prevClassName = "absolute left-[-5rem] top-[35%] z-10";
+    nextClassName =
+      "absolute lg:right-[-6vw] sm:right-[-8vw] right-[-8vw] lg:top-[10vw] sm:top-[12vw] top-[24vw]";
+    prevClassName =
+      "absolute lg:left-[-6vw] sm:left-[-8vw] left-[-8vw] lg:top-[10vw] sm:top-[12vw] top-[24vw] z-10";
   }
 
   let disabled = "";
@@ -34,12 +35,12 @@ function SlideArrow({ className, type, onClick, style, slide }: arrowProps) {
   const arrow =
     (type === "next" && (
       <div className={`${nextClassName} ${disabled} z-`} onClick={onClick}>
-        <NextArrowIcon />
+        <ArrowIcon type={type} />
       </div>
     )) ||
     (type === "prev" && (
       <div className={`${prevClassName} ${disabled}`} onClick={onClick}>
-        <PrevArrowIcon />
+        <ArrowIcon type={type} />
       </div>
     ));
   return arrow;
