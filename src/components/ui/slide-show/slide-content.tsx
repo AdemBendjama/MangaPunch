@@ -17,7 +17,16 @@ function SlideContent({
     <div className="w-[31.25rem] flex flex-col justify-between">
       <div className="flex flex-col gap-[1rem]">
         <div className="text-[1.875rem]">{title}</div>
-        <div className="text-[1rem]">{description}</div>
+        <span
+          className="text-[1rem] overflow-hidden text-ellipsis"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 5,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {description}
+        </span>
         <div className="h-[1.5rem] flex items-center gap-[0.5rem]">
           <StarIcon />
           <span className="text-[1.125rem] leading-[1.125rem] pt-1">
