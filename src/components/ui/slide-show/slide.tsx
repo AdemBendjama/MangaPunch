@@ -42,7 +42,6 @@ function Slide({
         alt="background slide image"
         fill={true}
         className="object-cover -z-10"
-        loading="eager"
       />
     </div>
   );
