@@ -116,7 +116,7 @@ export default function Home() {
   return (
     <>
       <SlideShow />
-      <div className="flex flex-col 2xl:gap-[2rem] lg:gap-[1rem] xl:pt-[3rem] lg:pt-[2rem] sm:pt-[1rem] pt-[0.5rem] lg:pb-[10rem] pb-[3rem] ">
+      <div className="flex flex-col 2xl:gap-[2rem] lg:gap-[1rem] xl:pt-[3rem] lg:pt-[2rem] sm:pt-[rem] pt-[0.5rem] lg:pb-[10rem] pb-[3rem] ">
         <SlideCategory title="Trending" slides={slidesTrending} />
         <SlideCategory title="Shonen" slides={slidesShounen} />
         <SlideCategory title="Seinen" slides={slidesSeinen} />

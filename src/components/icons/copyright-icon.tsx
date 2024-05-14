@@ -2,8 +2,9 @@ import { SVGProps } from "react";
 const CopyrightIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={15}
-    height={14}
+    width={props.width}
+    height={props.height}
+    viewBox="0 0 16 16"
     fill="none"
     {...props}
   >

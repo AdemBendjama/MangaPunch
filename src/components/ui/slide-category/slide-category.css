@@ -6,13 +6,13 @@
     overflow: visible;
 }
 
-@media (max-width:1024px) {
+@media (max-width:1023px) {
     .slider-container .slick-slide {
         width: 20vw !important;
     }
 }
 
-@media (max-width:640px) {
+@media (max-width:639px) {
     .slider-container .slick-slide {
         width: 40vw !important;
     }

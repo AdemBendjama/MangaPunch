@@ -2,8 +2,9 @@ import { SVGProps } from "react";
 const LineIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={151}
-    height={2}
+    width={props.width}
+    height={props.height}
+    viewBox="0 0 153 3"
     fill="none"
     {...props}
   >
