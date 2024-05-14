@@ -1,0 +1,7 @@
+.slider-container {
+    overflow: hidden;
+}
+
+.slider-container .slick-list {
+    overflow: visible;
+}

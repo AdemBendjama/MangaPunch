@@ -14,8 +14,8 @@ function SlideShow() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
-    nextArrow: <SlideArrow type="next" />,
-    prevArrow: <SlideArrow type="prev" />,
+    nextArrow: <SlideArrow type="next" slide="slideShow" />,
+    prevArrow: <SlideArrow type="prev" slide="slideShow" />,
   };
 
   return (

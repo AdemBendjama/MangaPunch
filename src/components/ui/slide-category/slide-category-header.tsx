@@ -3,7 +3,7 @@ import React from "react";
 
 function SlideCategoryHeader({ title }: { title: string }) {
   return (
-    <div className="w-[73.625rem] h-[3rem] flex  justify-between text-foreground">
+    <div className="w-full h-[3rem] flex  justify-between text-foreground pr-[1.125rem]">
       <div className="flex items-center text-3xl font-bold h-full">
         <span>{title}</span>
       </div>
