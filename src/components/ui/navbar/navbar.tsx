@@ -20,7 +20,7 @@ function Navbar({
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 1024);
-      setIsMobile(window.innerWidth < 568);
+      setIsMobile(window.innerWidth < 640);
     };
 
     handleResize();
@@ -41,28 +41,27 @@ function Navbar({
     setIsSideBarOpen((prevState) => !prevState);
   };
 
+  const sideBar = isSmallScreen && (
+    <NavbarSideBar
+      isSideBarOpen={isSideBarOpen}
+      isMobile={isMobile}
+      toggleSideBar={toggleSideBar}
+    />
+  );
+  const logoTitle = !isMobile && (
+    <div className="text-[1.375rem] font-bold">MangaPunch</div>
+  );
+
   return (
-    <header
-      className={`flex flex-row justify-between h-[3.75rem] ${
-        !isSmallScreen ? "px-[5rem]" : "px-0"
-      } bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground`}
-    >
+    <header className="flex flex-row justify-between h-[3.75rem] lg:px-[5rem] bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground">
       {/* left navigation */}
       <div className="flex items-center relative gap-[0.25rem]">
         {/* sidebar */}
-        {isSmallScreen && (
-          <NavbarSideBar
-            isSideBarOpen={isSideBarOpen}
-            isMobile={isMobile}
-            toggleSideBar={toggleSideBar}
-          />
-        )}
+        {sideBar}
 
         {/* logo */}
         <NavbarLogo />
-        {!isMobile && (
-          <div className="text-[1.375rem] font-bold">MangaPunch</div>
-        )}
+        {logoTitle}
       </div>
 
       {/* center navigation */}

@@ -5,23 +5,25 @@ import { useTheme } from "next-themes";
 
 function NavbarIconNavigation() {
   const { setTheme } = useTheme();
+
+  const iconStyle = "flex items-center justify-center h-[3.75rem] w-[3.75rem]";
   return (
     <nav className="flex items-center">
-      <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
+      <div className={iconStyle}>
         <SearchIcon
           width={24}
           height={24}
           className="stroke-primary-foreground"
         />
       </div>
-      <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
+      <div className={iconStyle}>
         <ProfileIcon
           width={24}
           height={24}
           className="stroke-primary-foreground"
         />
       </div>
-      <div className="flex items-center justify-center h-[3.75rem] w-[3.75rem]">
+      <div className={iconStyle}>
         <MoonIcon
           width={24}
           height={24}

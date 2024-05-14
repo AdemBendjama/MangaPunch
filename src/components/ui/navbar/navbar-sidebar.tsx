@@ -9,35 +9,32 @@ function NavbarSideBar({
   isMobile: boolean;
   toggleSideBar: () => void;
 }) {
+  //
+  const animateSideBar = isSideBarOpen
+    ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out z-20"
+    : "-translate-y-2 opacity-0 transition-all duration-300 ease-in-out -z-10";
+  const headerStyle =
+    "flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]";
+
+  //
+  const backgroundOverlay = isSideBarOpen && !isMobile && (
+    <div
+      className="w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem] z-10"
+      onClick={toggleSideBar}
+    ></div>
+  );
   return (
     <>
       {/* background black overlay */}
-      {isSideBarOpen && (
-        <div
-          className="w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem] z-10"
-          onClick={toggleSideBar}
-        ></div>
-      )}
+      {backgroundOverlay}
 
       {/* animated pop out sidebar */}
       <div
-        className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold h-screen ${
-          isMobile ? "w-screen" : "w-[18.75rem]"
-        } ${
-          isSideBarOpen
-            ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out z-20"
-            : "-translate-y-2 opacity-0 transition-all duration-300 ease-in-out -z-10"
-        }`}
+        className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold h-screen w-screen sm:w-[18.75rem] ${animateSideBar}`}
       >
-        <div className="flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]">
-          Home
-        </div>
-        <div className="flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]">
-          Top Manga
-        </div>
-        <div className="flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]">
-          Library
-        </div>
+        <div className={headerStyle}>Home</div>
+        <div className={headerStyle}>Top Manga</div>
+        <div className={headerStyle}>Library</div>
       </div>
 
       {/* side bar toggle button */}
