@@ -4,7 +4,7 @@ const slidesTrending = [
   {
     coverImage:
       "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/nx100664-uzN5998CDxPJ.jpg",
-    title: "Ijiranaide, Nagatoro-san",
+    title: "Don't Toy With Me, Miss Nagatoro",
   },
   {
     coverImage:
@@ -14,7 +14,7 @@ const slidesTrending = [
   {
     coverImage:
       "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30013-ulXvn0lzWvsz.jpg",
-    title: "ONE PIECE",
+    title: "One Piece",
   },
   {
     coverImage:
@@ -24,7 +24,7 @@ const slidesTrending = [
   {
     coverImage:
       "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105398-b673Vt5ZSuz3.jpg",
-    title: "Na Honjaman Level Up",
+    title: "Solo Leveling",
   },
   {
     coverImage:
@@ -56,7 +56,7 @@ const slidesShounen = [
   {
     coverImage:
       "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30013-ulXvn0lzWvsz.jpg",
-    title: "ONE PIECE",
+    title: "One Piece",
   },
   {
     coverImage:
@@ -71,7 +71,7 @@ const slidesShounen = [
   {
     coverImage:
       "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx108556-NHjkz0BNJhLx.jpg",
-    title: "SPY×FAMILY",
+    title: "Spy×Family",
   },
 ];
 const slidesSeinen = [
@@ -88,7 +88,7 @@ const slidesSeinen = [
   {
     coverImage:
       "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx34632-u4d8Pf7p9fl9.png",
-    title: "Oyasumi Punpun",
+    title: "Goodnight Punpun",
   },
   {
     coverImage:
