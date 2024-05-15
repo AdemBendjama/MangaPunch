@@ -2,10 +2,18 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import React from "react";
 
-export function ButtonWithIcon({ children }: { children: React.ReactNode }) {
+export function ButtonWithIcon({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <div className="flex justify-start">
-      <Button className="bg-primary text-primary-foreground text-[14px] leading-none rounded-e-[0]">
+      <Button
+        className={`bg-primary text-primary-foreground text-[14px] leading-none rounded-e-[0] ${className}`}
+      >
         {children}
       </Button>
       <Button

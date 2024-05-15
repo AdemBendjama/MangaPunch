@@ -17,10 +17,10 @@ function Slide({
   backgroundImage: string;
 }) {
   return (
-    <div className="w-screen h-[400px] block relative shadow-slide-inner  text-slide">
-      <div className="w-[70%] py-[1rem] px-[4rem]">
-        <div className="py-[1rem] flex gap-[1rem]">
-          <div className="w-[13.125rem] h-[20.3125rem] rounded-[0.375rem] relative overflow-hidden">
+    <div className="w-screen sm:h-[25rem] h-[21.875rem] block relative sm:shadow-slide-inner shadow-slide-inner-sm   text-slide">
+      <div className="sm:w-[70%] w-full sm:py-[1rem] py-[0.875rem] sm:px-[4rem] px-[0.875rem]">
+        <div className="sm:w-auto w-full sm:py-[1rem] pb-[1rem] flex justify-center sm:gap-[1rem] gap-[0.5rem]">
+          <div className="sm:w-[13.125rem] sm:h-[20.3125rem] min-w-[7.1875rem] h-[11.25rem] rounded-[0.375rem] relative overflow-hidden">
             <Image
               src={coverImage}
               alt="cover image of manga title"
@@ -35,6 +35,18 @@ function Slide({
             averageScore={averageScore}
             popularity={popularity}
           />
+        </div>
+        <div className="sm:hidden">
+          <span
+            className="text-xs leading-5 overflow-hidden text-ellipsis"
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 4,
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {description}
+          </span>
         </div>
       </div>
       <Image

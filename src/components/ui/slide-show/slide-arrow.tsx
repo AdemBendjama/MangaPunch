@@ -12,8 +12,8 @@ function SlideArrow({ className, type, onClick, style, slide }: arrowProps) {
   let nextClassName = "";
   let prevClassName = "";
   if (slide === "slideShow") {
-    nextClassName = "absolute right-3 top-[45%]";
-    prevClassName = "absolute left-2 top-[45%] z-10";
+    nextClassName = "absolute sm:right-3 right-4 sm:top-[45%] top-[87%]";
+    prevClassName = "absolute sm:left-2 left-4 sm:top-[45%] top-[87%] z-10";
   } else if (slide === "slideCategory") {
     nextClassName =
       "absolute lg:right-[-6vw] sm:right-[-8vw] right-[-8vw] lg:top-[10vw] sm:top-[12vw] top-[24vw]";

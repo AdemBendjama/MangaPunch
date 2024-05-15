@@ -216,8 +216,8 @@ function SlideShow() {
             coverImage={manga.coverImage.large}
             title={manga.title.english || manga.title.romaji}
             description={manga.description.split("<br>")[0]}
-            averageScore={manga.averageScore}
-            popularity={manga.rankings[1].rank} // Assuming popularity is the second ranking
+            averageScore={manga.averageScore / 10}
+            popularity={manga.rankings[1].rank}
           />
         ))}
       </Slider>

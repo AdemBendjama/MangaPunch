@@ -93,6 +93,7 @@ const config = {
       },
       boxShadow: {
         "slide-inner": "inset 60vw 0 250px 0 rgba(0, 0, 0, 0.9)",
+        "slide-inner-sm": "inset 100vw 0 2px 0 rgba(0, 0, 0, 0.8)",
       },
     },
   },
