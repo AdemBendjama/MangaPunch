@@ -92,8 +92,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       boxShadow: {
-        "slide-inner": "inset 60vw 0 250px 0 rgba(0, 0, 0, 0.9)",
-        "slide-inner-sm": "inset 100vw 0 2px 0 rgba(0, 0, 0, 0.8)",
+        "slide-inner": "inset 60vw 0 250px 0 hsla(0,0%,0%,0.9)",
+        "slide-inner-sm": "inset 100vw 0 2px 0 hsla(0,0%,0%,0.8)",
       },
     },
   },
