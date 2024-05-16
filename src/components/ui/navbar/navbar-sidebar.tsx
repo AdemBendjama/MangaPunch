@@ -2,11 +2,9 @@ import SideBarIcon from "@/components/icons/sidebar-icon";
 
 function NavbarSideBar({
   isSideBarOpen,
-  isMobile,
   toggleSideBar,
 }: {
   isSideBarOpen: boolean;
-  isMobile: boolean;
   toggleSideBar: () => void;
 }) {
   //
@@ -17,14 +15,14 @@ function NavbarSideBar({
     "flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]";
 
   //
-  const backgroundOverlay = isSideBarOpen && !isMobile && (
+  const backgroundOverlay = isSideBarOpen && (
     <div
-      className="w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem] z-10"
+      className="sm:block hidden w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem] z-10"
       onClick={toggleSideBar}
     ></div>
   );
   return (
-    <>
+    <div className="lg:hidden">
       {/* background black overlay */}
       {backgroundOverlay}
 
@@ -50,7 +48,7 @@ function NavbarSideBar({
           onClick={toggleSideBar}
         />
       </div>
-    </>
+    </div>
   );
 }
 

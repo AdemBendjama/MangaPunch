@@ -1,12 +1,10 @@
-"use client";
 import "@/styles/globals.css";
 import { Overpass } from "next/font/google";
 
 import { cn } from "../lib/utils";
-import Navbar from "@/components/ui/navbar/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-import { useState } from "react";
 import Footer from "@/components/ui/footer/footer";
+import NavbarProvider from "@/components/navbar-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -18,8 +16,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -32,9 +28,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          `min-h-screen bg-background dark:bg-background-secondary font-overpass antialiased ${
-            isSideBarOpen && "h-screen overflow-hidden"
-          }`,
+          `min-h-screen bg-background dark:bg-background-secondary font-overpass antialiased`,
           overpass.variable
         )}
       >
@@ -44,12 +38,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar
-            isSideBarOpen={isSideBarOpen}
-            setIsSideBarOpen={setIsSideBarOpen}
-          />
-          {children}
-          <Footer />
+          <NavbarProvider>
+            {children}
+            <Footer />
+          </NavbarProvider>
         </ThemeProvider>
       </body>
     </html>
