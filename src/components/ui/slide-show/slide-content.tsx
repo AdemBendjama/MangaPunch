@@ -14,7 +14,7 @@ function SlideContent({
   popularity: number;
 }) {
   return (
-    <div className="sm:w-[37vw] w-full flex flex-col justify-between">
+    <div className="lg:w-[37vw] w-full flex flex-col justify-between">
       <div className="flex flex-col gap-[1rem]">
         <div
           className="sm:text-[1.875rem] sm:h-auto sm:max-h-[4rem] text-xl max-h-[3.5rem] overflow-hidden text-ellipsis"
