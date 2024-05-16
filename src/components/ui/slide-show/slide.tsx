@@ -47,7 +47,6 @@ function Slide({
         alt="background slide image"
         fill={true}
         className="object-cover -z-10"
-        quality={10}
       />
     </div>
   );
