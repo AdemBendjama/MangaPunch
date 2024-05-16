@@ -42,14 +42,12 @@ function Slide({
           </span>
         </div>
       </div>
-      <div className="sm:block hidden">
-        <Image
-          src={backgroundImage}
-          alt="background slide image"
-          fill={true}
-          className="object-cover -z-10"
-        />
-      </div>
+      <Image
+        src={backgroundImage}
+        alt="background slide image"
+        fill={true}
+        className="object-cover -z-10"
+      />
     </div>
   );
 }
