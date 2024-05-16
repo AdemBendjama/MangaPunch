@@ -15,26 +15,12 @@ function SlideContent({
 }) {
   return (
     <div className="lg:w-[37vw] w-full flex flex-col justify-between">
-      <div className="flex flex-col gap-[1rem]">
-        <div
-          className="sm:text-[1.875rem] sm:h-auto sm:max-h-[4rem] text-xl max-h-[3.5rem] overflow-hidden text-ellipsis"
-          style={{
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-          }}
-        >
+      <div className="flex flex-col gap-[0.875rem]">
+        <div className="lg:text-3xl lg:h-auto lg:max-h-[4.5rem] sm:text-2xl sm:h-auto sm:max-h-[4rem] text-xl max-h-[3.5rem] overflow-hidden text-ellipsis line-clamp-2">
           {title}
         </div>
         <div className="sm:block hidden">
-          <span
-            className="sm:text-[1rem] overflow-hidden text-ellipsis"
-            style={{
-              display: "-webkit-box",
-              WebkitLineClamp: 5,
-              WebkitBoxOrient: "vertical",
-            }}
-          >
+          <span className="sm:text-[1rem] overflow-hidden text-ellipsis 3xl:line-clamp-[7] lg:line-clamp-5 line-clamp-4">
             {description}
           </span>
         </div>

@@ -16,9 +16,9 @@ function SlideArrow({ className, type, onClick, style, slide }: arrowProps) {
     prevClassName = "absolute sm:left-2 left-4 sm:top-[45%] top-[87%] z-10";
   } else if (slide === "slideCategory") {
     nextClassName =
-      "absolute lg:right-[-6vw] sm:right-[-8vw] right-[-8vw] lg:top-[10vw] sm:top-[12vw] top-[24vw]";
+      "absolute lg:right-[-6vw] sm:right-[-8vw] right-[-8vw] 3xl:top-[9vw] lg:top-[10vw] sm:top-[12vw] top-[24vw]";
     prevClassName =
-      "absolute lg:left-[-6vw] sm:left-[-8vw] left-[-8vw] lg:top-[10vw] sm:top-[12vw] top-[24vw] z-10";
+      "absolute lg:left-[-6vw] sm:left-[-8vw] left-[-8vw] 3xl:top-[9vw] lg:top-[10vw] sm:top-[12vw] top-[24vw] z-10";
   }
 
   let disabled = "";

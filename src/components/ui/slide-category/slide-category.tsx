@@ -20,11 +20,18 @@ function SlideCategory({
   var settings = {
     infinite: false,
     speed: 600,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     nextArrow: <SlideArrow type="next" slide="slideCategory" />,
     prevArrow: <SlideArrow type="prev" slide="slideCategory" />,
     responsive: [
+      {
+        breakpoint: 1535,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        },
+      },
       {
         breakpoint: 1023,
         settings: {

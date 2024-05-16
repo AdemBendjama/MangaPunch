@@ -2,7 +2,7 @@ import ChevronRight from "@/components/icons/chevron-right";
 
 function SlideCategoryHeader({ title }: { title: string }) {
   return (
-    <div className="lg:w-[84vw] sm:w-[78vw] w-[76vw] flex justify-between text-foreground">
+    <div className="2xl:w-[85.5vw] lg:w-[84vw] sm:w-[78vw] w-[76vw] flex justify-between text-foreground">
       <div className="flex items-center lg:text-3xl sm:text-xl text-base font-bold h-full">
         <span>{title}</span>
       </div>
