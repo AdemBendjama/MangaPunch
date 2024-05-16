@@ -1,6 +1,4 @@
-"use client";
-
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import NavbarSideBar from "./navbar-sidebar";
 import NavbarIconNavigation from "./navbar-icon-navigation";
 import NavbarTitleNavigation from "./navbar-title-navigation";
