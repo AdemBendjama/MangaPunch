@@ -35,7 +35,7 @@ function SlideContent({
         </div>
         <div className="flex items-center sm:gap-[0.5rem] gap-[0.25rem]">
           <HeartIcon className="sm:w-6 sm:h-6 w-5 h-5" />
-          <span className="sm:text-[1.125rem] text-base leading-[1.125rem] pt-1]">
+          <span className="sm:text-[1.125rem] text-base leading-[1.125rem] pt-1">
             #{popularity} Most Popular{" "}
             <span className="sm:inline hidden">All time</span>
           </span>

@@ -1,3 +1,5 @@
+import HeartIcon from "@/components/icons/heart-icon";
+import StarIcon from "@/components/icons/star-icon";
 import Image from "next/image";
 
 function MangaDetailsPage() {
@@ -10,6 +12,31 @@ function MangaDetailsPage() {
           fill={true}
           className="object-cover"
         ></Image>
+      </div>
+      <div className="h-[22.5vw] pl-[11.5vw] pr-[14.5vw] relative">
+        <div className="bg-orange-700 w-[230px] h-[360px] absolute top-[-60%]"></div>
+        <div className="ml-[20vw] h-full w-[54vw]">
+          <div className="flex justify-between items-start py-[0.5rem] gap-[0.5rem]">
+            <span className="font-semibold text-lg text-foreground">
+              I Was Reincarnated as the 7th Prince So I Can Take My Time
+              Perfecting My Magical Ability
+            </span>
+            <div className="flex gap-[1rem]">
+              <div className="flex items-center sm:gap-[0.5rem] gap-[0.25rem]">
+                <StarIcon className="sm:w-6 sm:h-6 w-5 h-5" />
+                <span className="sm:text-[1.125rem] text-base leading-[1.125rem] pt-1">
+                  8.3/10
+                </span>
+              </div>
+              <div className="flex items-center sm:gap-[0.5rem] gap-[0.25rem]">
+                <HeartIcon className="sm:w-6 sm:h-6 w-5 h-5" />
+                <span className="sm:text-[1.125rem] text-base leading-[1.125rem] pt-1">
+                  #1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
