@@ -8,9 +8,9 @@ const ChevronRight = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     strokeWidth={3}
     className="lucide lucide-chevron-right"
-    width={props.width} // Adjust width based on props
-    height={props.height} // Adjust height based on props
-    viewBox="0 0 24 24" // Set viewBox for scaling
+    width={props.width}
+    height={props.height}
+    viewBox="0 0 24 24"
     {...props}
   >
     <path d="m9 18 6-6-6-6" />

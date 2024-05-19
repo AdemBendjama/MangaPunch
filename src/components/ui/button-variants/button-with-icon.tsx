@@ -19,7 +19,6 @@ export function ButtonWithIcon({
       <Button
         size="icon"
         className="bg-hover rounded-s-[0] w-[2rem] p-[0.5rem]"
-        aria-label="Read More"
       >
         <ChevronRight
           size={16}
