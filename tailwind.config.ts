@@ -41,6 +41,7 @@ const config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           bright: "hsl(var(--primary-bright))",
+          50: "hsla(201, 90% ,27.5%,0.5)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -66,6 +67,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
           footer: "hsl(var(--card-footer))",
+          50: "hsla(201, 50%,0%,0.5)",
         },
         hover: {
           DEFAULT: "hsl(var(--hover))",
