@@ -1,13 +1,16 @@
 import HeartIcon from "@/components/icons/heart-icon";
 import StarIcon from "@/components/icons/star-icon";
 import { ButtonWithIcon } from "../button-variants/button-with-icon";
+import Link from "next/link";
 
 function SlideContent({
+  id,
   title,
   description,
   averageScore,
   popularity,
 }: {
+  id: number;
   title: string;
   description: string;
   averageScore: number;
@@ -38,7 +41,9 @@ function SlideContent({
           </span>
         </div>
       </div>
-      <ButtonWithIcon className="sm:w-auto w-full">Read More</ButtonWithIcon>
+      <Link href={`/manga/${id}`}>
+        <ButtonWithIcon className="sm:w-auto w-full">Read More</ButtonWithIcon>
+      </Link>
     </div>
   );
 }

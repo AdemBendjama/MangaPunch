@@ -2,6 +2,7 @@ import Image from "next/image";
 import SlideContent from "./slide-content";
 
 function Slide({
+  id,
   coverImage,
   title,
   description,
@@ -9,6 +10,7 @@ function Slide({
   popularity,
   backgroundImage,
 }: {
+  id: number;
   coverImage: string;
   title: string;
   description: string;
@@ -30,6 +32,7 @@ function Slide({
             />
           </div>
           <SlideContent
+            id={id}
             title={title}
             description={description}
             averageScore={averageScore}

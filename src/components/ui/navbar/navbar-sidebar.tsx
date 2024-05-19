@@ -1,4 +1,5 @@
 import SideBarIcon from "@/components/icons/sidebar-icon";
+import Link from "next/link";
 
 function NavbarSideBar({
   isSideBarOpen,
@@ -30,7 +31,9 @@ function NavbarSideBar({
       <div
         className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold h-screen w-screen sm:w-[18.75rem] ${animateSideBar}`}
       >
-        <div className={headerStyle}>Home</div>
+        <Link href={`/`}>
+          <div className={headerStyle}>Home</div>
+        </Link>
         <div className={headerStyle}>Top Manga</div>
         <div className={headerStyle}>Library</div>
       </div>

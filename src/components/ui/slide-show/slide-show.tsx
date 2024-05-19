@@ -212,6 +212,7 @@ function SlideShow() {
         {mangaData.data.Page.media.map((manga) => (
           <Slide
             key={manga.id}
+            id={manga.id}
             backgroundImage={manga.bannerImage}
             coverImage={manga.coverImage.large}
             title={manga.title.english || manga.title.romaji}
