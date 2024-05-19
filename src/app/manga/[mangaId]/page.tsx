@@ -40,30 +40,30 @@ function MangaDetailsPage() {
           {/* details */}
           <div className="flex flex-col gap-[0.5rem] py-[0.5rem]">
             <div className="flex gap-[1rem]">
-              <span className="w-[7.5vw] font-semibold">Author(s):</span>
+              <span className="min-w-[7.5vw] font-semibold">Author(s):</span>
               <span>Tatsuki Fujimoto</span>
             </div>
             <div className="flex gap-[1rem]">
-              <span className="w-[7.5vw] font-semibold">Status:</span>
+              <span className="min-w-[7.5vw] font-semibold">Status:</span>
               <span>Releasing</span>
             </div>
             <div className="flex gap-[1rem]">
-              <span className="w-[7.5vw] font-semibold">Start Date:</span>
+              <span className="min-w-[7.5vw] font-semibold">Start Date:</span>
               <span>Dec 3, 2018</span>
             </div>
             <div className="flex gap-[1rem]">
-              <span className="w-[7.5vw] font-semibold">Genres:</span>
-              <span>
+              <span className="min-w-[7.5vw] font-semibold">Genres:</span>
+              <span className="line-clamp-2">
                 Action, Comedy, Drama, Horror, Supernatural, Mystery, Romance,
                 Sci-Fi, Thriller, Fantasy
               </span>
             </div>
             <div className="flex gap-[1rem]">
-              <span className="w-[7.5vw] font-semibold">Progress:</span>
+              <span className="min-w-[7.5vw] font-semibold">Progress:</span>
               <span>15/160</span>
             </div>
             <div className="flex gap-[1rem]">
-              <span className="w-[7.5vw] font-semibold">Rating:</span>
+              <span className="min-w-[7.5vw] font-semibold">Rating:</span>
               <div className="flex gap-[0.5rem]">
                 <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
                 <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
