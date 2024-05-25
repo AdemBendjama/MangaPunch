@@ -15,12 +15,12 @@ function MangaDetailsPage() {
           className="object-cover"
         />
       </div>
-      <div className="h-[22.5vw] bg-background-secondary pl-[11.5vw] pr-[14.5vw] relative">
+      <div className="h-[19rem] bg-background-secondary lg:px-[10rem] px-[3rem] relative">
         {/* cover + actions */}
-        <div className="flex flex-col items-start gap-[0.5rem] absolute top-[-60%]">
-          <div className="min-w-[16.5vw] min-h-[26.5vw] relative">
+        <div className="flex flex-col items-start gap-[0.875rem] absolute lg:top-[-60%] top-[-40%]">
+          <div className="xl:min-w-[14rem] xl:min-h-[20rem] xl:max-h-[22rem] lg:min-w-[12rem] lg:min-h-[17rem] lg:max-h-[19rem] min-w-[10rem] min-h-[14rem] max-h-[16rem] relative">
             <Image
-              src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105778-74YTFlQzcFPg.png"
+              src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30002-7EzO7o21jzeF.jpg"
               alt="cover image"
               fill={true}
               className="object-contain"
@@ -31,9 +31,9 @@ function MangaDetailsPage() {
           </div>
         </div>
         {/* content */}
-        <div className="ml-[20vw] h-full w-[54vw] gap-[0.5rem] py-[0.5rem]">
+        <div className="lg:ml-[20vw] ml-[22vw] h-full gap-[0.5rem] py-[0.5rem]">
           {/* title */}
-          <div className="flex justify-between items-start py-[0.5rem] gap-[0.5rem]">
+          <div className="flex justify-between items-start py-[0.5rem] 2xl:gap-[1rem] gap-[0.5rem]">
             <span className="font-semibold text-lg line-clamp-2">
               I Was Reincarnated as the 7th Prince So I Can Take My Time
               Perfecting My Magical Ability
@@ -56,30 +56,30 @@ function MangaDetailsPage() {
           {/* details */}
           <div className="flex flex-col gap-[0.5rem] py-[0.5rem]">
             <div className="flex gap-[1rem] leading-[1.25rem]">
-              <span className="min-w-[7.5vw] font-semibold">Author(s):</span>
+              <span className="min-w-[100px] font-semibold">Author(s):</span>
               <span className="line-clamp-1">Tatsuki Fujimoto</span>
             </div>
             <div className="flex gap-[1rem] leading-[1.25rem]">
-              <span className="min-w-[7.5vw] font-semibold">Status:</span>
+              <span className="min-w-[100px] font-semibold">Status:</span>
               <span>Releasing</span>
             </div>
             <div className="flex gap-[1rem] leading-[1.25rem]">
-              <span className="min-w-[7.5vw] font-semibold">Start Date:</span>
+              <span className="min-w-[100px] font-semibold">Start Date:</span>
               <span>Dec 3, 2018</span>
             </div>
             <div className="flex gap-[1rem] leading-[1.25rem]">
-              <span className="min-w-[7.5vw] font-semibold">Genres:</span>
+              <span className="min-w-[100px] font-semibold">Genres:</span>
               <span className="line-clamp-2">
                 Action, Comedy, Drama, Horror, Supernatural, Mystery, Romance,
                 Sci-Fi, Thriller, Fantasy
               </span>
             </div>
             <div className="flex gap-[1rem] leading-[1.25rem]">
-              <span className="min-w-[7.5vw] font-semibold">Progress:</span>
+              <span className="min-w-[100px] font-semibold">Progress:</span>
               <span>15/160</span>
             </div>
             <div className="flex gap-[1rem] leading-[1.25rem]">
-              <span className="min-w-[7.5vw] font-semibold">Rating:</span>
+              <span className="min-w-[100px] font-semibold">Rating:</span>
               <div className="flex gap-[0.5rem]">
                 <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
                 <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
@@ -96,16 +96,9 @@ function MangaDetailsPage() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] px-[10rem]">
+      <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[10rem] px-[3rem]">
         <div className="flex flex-col gap-[1rem] py-[1rem]">
           <span className="font-bold text-lg">Description</span>
-          <span className="font-medium">
-            The name says it all! Denji&apos;s life of poverty is changed
-            forever when he merges with his pet chainsaw dog, Pochita! Now
-            he&apos;s living in the big city and an official Devil Hunter. But
-            he&apos;s got a lot to learn about his new job and chainsaw powers!
-            (Source: MANGA Plus)
-          </span>
           <span className="font-medium">
             The name says it all! Denji&apos;s life of poverty is changed
             forever when he merges with his pet chainsaw dog, Pochita! Now
