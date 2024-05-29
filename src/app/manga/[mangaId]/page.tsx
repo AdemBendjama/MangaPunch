@@ -15,30 +15,53 @@ function MangaDetailsPage() {
           className="object-cover"
         />
       </div>
-      <div className="h-[19rem] bg-background-secondary lg:px-[10rem] px-[3rem] relative">
+      <div className="sm:h-[19rem] bg-background-secondary lg:px-[10rem] md:[3rem] sm:px-[1rem] px-[1rem] relative">
         {/* cover + actions */}
-        <div className="flex flex-col items-start gap-[0.875rem] absolute lg:top-[-60%] top-[-40%]">
-          <div className="xl:min-w-[14rem] xl:min-h-[20rem] xl:max-h-[22rem] lg:min-w-[12rem] lg:min-h-[17rem] lg:max-h-[19rem] min-w-[10rem] min-h-[14rem] max-h-[16rem] relative">
+        <div className="sm:w-auto w-[90vw] flex sm:flex-col sm:items-start sm:justify-normal sm:gap-[0.875rem] flex-row items-end justify-between gap-[0.625rem] absolute lg:top-[-60%] sm:top-[-40%] top-[-100px]">
+          <div className="xl:min-w-[13rem] xl:min-h-[21rem] lg:min-w-[11rem] lg:min-h-[18rem] sm:min-w-[9.5rem] sm:min-h-[15.5rem] min-w-[7.2rem] min-h-[11.5rem] relative">
             <Image
-              src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30002-7EzO7o21jzeF.jpg"
+              src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105778-74YTFlQzcFPg.png"
               alt="cover image"
               fill={true}
               className="object-contain"
             />
           </div>
-          <div className="w-full">
-            <ButtonWithIcon className="w-full">Add to Library</ButtonWithIcon>
+          <div className="w-full sm:hidden flex flex-col gap-[0.875rem]">
+            <div className="flex justify-between gap-[1rem]">
+              <div className="flex items-center sm:gap-[0.5rem] gap-[0.25rem]">
+                <StarIcon className="sm:w-6 sm:h-6 w-5 h-5" />
+                <span className="sm:text-[1.125rem] text-base leading-[1.125rem] pt-1">
+                  8.3/10
+                </span>
+              </div>
+              <div className="flex items-center sm:gap-[0.5rem] gap-[0.25rem]">
+                <HeartIcon className="sm:w-6 sm:h-6 w-5 h-5" />
+                <span className="sm:text-[1.125rem] text-base leading-[1.125rem] pt-1">
+                  #1
+                </span>
+              </div>
+            </div>
+            <div className="w-full">
+              <ButtonWithIcon className="w-full" type="plus">
+                Add to Library
+              </ButtonWithIcon>
+            </div>
+          </div>
+          <div className="w-full sm:block hidden">
+            <ButtonWithIcon className="w-full" type="plus">
+              Add to Library
+            </ButtonWithIcon>
           </div>
         </div>
         {/* content */}
-        <div className="lg:ml-[20vw] ml-[22vw] h-full gap-[0.5rem] py-[0.5rem]">
+        <div className="lg:ml-[20vw] md:ml-[22vw] sm:ml-[25vw] h-full gap-[0.5rem] sm:pt-[0.5rem] pt-[100px] sm:py-[0.5rem] py-[1rem]">
           {/* title */}
           <div className="flex justify-between items-start py-[0.5rem] 2xl:gap-[1rem] gap-[0.5rem]">
-            <span className="font-semibold text-lg line-clamp-2">
+            <span className="font-semibold text-lg sm:line-clamp-2">
               I Was Reincarnated as the 7th Prince So I Can Take My Time
               Perfecting My Magical Ability
             </span>
-            <div className="flex gap-[1rem]">
+            <div className="sm:flex gap-[1rem] hidden">
               <div className="flex items-center sm:gap-[0.5rem] gap-[0.25rem]">
                 <StarIcon className="sm:w-6 sm:h-6 w-5 h-5" />
                 <span className="sm:text-[1.125rem] text-base leading-[1.125rem] pt-1">
@@ -54,7 +77,7 @@ function MangaDetailsPage() {
             </div>
           </div>
           {/* details */}
-          <div className="flex flex-col gap-[0.5rem] py-[0.5rem]">
+          <div className="flex flex-col sm:text-base text-sm gap-[0.5rem] py-[0.5rem]">
             <div className="flex gap-[1rem] leading-[1.25rem]">
               <span className="min-w-[100px] font-semibold">Author(s):</span>
               <span className="line-clamp-1">Tatsuki Fujimoto</span>
@@ -69,7 +92,7 @@ function MangaDetailsPage() {
             </div>
             <div className="flex gap-[1rem] leading-[1.25rem]">
               <span className="min-w-[100px] font-semibold">Genres:</span>
-              <span className="line-clamp-2">
+              <span className="sm:line-clamp-2">
                 Action, Comedy, Drama, Horror, Supernatural, Mystery, Romance,
                 Sci-Fi, Thriller, Fantasy
               </span>
@@ -81,25 +104,31 @@ function MangaDetailsPage() {
             <div className="flex gap-[1rem] leading-[1.25rem]">
               <span className="min-w-[100px] font-semibold">Rating:</span>
               <div className="flex gap-[0.5rem]">
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" fill="none" />
-                <StarIcon className="sm:w-5 sm:h-5 w-4 h-4" fill="none" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                <StarIcon
+                  className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
+                  fill="none"
+                />
+                <StarIcon
+                  className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
+                  fill="none"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[10rem] px-[3rem]">
+      <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[10rem] sm:px-[3rem] px-[1rem]">
         <div className="flex flex-col gap-[1rem] py-[1rem]">
-          <span className="font-bold text-lg">Description</span>
-          <span className="font-medium">
+          <span className="font-bold sm:text-lg test-base">Description:</span>
+          <span className="font-medium sm:text-base text-sm">
             The name says it all! Denji&apos;s life of poverty is changed
             forever when he merges with his pet chainsaw dog, Pochita! Now
             he&apos;s living in the big city and an official Devil Hunter. But
@@ -121,12 +150,14 @@ function MangaDetailsPage() {
         </div>
         <div className="flex flex-col gap-[0.625rem] py-[1rem]">
           <div className="flex justify-between items-center py-[0.5rem]">
-            <span className="font-bold text-xl">
+            <span className="font-bold sm:text-xl text-base">
               Recommended Related Manga :
             </span>
             <div className="flex items-center gap-[0.25rem]">
-              <span className="font-bold text-muted-foreground">View More</span>
-              <ChevronDown className="w-[1rem] h-[1rem] stroke-muted-foreground" />
+              <span className="font-bold text-muted-foreground sm:text-base text-xs">
+                View More
+              </span>
+              <ChevronDown className="sm:w-[1rem] sm:h-[1rem] w-[0.75rem] h-[0.75rem] stroke-muted-foreground" />
             </div>
           </div>
         </div>

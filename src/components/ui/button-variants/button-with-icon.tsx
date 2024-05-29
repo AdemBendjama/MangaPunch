@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Plus } from "lucide-react";
 import React from "react";
 
 export function ButtonWithIcon({
   children,
   className,
+  type,
 }: {
   children: React.ReactNode;
   className?: string;
+  type?: string;
 }) {
   return (
     <div className="flex justify-start">
@@ -20,11 +22,19 @@ export function ButtonWithIcon({
         size="icon"
         className="bg-hover rounded-s-[0] w-[2rem] p-[0.5rem]"
       >
-        <ChevronRight
-          size={16}
-          className="stroke-hover-foreground"
-          absoluteStrokeWidth
-        />
+        {type === "plus" ? (
+          <Plus
+            size={16}
+            className="stroke-hover-foreground"
+            absoluteStrokeWidth
+          />
+        ) : (
+          <ChevronRight
+            size={16}
+            className="stroke-hover-foreground"
+            absoluteStrokeWidth
+          />
+        )}
       </Button>
     </div>
   );
