@@ -8,6 +8,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/file/anilistcdn/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'drive.usercontent.google.com',
+                port: '',
+                pathname: '**',
+            },
         ],
     },
 };

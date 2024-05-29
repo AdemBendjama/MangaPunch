@@ -2,6 +2,7 @@ import SearchIcon from "../../icons/search-icon";
 import ProfileIcon from "../../icons/profile-icon";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 function NavbarIconNavigation() {
   const { setTheme } = useTheme();
@@ -16,13 +17,15 @@ function NavbarIconNavigation() {
           className="stroke-primary-foreground"
         />
       </div>
-      <div className={iconStyle}>
-        <ProfileIcon
-          width={24}
-          height={24}
-          className="stroke-primary-foreground"
-        />
-      </div>
+      <Link href="/user/profile">
+        <div className={iconStyle}>
+          <ProfileIcon
+            width={24}
+            height={24}
+            className="stroke-primary-foreground"
+          />
+        </div>
+      </Link>
       <div className={iconStyle}>
         <MoonIcon
           width={24}
