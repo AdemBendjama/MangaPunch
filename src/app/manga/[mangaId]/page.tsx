@@ -2,6 +2,7 @@ import ChevronDown from "@/components/icons/chevron-down";
 import HeartIcon from "@/components/icons/heart-icon";
 import StarIcon from "@/components/icons/star-icon";
 import { ButtonWithIcon } from "@/components/ui/button-variants/button-with-icon";
+import CardSmall from "@/components/ui/card/card-small";
 import Image from "next/image";
 
 function MangaDetailsPage() {
@@ -159,6 +160,20 @@ function MangaDetailsPage() {
               </span>
               <ChevronDown className="sm:w-[1rem] sm:h-[1rem] w-[0.75rem] h-[0.75rem] stroke-muted-foreground" />
             </div>
+          </div>
+          <div className="grid 3xl:grid-cols-[repeat(10,_8.5rem)] 2xl:grid-cols-[repeat(8,_8.5rem)] xl:grid-cols-[repeat(6,_8.5rem)] lg:grid-cols-[repeat(5,_8rem)] sm:grid-cols-[repeat(4,_8.5rem)] xs:grid-cols-[repeat(4,_6rem)] grid-cols-[repeat(3,_6rem)] gap-y-[0.625rem] justify-between items-stretch">
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
+            <CardSmall />
           </div>
         </div>
       </div>

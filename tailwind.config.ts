@@ -21,6 +21,7 @@ const config = {
     extend: {
       screens: {
         "3xl": "1920px",
+        xs: "480px",
       },
       fontFamily: {
         overpass: ["var(--font-overpass)", ...fontFamily.sans],
