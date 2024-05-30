@@ -2,9 +2,14 @@
 import { InputForm } from "./form";
 import { z } from "zod";
 const FormSchema = z.object({
-  username: z.string().min(3, {
-    message: "Username must be at least 3 characters.",
-  }),
+  username: z
+    .string()
+    .min(3, {
+      message: "Username must be at least 3 characters.",
+    })
+    .max(16, {
+      message: "Username must be 16 characters or less.",
+    }),
 });
 
 export function UpdateUsernameForm() {

@@ -13,8 +13,8 @@ function UserProfilePage() {
           fill={true}
           className="object-cover -z-10"
         />
-        <div className="h-full ml-[7.5rem] flex items-end">
-          <div className="min-w-[13rem] min-h-[13rem] relative">
+        <div className="h-full sm:ml-[7.5rem] ml-[0.5rem] sm:mr-0 mr-[0.5rem] flex items-end">
+          <div className="sm:min-w-[13rem] sm:min-h-[13rem] min-w-[10rem] min-h-[10rem] relative">
             <Image
               src="/assets/images/footer.png"
               alt="footer image"
@@ -22,13 +22,13 @@ function UserProfilePage() {
               className="object-contain"
             />
           </div>
-          <span className="font-bold text-3xl pb-[1rem] text-white dark:text-foreground">
-            @Naden2020
+          <span className="font-bold sm:text-3xl text-lg sm:pb-[1rem] pb-[0.5rem] text-white dark:text-foreground overflow-hidden">
+            @PoliceISwearToGod
           </span>
         </div>
       </div>
-      <div className="flex gap-[2rem] px-[7.5rem] pb-[10rem] pt-[2rem] bg-card dark:bg-background-secondary">
-        <div className="w-[24rem]">
+      <div className="flex sm:flex-row flex-col gap-[2rem] lg:px-[7.5rem] sm:px-[2rem] px-[1rem] lg:pb-[10rem] sm:pb-[6rem] pb-[3rem] pt-[2rem] bg-card dark:bg-background-secondary">
+        <div className="sm:w-[24rem]">
           <div className="font-semibold text-2xl my-[0.5rem]">Account</div>
           <div className="flex flex-row gap-[0.5rem]">
             <UpdateUsernameForm />
@@ -37,9 +37,9 @@ function UserProfilePage() {
             <ChangePasswordForm />
           </div>
         </div>
-        <div className="w-[24rem]">
+        <div className="sm:w-[24rem]">
           <div className="font-semibold text-2xl my-[0.5rem]">Session</div>
-          <Button className="w-full mt-[2rem]" variant="destructive">
+          <Button className="w-full sm:mt-[2rem]" variant="destructive">
             Logout
           </Button>
         </div>
