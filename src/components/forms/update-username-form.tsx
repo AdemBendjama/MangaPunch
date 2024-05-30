@@ -14,6 +14,7 @@ export function UpdateUsernameForm() {
       label: "Username",
       description: "Enter your new username",
       placeholder: "Jhon Doe",
+      type: "text",
     },
   ];
   return (

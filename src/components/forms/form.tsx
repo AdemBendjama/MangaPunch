@@ -23,14 +23,15 @@ export function InputForm({
   buttonLabel,
   formFields,
 }: {
-  defaultValues: { username?: string };
+  defaultValues: { username?: string; old_password?: string };
   FormSchema: z.ZodObject<any, any>;
   buttonLabel: string;
   formFields: {
     name: string;
     label: string;
-    description: string;
-    placeholder: string;
+    description?: string;
+    placeholder?: string;
+    type: string;
   }[];
 }) {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -52,7 +53,7 @@ export function InputForm({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
-        {formFields.map(({ name, label, description, placeholder }) => {
+        {formFields.map(({ name, label, description, placeholder, type }) => {
           return (
             <FormField
               key={name}
@@ -66,6 +67,7 @@ export function InputForm({
                       placeholder={placeholder}
                       {...field}
                       className="border-0"
+                      type={type}
                     />
                   </FormControl>
                   <FormDescription>{description}</FormDescription>

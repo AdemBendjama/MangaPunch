@@ -1,3 +1,4 @@
+import { ChangePasswordForm } from "@/components/forms/change-password-form";
 import { UpdateUsernameForm } from "@/components/forms/update-username-form";
 import Image from "next/image";
 
@@ -28,6 +29,12 @@ function UserProfilePage() {
           <div className="font-semibold text-2xl my-[0.5rem]">Account</div>
           <div className="flex flex-row gap-[0.5rem]">
             <UpdateUsernameForm />
+          </div>
+        </div>
+        <div className="w-[24rem]">
+          <div className="font-semibold text-2xl my-[0.5rem]">Account</div>
+          <div className="flex flex-row gap-[0.5rem]">
+            <ChangePasswordForm />
           </div>
         </div>
       </div>
