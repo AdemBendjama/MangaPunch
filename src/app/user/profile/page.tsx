@@ -1,3 +1,4 @@
+import { UpdateUsernameForm } from "@/components/forms/update-username-form";
 import Image from "next/image";
 
 function UserProfilePage() {
@@ -20,6 +21,14 @@ function UserProfilePage() {
             />
           </div>
           <span className="font-bold text-3xl pb-[1rem]">@Nader2020</span>
+        </div>
+      </div>
+      <div className="px-[7.5rem] pb-[10rem] pt-[2rem]">
+        <div className="w-[24rem]">
+          <div className="font-semibold text-2xl my-[0.5rem]">Account</div>
+          <div className="flex flex-row gap-[0.5rem]">
+            <UpdateUsernameForm />
+          </div>
         </div>
       </div>
     </>
