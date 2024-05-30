@@ -40,7 +40,7 @@ export function ChangePasswordForm() {
         old_password: "********",
       }}
       FormSchema={FormSchema}
-      buttonLabel="Update Username"
+      buttonLabel="Change Password"
       formFields={formFields}
     />
   );
