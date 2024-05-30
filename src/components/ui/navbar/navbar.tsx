@@ -15,7 +15,7 @@ function Navbar({
 }) {
   // change navbar ui based on current page
   const currentPathname = usePathname();
-  const pathnames: RegExp[] = [/^\/manga\/\d+$/];
+  const pathnames: RegExp[] = [/^\/manga\/\d+$/, /^\/user\/profile$/];
   let transparent = false;
   for (const pathname of pathnames) {
     if (pathname.test(currentPathname)) {

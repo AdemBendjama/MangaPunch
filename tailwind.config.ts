@@ -97,6 +97,7 @@ const config = {
       boxShadow: {
         "slide-inner": "inset 65vw 0 250px 0 hsla(0,0%,0%,0.9)",
         "slide-inner-sm": "inset 100vw 0 2px 0 hsla(0,0%,0%,0.8)",
+        "slide-inner-bg": "inset 0 -100px 250px 0 hsla(0,0%,0%,0.8)",
       },
     },
   },
