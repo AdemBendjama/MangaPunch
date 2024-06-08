@@ -1,33 +1,49 @@
-import ChevronDown from "@/components/icons/chevron-down";
-import HeartIcon from "@/components/icons/heart-icon";
 import SortIcon from "@/components/icons/sort-icon";
-import StarIcon from "@/components/icons/star-icon";
-import { AvatarReview } from "@/components/ui/avatar/avatar-review";
-import { ButtonWithIcon } from "@/components/ui/button-variants/button-with-icon";
+import { Button } from "@/components/ui/button";
 import CardSmall from "@/components/ui/card/card-small";
-import { TextareaWithLabel } from "@/components/ui/text-area/text-area";
 import Image from "next/image";
 
 function UserLibraryPage() {
   return (
     <div className="text-foreground">
-      <div className="w-screen h-[350px] relative">
+      <div className="h-[18.75rem] relative shadow-slide-inner-bg">
         <Image
-          src="https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-xpU0zxrlU2Ux.jpg"
-          alt="background Image"
+          src="https://drive.usercontent.google.com/download?id=1dQbU-UtYOcZxMQG6a0En4zc28EHdvUHh&authuser=0"
+          alt="profile background page"
           fill={true}
-          className="object-cover"
+          className="object-cover -z-10"
         />
+        <div className="h-full sm:ml-[7.5rem] ml-[0.5rem] sm:mr-0 mr-[0.5rem] flex items-end">
+          <div className="sm:min-w-[13rem] sm:min-h-[13rem] min-w-[10rem] min-h-[10rem] relative">
+            <Image
+              src="/assets/images/footer.png"
+              alt="footer image"
+              fill={true}
+              className="object-contain"
+            />
+          </div>
+          <span className="font-bold sm:text-3xl text-lg sm:pb-[1rem] pb-[0.5rem] text-white dark:text-foreground overflow-hidden">
+            @PoliceISwearToGod
+          </span>
+        </div>
       </div>
       <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[6.875rem] sm:px-[3rem] px-[1rem]">
-        <div className="flex flex-col gap-[0.625rem] py-[1rem]">
-          <div className="flex justify-between items-center py-[0.4rem]">
-            <span className="font-bold sm:text-xl text-base">
-              Recommended Related Manga :
-            </span>
+        <div className="flex flex-col gap-[0.625rem]">
+          <div className="flex justify-between items-center py-[1rem]">
+            <div>
+              <Button className="sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-e-[0]">
+                Reading
+              </Button>
+              <Button className="sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-[0]">
+                Planning
+              </Button>
+              <Button className="sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
+                Completed
+              </Button>
+            </div>
             <div className="flex items-center gap-[0.25rem]">
-              <SortIcon className="sm:min-w-[1rem] sm:min-h-[1rem] w-[0.75rem] h-[0.75rem] stroke-muted-foreground text-muted-foreground" />
-              <span className="font-bold text-muted-foreground sm:text-base text-xs">
+              <SortIcon className="sm:min-w-[1rem] sm:min-h-[1rem] w-[0.875rem] h-[0.875rem] stroke-muted-foreground text-muted-foreground dark:text-foreground dark:stroke-foreground" />
+              <span className="font-bold text-muted-foreground dark:text-foreground sm:text-base text-xs">
                 Progress
               </span>
             </div>
