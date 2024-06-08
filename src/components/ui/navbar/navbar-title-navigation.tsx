@@ -7,7 +7,9 @@ function NavbarTitleNavigation() {
         <div>Home</div>
       </Link>
       <div>Top Manga</div>
-      <div>Library</div>
+      <Link href={`/user/library`}>
+        <div>Library</div>
+      </Link>
     </nav>
   );
 }
