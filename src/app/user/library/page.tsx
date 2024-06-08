@@ -22,7 +22,7 @@ function UserLibraryPage() {
               className="object-contain"
             />
           </div>
-          <span className="font-bold sm:text-3xl text-lg sm:pb-[1rem] pb-[0.5rem] text-white dark:text-foreground overflow-hidden">
+          <span className="font-bold sm:text-3xl xs:text-lg text-base sm:pb-[1rem] pb-[0.5rem] text-white dark:text-foreground overflow-hidden">
             @PoliceISwearToGod
           </span>
         </div>
@@ -31,13 +31,13 @@ function UserLibraryPage() {
         <div className="flex flex-col gap-[0.625rem]">
           <div className="flex justify-between items-center py-[1rem]">
             <div>
-              <Button className="sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-e-[0]">
+              <Button className="sm:px-[1rem] px-[12px] sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-e-[0]">
                 Reading
               </Button>
-              <Button className="sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-[0]">
+              <Button className="sm:px-[1rem] px-[12px] sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-[0]">
                 Planning
               </Button>
-              <Button className="sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
+              <Button className="ssm:px-[1rem] px-[12px] m:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
                 Completed
               </Button>
             </div>
@@ -48,7 +48,7 @@ function UserLibraryPage() {
               </span>
             </div>
           </div>
-          <div className="grid 3xl:grid-cols-[repeat(9,_9vw)] xl:grid-cols-[repeat(7,_11vw)] lg:grid-cols-[repeat(6,_12.5vw)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_29vw)] gap-y-[0.625rem] justify-between items-stretch">
+          <div className="grid 3xl:grid-cols-[repeat(9,_9vw)] xl:grid-cols-[repeat(7,_11vw)] lg:grid-cols-[repeat(6,_12.5vw)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
             <CardSmall />
             <CardSmall />
             <CardSmall />
