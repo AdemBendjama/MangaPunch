@@ -4,15 +4,12 @@ const SortIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={props.width}
     height={props.height}
-    viewBox="0 0 18 18"
+    viewBox="0 0 20 20"
     fill="none"
     stroke="currentColor"
     {...props}
   >
-    <path
-      fill="currentColor"
-      d="m8 1 5.196 5.25H2.804L8 1ZM8 14 2.804 8.75h10.392L8 14Z"
-    />
+    <path fill="currentColor" d="m8 1 5 5H3l5-5ZM8 15l-5-5h10l-5 5Z" />
   </svg>
 );
 export default SortIcon;
