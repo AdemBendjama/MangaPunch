@@ -34,8 +34,12 @@ function NavbarSideBar({
         <Link href={`/`}>
           <div className={headerStyle}>Home</div>
         </Link>
-        <div className={headerStyle}>Top Manga</div>
-        <div className={headerStyle}>Library</div>
+        <Link href={`/manga/top-rated`}>
+          <div className={headerStyle}>Top Manga</div>
+        </Link>
+        <Link href={`/user/library`}>
+          <div className={headerStyle}>Library</div>
+        </Link>
       </div>
 
       {/* side bar toggle button */}
