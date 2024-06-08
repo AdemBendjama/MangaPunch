@@ -6,7 +6,9 @@ function NavbarTitleNavigation() {
       <Link href={`/`}>
         <div>Home</div>
       </Link>
-      <div>Top Manga</div>
+      <Link href={`/manga/top-rated`}>
+        <div>Top Manga</div>
+      </Link>
       <Link href={`/user/library`}>
         <div>Library</div>
       </Link>
