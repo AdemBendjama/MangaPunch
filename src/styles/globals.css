@@ -31,6 +31,12 @@
     --primary-bright: 201 90% 46%;
     --card-footer: 201 50% 74%;
     --sidebar: 201 90% 24%;
+    --scrollbar-bg: 201 100% 98%;
+    /* Scrollbar track background for dark mode */
+    --scrollbar-thumb: 201 90% 27.5%;
+    /* Scrollbar thumb background for dark mode */
+    --scrollbar-thumb-hover: 201 90% 40%;
+    /* Scrollbar thumb hover background for dark mode */
   }
 
   .dark {
@@ -60,6 +66,13 @@
     --primary-bright: 201 90% 50%;
     --card-footer: 201 50% 14%;
     --sidebar: 0 0% 3%;
+    --scrollbar-bg: 201 50% 8%;
+    /* Scrollbar track background for dark mode */
+    --scrollbar-thumb: 201 5% 90%;
+    /* Scrollbar thumb background for dark mode */
+    --scrollbar-thumb-hover: 201 5% 90%;
+    /* Scrollbar thumb hover background for dark mode */
+
   }
 
 }
@@ -72,4 +85,22 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--scrollbar-bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--scrollbar-thumb));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--scrollbar-thumb-hover));
 }

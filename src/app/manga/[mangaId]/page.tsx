@@ -10,7 +10,7 @@ import Image from "next/image";
 function MangaDetailsPage() {
   return (
     <div className="text-foreground">
-      <div className="w-screen h-[350px] relative">
+      <div className="w-full h-[350px] relative">
         <Image
           src="https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-xpU0zxrlU2Ux.jpg"
           alt="background Image"
