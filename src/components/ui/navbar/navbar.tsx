@@ -34,9 +34,9 @@ function Navbar({
 
   return (
     <header
-      className={`flex flex-row justify-between h-[3.75rem] lg:px-[5rem] ${
+      className={`flex flex-row justify-between w-full h-[3.75rem] lg:px-[5rem] ${
         transparent && !isSideBarOpen
-          ? "bg-primary-50 dark:bg-card-50 absolute z-10 w-screen"
+          ? "bg-primary-50 dark:bg-card-50 absolute z-10 w-full"
           : "bg-primary dark:bg-card"
       } text-primary-foreground dark:text-card-foreground`}
     >

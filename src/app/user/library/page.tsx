@@ -37,7 +37,7 @@ function UserLibraryPage() {
               <Button className="sm:px-[1rem] px-[12px] sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-[0]">
                 Planning
               </Button>
-              <Button className="ssm:px-[1rem] px-[12px] m:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
+              <Button className="sm:px-[1rem] px-[12px] sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
                 Completed
               </Button>
             </div>
