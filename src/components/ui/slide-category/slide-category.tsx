@@ -50,7 +50,7 @@ function SlideCategory({
   };
 
   return (
-    <div className="w-full flex flex-col pt-[1rem] lg:px-[7%] px-[9.9vw] items-start lg:gap-[1rem] sm:[0.75rem] gap-[0.5rem]  slider-container">
+    <div className="w-full flex flex-col pt-[1rem] lg:px-[7%] px-[9.9vw] items-start lg:gap-[1rem] sm:[0.75rem] gap-[0.5rem] slider-container">
       <SlideCategoryHeader title={title} />
       <Slider {...settings} className="w-full">
         {slides.map((slide, index) => (

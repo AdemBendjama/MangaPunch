@@ -11,10 +11,10 @@ import {
 function SelectDropDown({ label, items }: { label: string; items: string[] }) {
   return (
     <div className="flex flex-col gap-[0.375rem]">
-      <label className="font-medium md:text-base sm:text-sm">{label}</label>
+      <label className="font-medium md:text-base text-sm">{label}</label>
       <div className="overflow-hidden w-fit">
         <Select>
-          <SelectTrigger className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[140px] md:text-sm sm:text-xs bg-white dark:bg-background">
+          <SelectTrigger className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs bg-white dark:bg-background">
             <SelectValue placeholder="Any" />
           </SelectTrigger>
           <SelectContent className="bg-white dark:bg-background">
