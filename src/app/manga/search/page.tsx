@@ -1,3 +1,4 @@
+import ChevronRight from "@/components/icons/chevron-right";
 import SearchIcon from "@/components/icons/search-icon";
 import CardLarge from "@/components/ui/card/card-large";
 import { Input } from "@/components/ui/input";
@@ -48,9 +49,9 @@ const publishingStatusItems = ["Ongoing", "Completed", "Hiatus", "Cancelled"];
 const countryItems = ["Japan", "South Korea", "China"];
 function MangaSearchPage() {
   return (
-    <div className="lg:mx-auto lg:w-[63rem] lg:px-[0rem] sm:px-[2rem] px-[1rem] pb-[10rem]">
+    <div className="lg:mx-auto lg:w-[63rem] lg:px-[0rem] px-[1rem] pb-[10rem]">
       <div className="flex flex-col items-center gap-[1.5rem] py-[2rem]">
-        <div className="flex border-[1px] border-input rounded-[0.375rem] overflow-hidden">
+        <div className="flex sm:w-auto w-full border-[1px] border-input rounded-[0.375rem] overflow-hidden">
           <div
             className="flex justify-end items-center
           w-[2rem] h-[3rem] pr-[0.2rem] pb-[0.1rem] 
@@ -58,10 +59,10 @@ function MangaSearchPage() {
           >
             <SearchIcon className="w-[1rem] h-[1rem] stroke-[3px]" />
           </div>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden sm:w-auto w-full">
             <Input
               className="flex justify-start items-center
-            w-[29rem] h-[3rem] p-[0.5rem] rounded-none border-0 
+            sm:w-[29rem] w-full h-[3rem] p-[0.5rem] rounded-none border-0 
             bg-white dark:bg-background text-black dark:text-foreground"
             />
           </div>
@@ -78,7 +79,22 @@ function MangaSearchPage() {
         </div>
       </div>
       <div className="flex flex-col justify-center gap-[1rem]">
-        <div className="flex w-fill justify-between">
+        <div className="flex justify-between text-foreground">
+          <div className="flex justify-end items-center lg:text-2xl sm:text-xl text-base font-bold h-full">
+            <span>Trending Now</span>
+          </div>
+          <div className="flex items-center">
+            <div className="flex items-start gap-[0.1rem]">
+              <span className="lg:text-base sm:text-sm text-xs font-bold">
+                View All
+              </span>
+              <div>
+                <ChevronRight className="stroke-foreground lg:w-[1rem] sm:w-[0.875rem] w-[0.75rem] lg:h-[1.35rem] sm:h-[1.25rem] h-[0.875rem]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="grid lg:grid-cols-[repeat(5,_176px)] sm:grid-cols-[repeat(5,_18vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
           <CardLarge />
           <CardLarge />
           <CardLarge />

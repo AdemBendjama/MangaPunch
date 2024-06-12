@@ -3,8 +3,8 @@ import React from "react";
 
 function CardLarge() {
   return (
-    <div className="flex flex-col gap-[0.5rem] lg:w-[176px] sm:w-[18vw] w-[36vw]">
-      <div className="w-full lg:h-[276px] sm:h-[28vw] h-[58vw] rounded-[0.375rem] relative overflow-hidden">
+    <div className="flex flex-col gap-[0.5rem] lg:w-[176px] sm:w-[18vw] w-[28vw]">
+      <div className="w-full lg:h-[276px] sm:h-[28vw] h-[45.5vw] rounded-[0.375rem] relative overflow-hidden">
         <Image
           src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105778-74YTFlQzcFPg.png"
           alt="cover image of manga title"
