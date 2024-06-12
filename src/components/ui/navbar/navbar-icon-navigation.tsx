@@ -10,13 +10,15 @@ function NavbarIconNavigation() {
   const iconStyle = "flex items-center justify-center h-[3.75rem] w-[3.75rem]";
   return (
     <nav className="flex items-center">
-      <div className={iconStyle}>
-        <SearchIcon
-          width={24}
-          height={24}
-          className="stroke-primary-foreground"
-        />
-      </div>
+      <Link href="/manga/search">
+        <div className={iconStyle}>
+          <SearchIcon
+            width={24}
+            height={24}
+            className="stroke-primary-foreground"
+          />
+        </div>
+      </Link>
       <Link href="/user/profile">
         <div className={iconStyle}>
           <ProfileIcon

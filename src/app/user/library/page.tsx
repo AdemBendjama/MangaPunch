@@ -27,7 +27,7 @@ function UserLibraryPage() {
           </span>
         </div>
       </div>
-      <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[6.875rem] sm:px-[3rem] px-[1rem]">
+      <div className="dark:bg-background-secondary flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[6.875rem] sm:px-[3rem] px-[1rem]">
         <div className="flex flex-col gap-[0.625rem]">
           <div className="flex justify-between items-center py-[1rem]">
             <div>
