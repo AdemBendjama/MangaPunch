@@ -1,8 +1,12 @@
+"use client";
 import ChevronRight from "@/components/icons/chevron-right";
 import SearchIcon from "@/components/icons/search-icon";
 import CardLarge from "@/components/ui/card/card-large";
 import { Input } from "@/components/ui/input";
 import SelectDropDown from "@/components/ui/select-dropdown/select-dropdown";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const genreItems = [
   "Action",
@@ -48,9 +52,16 @@ const publishingStatusItems = ["Ongoing", "Completed", "Hiatus", "Cancelled"];
 
 const countryItems = ["Japan", "South Korea", "China"];
 function MangaSearchPage() {
+  var settings = {
+    infinite: false,
+    speed: 600,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    arrows: false,
+  };
   return (
     <div className="lg:mx-auto lg:w-[63rem] lg:px-[0rem] px-[1rem] pb-[10rem]">
-      <div className="flex flex-col items-center gap-[1.5rem] py-[2rem]">
+      <div className="flex flex-col items-center gap-[2rem] py-[2rem]">
         <div className="flex sm:w-auto w-full border-[1px] border-input rounded-[0.375rem] overflow-hidden">
           <div
             className="flex justify-end items-center
@@ -67,7 +78,29 @@ function MangaSearchPage() {
             />
           </div>
         </div>
-        <div className="flex w-full justify-between">
+        <div className="w-full sm:hidden">
+          <Slider {...settings} className="w-full">
+            <div className="py-[0.5rem]">
+              <SelectDropDown label="Genre" items={genreItems} />
+            </div>
+            <div className="py-[0.5rem]">
+              <SelectDropDown label="Format" items={formatItems} />
+            </div>
+            <div className="py-[0.5rem]">
+              <SelectDropDown label="Year" items={yearItems} />
+            </div>
+            <div className="py-[0.5rem]">
+              <SelectDropDown
+                label="Publishing Status"
+                items={publishingStatusItems}
+              />
+            </div>
+            <div className="py-[0.5rem]">
+              <SelectDropDown label="Country of Origin" items={countryItems} />
+            </div>
+          </Slider>
+        </div>
+        <div className="sm:flex w-full justify-between hidden">
           <SelectDropDown label="Genre" items={genreItems} />
           <SelectDropDown label="Format" items={formatItems} />
           <SelectDropDown label="Year" items={yearItems} />
