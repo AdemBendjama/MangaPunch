@@ -32,7 +32,9 @@ const config = {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         sidebar: "hsl(var(--sidebar))",
+        logo: "hsl(var(--logo))",
         slide: "hsl(201 ,5% ,90%)",
+        "border-auth": "hsl(var(--border-auth))",
         background: {
           DEFAULT: "hsl(var(--background))",
           secondary: "hsl(var(--background-secondary))",
@@ -98,10 +100,11 @@ const config = {
         "slide-inner": "inset 65vw 0 250px 0 hsla(0,0%,0%,0.9)",
         "slide-inner-sm": "inset 100vw 0 2px 0 hsla(0,0%,0%,0.8)",
         "slide-inner-bg": "inset 0 -100px 250px 0 hsla(0,0%,0%,0.8)",
+        "outer-auth": "inset 0 100px 250px 0 hsla(0,0%,0%,1)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("tailwindcss-textshadow")],
 } satisfies Config;
 
 export default config;
