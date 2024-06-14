@@ -2,6 +2,7 @@ import { ChangePasswordForm } from "@/components/forms/change-password-form";
 import { UpdateUsernameForm } from "@/components/forms/update-username-form";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 function UserProfilePage() {
   return (
@@ -42,6 +43,9 @@ function UserProfilePage() {
           <Button className="w-full sm:mt-[2rem]" variant="destructive">
             Logout
           </Button>
+          <Link href="/auth/signin">
+            <Button className="w-full sm:mt-[1rem]">Login</Button>
+          </Link>
         </div>
       </div>
     </>

@@ -2,8 +2,18 @@
 import { useState } from "react";
 import Navbar from "./ui/navbar/navbar";
 import Footer from "./ui/footer/footer";
+import { usePathname } from "next/navigation";
 
 function NavbarProvider({ children }: { children: React.ReactNode }) {
+  const currentPathname = usePathname();
+  const pathnames: RegExp[] = [/^\/auth\/signin$/, /^\/auth\/signup$/];
+  let hideUI = false;
+  for (const pathname of pathnames) {
+    if (pathname.test(currentPathname)) {
+      hideUI = true;
+      break;
+    }
+  }
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   return (
     <div
@@ -11,12 +21,14 @@ function NavbarProvider({ children }: { children: React.ReactNode }) {
         isSideBarOpen && "overflow-hidden"
       }`}
     >
-      <Navbar
-        isSideBarOpen={isSideBarOpen}
-        setIsSideBarOpen={setIsSideBarOpen}
-      />
+      {!hideUI && (
+        <Navbar
+          isSideBarOpen={isSideBarOpen}
+          setIsSideBarOpen={setIsSideBarOpen}
+        />
+      )}
       <main className="flex-grow">{children}</main>
-      <Footer />
+      {!hideUI && <Footer />}
     </div>
   );
 }
