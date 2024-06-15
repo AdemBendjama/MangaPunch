@@ -90,7 +90,7 @@ function MangaSearchPage() {
         />
         <SelectDropDown label="Country of Origin" items={countryItems} />
       </div>
-      <div className="w-full px-[4.5vw] pb-[2rem] sm:hidden slider-container">
+      <div className="w-full px-[4.5vw] pb-[2rem] sm:hidden select-slider-container">
         <Slider {...settings} className="w-full">
           <div className="py-[0.5rem]">
             <SelectDropDown label="Genre" items={genreItems} />
