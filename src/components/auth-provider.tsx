@@ -1,9 +1,7 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { SignInForm } from "./forms/sign-in-form";
 import { SignUpForm } from "./forms/sign-up-form";
-import { useEffect, useState } from "react";
 
 function AuthProvider({ type }: { type: string }) {
   return (
