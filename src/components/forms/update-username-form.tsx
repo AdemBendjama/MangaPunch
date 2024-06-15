@@ -24,6 +24,7 @@ export function UpdateUsernameForm() {
   ];
   return (
     <InputForm
+      type="profile"
       defaultValues={{
         username: "Naden2020",
       }}

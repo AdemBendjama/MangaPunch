@@ -33,7 +33,9 @@ const config = {
         ring: "hsl(var(--ring))",
         sidebar: "hsl(var(--sidebar))",
         logo: "hsl(var(--logo))",
+        "form-error": "hsl(var(--form-error))",
         slide: "hsl(201 ,5% ,90%)",
+        "auth-bg": "hsl(201 ,50% ,5%)",
         "border-auth": "hsl(var(--border-auth))",
         background: {
           DEFAULT: "hsl(var(--background))",
@@ -100,7 +102,10 @@ const config = {
         "slide-inner": "inset 65vw 0 250px 0 hsla(0,0%,0%,0.9)",
         "slide-inner-sm": "inset 100vw 0 2px 0 hsla(0,0%,0%,0.8)",
         "slide-inner-bg": "inset 0 -100px 250px 0 hsla(0,0%,0%,0.8)",
-        "outer-auth": "inset 0 100px 250px 0 hsla(0,0%,0%,1)",
+        "auth-inner": "inset 0 100px 250px 0 hsla(0,0%,0%,1)",
+        "card-drop": "0 20px 30px 0 hsla(0,0%,0%,0.6)",
+        "input-drop":
+          "0 14px 30px hsla(var(--input-shadow)),0 4px 4px hsla(var(--input-shadow-side))",
       },
     },
   },

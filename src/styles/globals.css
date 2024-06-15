@@ -36,6 +36,9 @@
     --scrollbar-thumb-hover: 201 90% 40%;
     --border-auth: 201 90% 46%;
     --logo: 201 100% 95%;
+    --form-error: 0 100% 30%;
+    --input-shadow: 201, 90%, 30%, 0.1;
+    --input-shadow-side: 201, 90%, 30%, 0.04;
   }
 
   .dark {
@@ -70,6 +73,9 @@
     --scrollbar-thumb-hover: 201 5% 90%;
     --border-auth: 201 90% 27%;
     --logo: 201 100% 95%;
+    --form-error: 0 100% 55%;
+    --input-shadow: 201, 90%, 30%, 0;
+    --input-shadow-side: 201, 90%, 30%, 0;
   }
 
 }

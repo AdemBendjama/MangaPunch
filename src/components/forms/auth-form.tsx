@@ -16,17 +16,15 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
-import { usePathname } from "next/navigation";
 
-export function InputForm({
-  type,
+export function AuthForm({
   defaultValues,
   FormSchema,
   buttonLabel,
   formFields,
 }: {
-  type: "auth" | "profile";
-  FormSchema: z.ZodObject<any, any> | z.ZodEffects<z.ZodObject<any, any, any>>;
+  defaultValues: { email?: string; password?: string };
+  FormSchema: z.ZodObject<any, any>;
   buttonLabel: string;
   formFields: {
     name: string;
@@ -35,12 +33,7 @@ export function InputForm({
     placeholder?: string;
     type: string;
   }[];
-  defaultValues?: {
-    username?: string;
-    old_password?: string;
-  };
 }) {
-  const pathname = usePathname();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: defaultValues,
@@ -84,23 +77,14 @@ export function InputForm({
             />
           );
         })}
-        {type === "auth" && (
-          <div className="w-full pb-[1rem]">
-            {pathname === "/auth/signin" && (
-              <div className="flex justify-end text-sm text-primary dark:text-primary-bright -mt-[0.75rem] pb-[1.5rem]">
-                Forget Password?
-              </div>
-            )}
-            <Button type="submit" className="w-full font-bold text-base">
-              {buttonLabel}
-            </Button>
+        <div className="w-full">
+          <div className="flex justify-end text-sm text-primary -mt-[1rem] pb-[1.5rem]">
+            Forget Password?
           </div>
-        )}
-        {type === "profile" && (
-          <div className="w-full flex justify-end">
-            <Button type="submit">{buttonLabel}</Button>
-          </div>
-        )}
+          <Button type="submit" className="w-full font-bold">
+            {buttonLabel}
+          </Button>
+        </div>
       </form>
     </Form>
   );

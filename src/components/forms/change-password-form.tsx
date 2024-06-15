@@ -1,17 +1,22 @@
 "use client";
 import { InputForm } from "./form";
 import { z } from "zod";
-const FormSchema = z.object({
-  old_password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-  new_password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-  confirm_password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-});
+const FormSchema = z
+  .object({
+    old_password: z.string().min(8, {
+      message: "Password must be at least 8 characters.",
+    }),
+    new_password: z.string().min(8, {
+      message: "Password must be at least 8 characters.",
+    }),
+    confirm_password: z.string().min(8, {
+      message: "Password must be at least 8 characters.",
+    }),
+  })
+  .refine((data) => data.new_password === data.confirm_password, {
+    message: "Passwords don't match",
+    path: ["confirm_password"],
+  });
 
 export function ChangePasswordForm() {
   const formFields = [
@@ -36,6 +41,7 @@ export function ChangePasswordForm() {
   ];
   return (
     <InputForm
+      type="profile"
       defaultValues={{
         old_password: "********",
       }}

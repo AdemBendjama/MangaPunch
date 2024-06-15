@@ -63,7 +63,7 @@ function MangaSearchPage() {
   return (
     <div className="lg:mx-auto lg:w-[63rem] lg:px-[0rem] sm:px-[1rem] pb-[10rem]">
       <div className="flex flex-col items-center gap-[2rem] py-[2rem] px-[1rem]">
-        <div className="flex sm:w-auto w-full border-[1px] border-input rounded-[0.375rem] overflow-hidden">
+        <div className="flex sm:w-auto w-full rounded-[0.375rem] shadow-input-drop overflow-hidden">
           <div
             className="flex justify-end items-center
           w-[2rem] h-[3rem] pr-[0.2rem] pb-[0.1rem] 

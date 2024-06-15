@@ -1,12 +1,7 @@
 import AuthProvider from "@/components/auth-provider";
-import Image from "next/image";
 
 function SignUpPage() {
-  return (
-    <AuthProvider>
-      <div className="h-[384px]"></div>
-    </AuthProvider>
-  );
+  return <AuthProvider type="signup"></AuthProvider>;
 }
 
 export default SignUpPage;
