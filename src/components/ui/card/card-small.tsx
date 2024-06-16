@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "../button";
 import ArrowRightIcon from "@/components/icons/arrow-right-icon";
 import StarIcon from "@/components/icons/star-icon";
+import Link from "next/link";
 
 function CardSmall({ hover }: { hover?: boolean }) {
   return (
@@ -35,7 +36,9 @@ function CardSmall({ hover }: { hover?: boolean }) {
                 className="w-1/3 h-full p-[0.5rem] border-2 border-card-hover"
                 variant="ghost"
               >
-                <ArrowRightIcon className="stroke-card-hover w-[1rem] h-[1rem]" />
+                <Link href="/manga/70">
+                  <ArrowRightIcon className="stroke-card-hover w-[1rem] h-[1rem]" />
+                </Link>
               </Button>
             </div>
           </div>
