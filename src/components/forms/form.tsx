@@ -70,12 +70,7 @@ export function InputForm({
                 <FormItem>
                   <FormLabel>{label}</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder={placeholder}
-                      {...field}
-                      className="border-0"
-                      type={type}
-                    />
+                    <Input placeholder={placeholder} {...field} type={type} />
                   </FormControl>
                   <FormDescription>{description}</FormDescription>
                   <FormMessage />
