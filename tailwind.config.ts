@@ -36,6 +36,7 @@ const config = {
         "form-error": "hsl(var(--form-error))",
         slide: "hsl(201 ,5% ,90%)",
         "auth-bg": "hsl(201 ,50% ,5%)",
+        "card-hover": "hsl(201 ,5% ,90%)",
         "border-auth": "hsl(var(--border-auth))",
         background: {
           DEFAULT: "hsl(var(--background))",
