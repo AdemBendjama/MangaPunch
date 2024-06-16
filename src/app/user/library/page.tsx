@@ -31,13 +31,13 @@ function UserLibraryPage() {
         <div className="flex flex-col gap-[0.625rem]">
           <div className="flex xs:flex-row flex-col xs:justify-between xs:items-center xs:gap-0 gap-[1rem] py-[1rem]">
             <div>
-              <Button className="w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-e-[0]">
+              <Button className="xs:w-auto w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-e-[0]">
                 Reading
               </Button>
-              <Button className="w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-[0]">
+              <Button className="xs:w-auto w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-[0]">
                 Planning
               </Button>
-              <Button className="w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
+              <Button className="xs:w-auto w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
                 Completed
               </Button>
             </div>
@@ -49,18 +49,18 @@ function UserLibraryPage() {
             </div>
           </div>
           <div className="grid 3xl:grid-cols-[repeat(9,_9vw)] xl:grid-cols-[repeat(7,_11vw)] lg:grid-cols-[repeat(6,_12.5vw)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
-            <CardSmall />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
+            <CardSmall hover={true} />
           </div>
         </div>
       </div>
