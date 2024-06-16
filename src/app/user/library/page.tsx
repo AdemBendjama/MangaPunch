@@ -14,7 +14,7 @@ function UserLibraryPage() {
           className="object-cover -z-10"
         />
         <div className="h-full sm:ml-[7.5rem] ml-[0.5rem] sm:mr-0 mr-[0.5rem] flex items-end">
-          <div className="sm:min-w-[13rem] sm:min-h-[13rem] min-w-[10rem] min-h-[10rem] relative">
+          <div className="sm:min-w-[13rem] sm:min-h-[13rem] xs:min-w-[10rem] xs:min-h-[10rem] min-w-[7rem] min-h-[7rem] relative">
             <Image
               src="/assets/images/footer.png"
               alt="footer image"
@@ -29,19 +29,19 @@ function UserLibraryPage() {
       </div>
       <div className="dark:bg-background-secondary flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[6.875rem] sm:px-[3rem] px-[1rem]">
         <div className="flex flex-col gap-[0.625rem]">
-          <div className="flex justify-between items-center py-[1rem]">
+          <div className="flex xs:flex-row flex-col xs:justify-between xs:items-center xs:gap-0 gap-[1rem] py-[1rem]">
             <div>
-              <Button className="sm:px-[1rem] px-[12px] sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-e-[0]">
+              <Button className="w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-e-[0]">
                 Reading
               </Button>
-              <Button className="sm:px-[1rem] px-[12px] sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-[0]">
+              <Button className="w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-[0]">
                 Planning
               </Button>
-              <Button className="sm:px-[1rem] px-[12px] sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[1.875rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
+              <Button className="w-1/3 sm:text-sm text-[0.6875rem] sm:h-[2.5rem] h-[2rem] bg-primary text-primary-foreground leading-none rounded-s-[0]">
                 Completed
               </Button>
             </div>
-            <div className="flex items-center gap-[0.25rem]">
+            <div className="flex items-center gap-[0.25rem] xs:self-auto self-end">
               <SortIcon className="sm:min-w-[1rem] sm:min-h-[1rem] w-[0.875rem] h-[0.875rem] stroke-muted-foreground text-muted-foreground dark:text-foreground dark:stroke-foreground" />
               <span className="font-bold text-muted-foreground dark:text-foreground sm:text-base text-xs">
                 Progress
