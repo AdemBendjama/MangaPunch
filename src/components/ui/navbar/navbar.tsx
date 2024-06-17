@@ -36,9 +36,11 @@ function Navbar({
     <header
       className={`flex flex-row justify-between w-full h-[3.75rem] lg:px-[5rem] ${
         transparent && !isSideBarOpen
-          ? "bg-primary-50 dark:bg-card-50 absolute z-10 w-full"
-          : "bg-primary dark:bg-card absolute z-10"
-      } text-primary-foreground dark:text-card-foreground`}
+          ? "bg-primary-50 dark:bg-card-50"
+          : "bg-primary dark:bg-card"
+      } 
+          ${transparent && "absolute z-10"}
+          text-primary-foreground dark:text-card-foreground`}
     >
       {/* left navigation */}
       <div className="flex items-center relative gap-[0.25rem]">
