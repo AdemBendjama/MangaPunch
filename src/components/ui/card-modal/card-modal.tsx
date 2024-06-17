@@ -18,41 +18,57 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import XIcon from "@/components/icons/x-icon";
 
-export function CardWithForm() {
+export function CardWithForm({ onClose }: { onClose: () => void }) {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[400px] relative">
+      <XIcon
+        className="w-[1.5rem] h-[1.5rem] m-[0.375rem] absolute right-0 stroke-foreground cursor-pointer hover:opacity-70"
+        onClick={onClose}
+      />
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        {/* <CardTitle></CardTitle> */}
+        <CardDescription>
+          Make sure you save your changes after editing.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Name of your project" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
-              <Select>
-                <SelectTrigger id="framework">
+              <Label htmlFor="status">Status</Label>
+              <Select value="reading">
+                <SelectTrigger id="status">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent position="popper">
-                  <SelectItem value="next">Next.js</SelectItem>
-                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                  <SelectItem value="astro">Astro</SelectItem>
-                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
+                  <SelectItem value="reading">Reading</SelectItem>
+                  <SelectItem value="planning">Planning</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="progress">Progess</Label>
+              <Input id="progress" placeholder="" type="number" min={0} />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="rating">Rating</Label>
+              <Input
+                id="rating"
+                placeholder=""
+                type="number"
+                min={1}
+                max={10}
+              />
             </div>
           </div>
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
+        <Button>Save Changes</Button>
+        <Button variant="destructive">Remove from Library</Button>
       </CardFooter>
     </Card>
   );

@@ -14,10 +14,10 @@ function SelectDropDown({ label, items }: { label: string; items: string[] }) {
       <label className="font-medium md:text-base text-sm">{label}</label>
       <div className="w-fit">
         <Select>
-          <SelectTrigger className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs bg-white dark:bg-background">
+          <SelectTrigger className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs">
             <SelectValue placeholder="Any" />
           </SelectTrigger>
-          <SelectContent className="bg-white dark:bg-background">
+          <SelectContent>
             <SelectGroup>
               {items.map((item) => (
                 <SelectItem key={item.toLowerCase()} value={item.toLowerCase()}>

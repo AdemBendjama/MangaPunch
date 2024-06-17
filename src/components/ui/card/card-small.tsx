@@ -73,12 +73,13 @@ function CardSmall({ hover }: { hover?: boolean }) {
 
 export default CardSmall;
 
-interface ModalProps {
+const Modal = ({
+  isOpen,
+  onClose,
+}: {
   isOpen: boolean;
   onClose: () => void;
-}
-
-const Modal = ({ isOpen, onClose }: ModalProps) => {
+}) => {
   return (
     <div
       className={`${!isOpen ? "hidden opacity-0" : "opacity-100"}
@@ -86,7 +87,7 @@ const Modal = ({ isOpen, onClose }: ModalProps) => {
         fixed w-screen min-h-screen inset-0 
         flex items-center justify-center z-50`}
     >
-      <CardWithForm />
+      <CardWithForm onClose={onClose} />
       <div
         className="fixed inset-0 bg-black opacity-50 -z-10"
         onClick={onClose}

@@ -67,7 +67,7 @@ function MangaSearchPage() {
           <div
             className="flex justify-end items-center
           w-[2rem] h-[3rem] pr-[0.2rem] pb-[0.1rem] 
-          bg-white dark:bg-background stroke-black dark:stroke-foreground"
+          bg-background-secondary dark:bg-background stroke-black dark:stroke-foreground"
           >
             <SearchIcon className="w-[1rem] h-[1rem] stroke-[3px]" />
           </div>
@@ -75,7 +75,7 @@ function MangaSearchPage() {
             <Input
               className="flex justify-start items-center
             sm:w-[29rem] w-full h-[3rem] p-[0.5rem] rounded-none border-0 
-            bg-white dark:bg-background text-black dark:text-foreground"
+            bg-background-secondary dark:bg-background text-black dark:text-foreground"
             />
           </div>
         </div>

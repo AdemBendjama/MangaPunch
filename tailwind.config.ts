@@ -106,7 +106,7 @@ const config = {
         "auth-inner": "inset 0 100px 250px 0 hsla(0,0%,0%,1)",
         "card-drop": "0 20px 30px 0 hsla(0,0%,0%,0.6)",
         "input-drop":
-          "0 14px 30px hsla(var(--input-shadow)),0 4px 4px hsla(var(--input-shadow-side))",
+          "0 12px 25px hsla(var(--input-shadow)),0 4px 4px hsla(var(--input-shadow-side))",
       },
     },
   },
