@@ -42,10 +42,10 @@ function CardSmall({ hover }: { hover?: boolean }) {
               >
                 <EllipsisIcon className="sm:w-[1.5rem] sm:h-[1.5rem] w-[1rem] h-[1rem] stroke-primary-foreground" />
               </div>
-              <div className="bg-card-description flex justify-between items-center sm:p-[8px] p-[6px]">
-                <div className="flex gap-[4px]">
-                  <StarIcon className="w-[12px] h-[12px]" />
-                  <div className="text-[14px] leading-[14px] h-[14px] mt-[1px] text-justify">
+              <div className="bg-card-description flex justify-between items-center sm:p-[8px] py-[6px] px-[4px]">
+                <div className="flex gap-[2px]">
+                  <StarIcon className="w-[10px] h-[10px]" />
+                  <div className="text-[12px] leading-[12px] h-[12px] mt-[1px] text-justify">
                     8
                   </div>
                 </div>
