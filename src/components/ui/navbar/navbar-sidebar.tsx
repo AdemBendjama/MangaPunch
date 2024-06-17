@@ -10,15 +10,15 @@ function NavbarSideBar({
 }) {
   //
   const animateSideBar = isSideBarOpen
-    ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out z-20"
-    : "-translate-x-full opacity-100 transition-all duration-300 ease-in-out -z-10";
+    ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out"
+    : "-translate-x-full opacity-100 transition-all duration-300 ease-in-out";
   const headerStyle =
     "flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]";
 
   //
   const backgroundOverlay = isSideBarOpen && (
     <div
-      className="sm:block hidden w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem] z-10"
+      className="sm:block hidden w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem]"
       onClick={toggleSideBar}
     ></div>
   );

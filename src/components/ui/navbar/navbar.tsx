@@ -37,9 +37,9 @@ function Navbar({
       className={`flex flex-row justify-between w-full h-[3.75rem] lg:px-[5rem] ${
         transparent && !isSideBarOpen
           ? "bg-primary-50 dark:bg-card-50"
-          : "bg-primary dark:bg-card"
+          : "bg-primary dark:bg-card z-50"
       } 
-          ${transparent && "absolute z-10"}
+          ${transparent && "absolute z-50"}
           text-primary-foreground dark:text-card-foreground`}
     >
       {/* left navigation */}

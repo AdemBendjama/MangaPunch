@@ -14,7 +14,7 @@ function UserLibraryPage() {
           className="object-cover -z-50"
         />
         <div className="h-full sm:ml-[7.5rem] ml-[0.5rem] sm:mr-0 mr-[0.5rem] flex items-end">
-          <div className="sm:min-w-[13rem] sm:min-éh-[13rem] xs:min-w-[10rem] xs:min-h-[10rem] min-w-[7rem] min-h-[7rem] relative">
+          <div className="sm:min-w-[13rem] sm:min-h-[13rem] xs:min-w-[10rem] xs:min-h-[10rem] min-w-[7rem] min-h-[7rem] relative">
             <Image
               src="/assets/images/footer.png"
               alt="footer image"

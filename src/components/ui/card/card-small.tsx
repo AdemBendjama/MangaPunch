@@ -7,9 +7,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { CardWithForm } from "../card-modal/card-modal";
 import EllipsisIcon from "@/components/icons/ellipsis-icon";
+import { useRouter } from "next/navigation";
 
 function CardSmall({ hover }: { hover?: boolean }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   const handleEditClick = () => {
     setIsModalOpen(true);
@@ -26,7 +28,8 @@ function CardSmall({ hover }: { hover?: boolean }) {
           src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105778-74YTFlQzcFPg.png"
           alt="cover image"
           fill={true}
-          className="object-cover"
+          className="object-cover lg:z-auto z-10"
+          onClick={() => router.push("/manga/70")}
         />
         {hover && (
           <>
@@ -35,21 +38,21 @@ function CardSmall({ hover }: { hover?: boolean }) {
                 lg:hidden flex flex-col justify-between text-card-hover font-semibold"
             >
               <div
-                className="sm:p-[0.25rem] p-[0.25rem] rounded-[0.375rem] 
+                className="z-20 sm:p-[0.25rem] p-[0.25rem] rounded-[0.375rem] 
               self-end bg-primary mt-[0.25rem] mr-[0.25rem] 
               shadow-menu-drop"
                 onClick={handleEditClick}
               >
                 <EllipsisIcon className="sm:w-[1.5rem] sm:h-[1.5rem] w-[1rem] h-[1rem] stroke-primary-foreground" />
               </div>
-              <div className="bg-card-description flex justify-between items-center sm:p-[0.5rem] py-[0.375rem] px-[0.25rem]">
+              <div className="z-20 bg-card-description flex justify-between items-center sm:p-[0.5rem] py-[0.375rem] px-[0.25rem]">
                 <div className="flex gap-[0.125rem]">
-                  <StarIcon className="w-[0.625rem] h-[0.625rem]" />
-                  <div className="text-[0.75rem] leading-[0.75rem] h-[0.75rem] mt-[0.0625rem] text-justify">
+                  <StarIcon className="w-[0.75rem] h-[0.75rem]" />
+                  <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem] mt-[0.0625rem] text-justify">
                     8
                   </div>
                 </div>
-                <div className="text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
+                <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
                   1113/1150
                 </div>
               </div>
