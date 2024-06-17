@@ -21,7 +21,7 @@ function CardSmall({ hover }: { hover?: boolean }) {
 
   return (
     <div className="flex flex-col gap-[0.5rem] 3xl:w-[9vw] xl:w-[11vw] lg:w-[12.5vw] md:w-[16vw] xs:w-[20vw] w-[28vw]">
-      <div className="3xl:h-[14.5vw] xl:h-[17.5vw] lg:h-[20vw] md:h-[26vw] xs:h-[31vw] h-[45.5vw] rounded-[6px] overflow-hidden relative">
+      <div className="3xl:h-[14.5vw] xl:h-[17.5vw] lg:h-[20vw] md:h-[26vw] xs:h-[31vw] h-[45.5vw] rounded-[0.375rem] overflow-hidden relative">
         <Image
           src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105778-74YTFlQzcFPg.png"
           alt="cover image"
@@ -35,21 +35,21 @@ function CardSmall({ hover }: { hover?: boolean }) {
                 lg:hidden flex flex-col justify-between text-card-hover font-semibold"
             >
               <div
-                className="sm:p-[0.25rem] p-[4px] rounded-[0.375rem] 
-              self-end bg-primary mt-[8px] mr-[8px] 
+                className="sm:p-[0.25rem] p-[0.25rem] rounded-[0.375rem] 
+              self-end bg-primary mt-[0.25rem] mr-[0.25rem] 
               shadow-menu-drop"
                 onClick={handleEditClick}
               >
                 <EllipsisIcon className="sm:w-[1.5rem] sm:h-[1.5rem] w-[1rem] h-[1rem] stroke-primary-foreground" />
               </div>
-              <div className="bg-card-description flex justify-between items-center sm:p-[8px] py-[6px] px-[4px]">
-                <div className="flex gap-[2px]">
-                  <StarIcon className="w-[10px] h-[10px]" />
-                  <div className="text-[12px] leading-[12px] h-[12px] mt-[1px] text-justify">
+              <div className="bg-card-description flex justify-between items-center sm:p-[0.5rem] py-[0.375rem] px-[0.25rem]">
+                <div className="flex gap-[0.125rem]">
+                  <StarIcon className="w-[0.625rem] h-[0.625rem]" />
+                  <div className="text-[0.75rem] leading-[0.75rem] h-[0.75rem] mt-[0.0625rem] text-justify">
                     8
                   </div>
                 </div>
-                <div className="text-[12px] leading-[12px] h-[12px]">
+                <div className="text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
                   1113/1150
                 </div>
               </div>
@@ -61,9 +61,9 @@ function CardSmall({ hover }: { hover?: boolean }) {
                 transition-all duration-200 ease-in-out"
             >
               <div className="flex flex-col items-center gap-[1rem] pt-[1rem] font-semibold">
-                <div className="flex gap-[4px]">
+                <div className="flex gap-[0.25rem]">
                   <StarIcon className="w-[1.75rem] h-[1.75rem]" />
-                  <div className="text-[32px] leading-[32px] pt-[2px] text-justify">
+                  <div className="text-[2rem] leading-[2rem] pt-[0.125rem] text-justify">
                     8
                   </div>
                 </div>
@@ -71,7 +71,7 @@ function CardSmall({ hover }: { hover?: boolean }) {
               </div>
               <div className="flex gap-[0.5rem] h-[2rem]">
                 <Button
-                  className="w-2/3 h-full border-2 border-card-hover font-bold "
+                  className="w-2/3 h-full border-2 border-card-hover font-bold"
                   variant="ghost"
                   onClick={handleEditClick}
                 >

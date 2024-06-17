@@ -67,8 +67,15 @@ export function CardWithForm({ onClose }: { onClose: () => void }) {
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button>Save Changes</Button>
-        <Button variant="destructive">Remove from Library</Button>
+        <Button className="xs:text-sm text-xs xs:p-[1rem] p-[0.5rem]">
+          Save Changes
+        </Button>
+        <Button
+          className="xs:text-sm text-xs xs:p-[1rem] p-[0.5rem]"
+          variant="destructive"
+        >
+          Remove from Library
+        </Button>
       </CardFooter>
     </Card>
   );
