@@ -20,7 +20,7 @@ function NavbarSideBar({
     <div
       className="sm:block hidden w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem]"
       onClick={toggleSideBar}
-    ></div>
+    />
   );
   return (
     <div className="lg:hidden">
@@ -31,13 +31,13 @@ function NavbarSideBar({
       <div
         className={`absolute left-0 top-[3.75rem] bg-sidebar text-lg font-bold h-screen w-screen sm:w-[18.75rem] ${animateSideBar}`}
       >
-        <Link href={`/`}>
+        <Link href={`/`} onClick={toggleSideBar}>
           <div className={headerStyle}>Home</div>
         </Link>
-        <Link href={`/manga/top-rated`}>
+        <Link href={`/manga/top-rated`} onClick={toggleSideBar}>
           <div className={headerStyle}>Top Manga</div>
         </Link>
-        <Link href={`/user/library`}>
+        <Link href={`/user/library`} onClick={toggleSideBar}>
           <div className={headerStyle}>Library</div>
         </Link>
       </div>
