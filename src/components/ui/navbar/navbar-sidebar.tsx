@@ -11,7 +11,7 @@ function NavbarSideBar({
   //
   const animateSideBar = isSideBarOpen
     ? "translate-x-0 opacity-100 transition-all duration-300 ease-in-out z-20"
-    : "-translate-y-2 opacity-0 transition-all duration-300 ease-in-out -z-10";
+    : "-translate-x-full opacity-100 transition-all duration-300 ease-in-out -z-10";
   const headerStyle =
     "flex items-center h-[3.75rem] w-full text-[1.125rem] pl-[1rem]";
 

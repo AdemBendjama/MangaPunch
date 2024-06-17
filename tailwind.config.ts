@@ -37,6 +37,7 @@ const config = {
         slide: "hsl(201 ,5% ,90%)",
         "auth-bg": "hsl(201 ,50% ,5%)",
         "card-hover": "hsl(201 ,5% ,90%)",
+        "card-description": "hsla(201 ,50% ,5%,0.65)",
         "border-auth": "hsl(var(--border-auth))",
         background: {
           DEFAULT: "hsl(var(--background))",
@@ -107,6 +108,7 @@ const config = {
         "card-drop": "0 20px 30px 0 hsla(0,0%,0%,0.6)",
         "input-drop":
           "0 12px 25px hsla(var(--input-shadow)),0 4px 4px hsla(var(--input-shadow-side))",
+        "menu-drop": "0 4px 15px hsla(0,0%,0%,0.6),0 2px 4px hsla(0,0%,0%,0.6)",
       },
     },
   },

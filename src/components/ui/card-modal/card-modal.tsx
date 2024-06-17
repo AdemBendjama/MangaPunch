@@ -22,7 +22,7 @@ import XIcon from "@/components/icons/x-icon";
 
 export function CardWithForm({ onClose }: { onClose: () => void }) {
   return (
-    <Card className="w-[400px] relative">
+    <Card className="sm:w-[400px] w-[91vw] relative">
       <XIcon
         className="w-[1.5rem] h-[1.5rem] m-[0.375rem] absolute right-0 stroke-foreground cursor-pointer hover:opacity-70"
         onClick={onClose}

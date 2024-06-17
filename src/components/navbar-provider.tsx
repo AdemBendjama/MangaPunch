@@ -1,10 +1,17 @@
-"use client";
-import { useState } from "react";
 import Navbar from "./ui/navbar/navbar";
 import Footer from "./ui/footer/footer";
 import { usePathname } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 
-function NavbarProvider({ children }: { children: React.ReactNode }) {
+function NavbarProvider({
+  children,
+  isSideBarOpen,
+  setIsSideBarOpen,
+}: {
+  isSideBarOpen: boolean;
+  setIsSideBarOpen: Dispatch<SetStateAction<boolean>>;
+  children: React.ReactNode;
+}) {
   const currentPathname = usePathname();
   const pathnames: RegExp[] = [/^\/auth\/signin$/, /^\/auth\/signup$/];
   let hideUI = false;
@@ -14,13 +21,9 @@ function NavbarProvider({ children }: { children: React.ReactNode }) {
       break;
     }
   }
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
   return (
-    <div
-      className={`min-h-screen flex flex-col ${
-        isSideBarOpen && "overflow-hidden"
-      }`}
-    >
+    <div className="min-h-screen flex flex-col">
       {!hideUI && (
         <Navbar
           isSideBarOpen={isSideBarOpen}
