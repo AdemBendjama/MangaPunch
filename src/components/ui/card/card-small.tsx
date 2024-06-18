@@ -28,7 +28,7 @@ function CardSmall({ hover }: { hover?: boolean }) {
           src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105778-74YTFlQzcFPg.png"
           alt="cover image"
           fill={true}
-          className="object-cover lg:z-auto z-10"
+          className="object-cover lg:z-auto z-10 cursor-pointer"
           onClick={() => router.push("/manga/70")}
         />
         {hover && (
