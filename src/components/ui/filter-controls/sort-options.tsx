@@ -1,6 +1,6 @@
 import SortIcon from "@/components/icons/sort-icon";
 
-function FilterOptions() {
+function SortOptions() {
   return (
     <div className="flex items-center gap-[0.25rem] xs:self-auto self-end">
       <SortIcon className="sm:min-w-[1rem] sm:min-h-[1rem] w-[0.875rem] h-[0.875rem] stroke-muted-foreground text-muted-foreground dark:text-foreground dark:stroke-foreground" />
@@ -11,4 +11,4 @@ function FilterOptions() {
   );
 }
 
-export default FilterOptions;
+export default SortOptions;
