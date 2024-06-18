@@ -110,6 +110,9 @@ const config = {
           "0 12px 25px hsla(var(--input-shadow)),0 4px 4px hsla(var(--input-shadow-side))",
         "menu-drop": "0 4px 15px hsla(0,0%,0%,0.6),0 2px 4px hsla(0,0%,0%,0.6)",
       },
+      objectPosition: {
+        profile: "60% 0",
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("tailwindcss-textshadow")],

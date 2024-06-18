@@ -1,31 +1,15 @@
 import SortIcon from "@/components/icons/sort-icon";
+import ProfileBackgroundImage from "@/components/image/profile-background-image";
+import ProfileImage from "@/components/image/profile-image";
 import { Button } from "@/components/ui/button";
 import CardSmall from "@/components/ui/card/card-small";
-import Image from "next/image";
 
 function UserLibraryPage() {
   return (
     <div className="text-foreground">
       <div className="h-[18.75rem] relative shadow-slide-inner-bg">
-        <Image
-          src="https://drive.usercontent.google.com/download?id=1dQbU-UtYOcZxMQG6a0En4zc28EHdvUHh&authuser=0"
-          alt="profile background page"
-          fill={true}
-          className="object-cover -z-50"
-        />
-        <div className="h-full sm:ml-[7.5rem] ml-[0.5rem] sm:mr-0 mr-[0.5rem] flex items-end">
-          <div className="sm:min-w-[13rem] sm:min-h-[13rem] xs:min-w-[10rem] xs:min-h-[10rem] min-w-[7rem] min-h-[7rem] relative">
-            <Image
-              src="/assets/images/footer.png"
-              alt="footer image"
-              fill={true}
-              className="object-contain"
-            />
-          </div>
-          <span className="font-bold sm:text-3xl xs:text-lg text-base sm:pb-[1rem] pb-[0.5rem] text-white dark:text-foreground overflow-hidden">
-            @PoliceISwearToGod
-          </span>
-        </div>
+        <ProfileBackgroundImage />
+        <ProfileImage />
       </div>
       <div className="dark:bg-background-secondary flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[6.875rem] sm:px-[3rem] px-[1rem]">
         <div className="flex flex-col gap-[0.625rem]">
