@@ -154,9 +154,9 @@ function MangaDetailsPage() {
         <div className="flex flex-col gap-[0.625rem] py-[1rem]">
           <div className="flex justify-between items-center py-[0.5rem]">
             <span className="font-bold sm:text-xl text-base">
-              Recommended Related Manga :
+              Recommended Manga :
             </span>
-            <div className="flex items-center gap-[0.25rem]">
+            <div className="flex items-center sm:gap-[0.25rem] gap-[0.125rem]">
               <span className="font-bold text-muted-foreground sm:text-base text-xs">
                 View More
               </span>
