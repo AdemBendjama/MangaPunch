@@ -14,8 +14,9 @@ function MangaDetailsPage() {
         <Image
           src="https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-xpU0zxrlU2Ux.jpg"
           alt="background Image"
-          fill={true}
-          className="object-cover"
+          width={1920}
+          height={350}
+          className="object-cover w-full h-full"
         />
       </div>
       <div className="sm:h-[19rem] bg-background-secondary lg:px-[10rem] md:[3rem] sm:px-[1rem] px-[1rem] relative">
