@@ -5,8 +5,6 @@ import { cn } from "../lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import NavbarProvider from "@/components/navbar-provider";
 import { useState } from "react";
-import { ApolloProvider } from "@apollo/client";
-import client from "@/lib/apollo/apolloClient";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -36,21 +34,19 @@ export default function RootLayout({
           overpass.variable
         )}
       >
-        <ApolloProvider client={client}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NavbarProvider
+            isSideBarOpen={isSideBarOpen}
+            setIsSideBarOpen={setIsSideBarOpen}
           >
-            <NavbarProvider
-              isSideBarOpen={isSideBarOpen}
-              setIsSideBarOpen={setIsSideBarOpen}
-            >
-              {children}
-            </NavbarProvider>
-          </ThemeProvider>
-        </ApolloProvider>
+            {children}
+          </NavbarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
