@@ -5,6 +5,7 @@ export const GET_TRENDING_MANGA = {
     Page(perPage: 10) {
       media(
         sort: TRENDING_DESC
+        popularity_greater:10000
         type: MANGA
         isAdult: false
         genre_not_in: "Ecchi"
@@ -30,6 +31,7 @@ export const GET_SHOUNEN_MANGA = {
     Page(perPage: 10) {
       media(
         sort: TRENDING_DESC
+        popularity_greater:10000
         type: MANGA
         isAdult: false
         genre_not_in: "Ecchi"
@@ -56,6 +58,7 @@ export const GET_SEINEN_MANGA = {
     Page(perPage: 10) {
       media(
         sort: TRENDING_DESC
+        popularity_greater:10000
         type: MANGA
         isAdult: false
         genre_not_in: "Ecchi"
