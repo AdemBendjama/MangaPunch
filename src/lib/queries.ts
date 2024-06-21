@@ -77,3 +77,26 @@ export const GET_SEINEN_MANGA = {
   }
 `,
 };
+
+export const GET_MOST_POPULAR_ALL_TIME_MANGA = {
+  name: "GET_MOST_POPULAR_ALL_TIME_MANGA",
+  body: `query {
+  Page(page:1, perPage: 15) {
+    media(sort: POPULARITY_DESC, type: MANGA) {
+      id
+      title {
+        romaji
+        english
+      }
+      coverImage {
+        large
+      }
+      rankings {
+        rank
+        type
+        context
+      }
+    }
+  }
+}`,
+};

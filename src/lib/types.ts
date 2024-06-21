@@ -25,6 +25,13 @@ export interface Manga {
     month: number;
     day: number;
   } | null;
+  rankings: [
+    {
+      rank: number;
+      type: string;
+      context: string;
+    }
+  ];
   averageScore: number | null;
   popularity: number | null;
   chapters: number | null;
