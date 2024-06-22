@@ -22,6 +22,7 @@ function MangaDetails() {
     title,
     staff,
     status,
+    startDate,
     description,
     bannerImage,
     coverImage,
@@ -45,6 +46,7 @@ function MangaDetails() {
         title={title.english ? title.english : title.romaji}
         authors={authors}
         status={status}
+        startDate={startDate}
       />
       <MangaSection />
     </div>

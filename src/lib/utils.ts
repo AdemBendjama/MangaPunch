@@ -20,3 +20,21 @@ export function toTitleCase(input: string): string {
   const lowerCaseInput = input.toLowerCase();
   return lowerCaseInput.charAt(0).toUpperCase() + lowerCaseInput.slice(1);
 }
+
+export function formatStartDate(
+  startDate: {
+    year: number;
+    month: number;
+    day: number;
+  } | null
+) {
+  if (!startDate) return "N/A";
+  const { year, month, day } = startDate;
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }).format(new Date(year, month - 1, day));
+
+  return formattedDate;
+}

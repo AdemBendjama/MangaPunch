@@ -132,6 +132,11 @@ export const GET_MANGA = {
           }
         }
         status
+        startDate {
+          year
+          month
+          day
+        }
           
       }
     }

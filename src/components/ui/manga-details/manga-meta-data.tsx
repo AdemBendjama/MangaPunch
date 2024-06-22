@@ -2,7 +2,7 @@ import StarIcon from "@/components/icons/star-icon";
 import Image from "next/image";
 import { ButtonWithIcon } from "../button-variants/button-with-icon";
 import HeartIcon from "@/components/icons/heart-icon";
-import { toTitleCase } from "@/lib/utils";
+import { formatStartDate, toTitleCase } from "@/lib/utils";
 
 function MangaMetaData({
   src,
@@ -11,6 +11,7 @@ function MangaMetaData({
   title,
   authors,
   status,
+  startDate,
 }: {
   src: string;
   popularity?: number;
@@ -18,6 +19,11 @@ function MangaMetaData({
   title: string;
   authors: string[];
   status: string | null;
+  startDate: {
+    year: number;
+    month: number;
+    day: number;
+  } | null;
 }) {
   return (
     <div className="sm:h-[19rem] bg-background-secondary lg:px-[10rem] md:[3rem] sm:px-[1rem] px-[1rem] relative">
@@ -102,7 +108,7 @@ function MangaMetaData({
           </div>
           <div className="flex gap-[1rem] leading-[1.25rem]">
             <span className="min-w-[100px] font-semibold">Start Date:</span>
-            <span>Dec 3, 2018</span>
+            <span>{formatStartDate(startDate)}</span>
           </div>
           <div className="flex gap-[1rem] leading-[1.25rem]">
             <span className="min-w-[100px] font-semibold">Genres:</span>
