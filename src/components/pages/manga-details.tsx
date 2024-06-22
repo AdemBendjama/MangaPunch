@@ -48,7 +48,7 @@ function MangaDetails() {
         status={status}
         startDate={startDate}
       />
-      <MangaSection />
+      <MangaSection description={description} />
     </div>
   );
 }

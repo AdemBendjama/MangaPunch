@@ -3,30 +3,17 @@ import CardSmall from "../card/card-small";
 import { AvatarReview } from "../avatar/avatar-review";
 import { TextareaWithLabel } from "../text-area/text-area";
 
-function MangaSection() {
+function MangaSection({ description }: { description: string | null }) {
   return (
     <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[10rem] sm:px-[3rem] px-[1rem]">
       <div className="flex flex-col gap-[1rem] py-[1rem]">
         <span className="font-bold sm:text-lg test-base">Description:</span>
-        <span className="font-medium sm:text-base text-sm">
-          The name says it all! Denji&apos;s life of poverty is changed forever
-          when he merges with his pet chainsaw dog, Pochita! Now he&apos;s
-          living in the big city and an official Devil Hunter. But he&apos;s got
-          a lot to learn about his new job and chainsaw powers!
-          <br></br>
-          <br></br>
-          (Source: MANGA Plus)<br></br>
-          <br></br>
-          <i>
-            Notes:<br></br>- Nominated for the 2020 Manga Taisho Award.
-            <br></br>- Winner of the 2021 Kono Manga ga Sugoi Award.
-            <br></br>- Winner of the 66th Shogakukan Manga Award in the shounen
-            category.<br></br>- Winner of the 2021 and 2022 Harvey Award for
-            Best Manga.<br></br>- Chapters 1-97 were released in Weekly Shounen
-            Jump from Dec 3, 2018 to Dec 13, 2020. The series resumed from Ch.
-            98 in Shounen Jump+ on July 12, 2022
-          </i>
-        </span>
+        <span
+          className="font-medium sm:text-base text-sm"
+          dangerouslySetInnerHTML={{
+            __html: description ? description : "No bio found... :(",
+          }}
+        />
       </div>
       <div className="flex flex-col gap-[0.625rem] py-[1rem]">
         <div className="flex justify-between items-center py-[0.5rem]">
