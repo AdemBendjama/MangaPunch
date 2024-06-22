@@ -23,6 +23,8 @@ function MangaDetails() {
     staff,
     status,
     startDate,
+    genres,
+    chapters,
     description,
     bannerImage,
     coverImage,
@@ -40,13 +42,15 @@ function MangaDetails() {
     <div className="text-foreground">
       <MangaBackgroundImage src={bannerImage} />
       <MangaMetaData
-        src={coverImage.large}
+        src={coverImage?.large}
         popularity={popularity}
         averageScore={averageScore}
         title={title.english ? title.english : title.romaji}
         authors={authors}
         status={status}
         startDate={startDate}
+        genres={genres}
+        chapters={chapters}
       />
       <MangaSection description={description} />
     </div>

@@ -17,8 +17,12 @@ export function extractAuthors(staff: Manga["staff"]): string[] {
 export function toTitleCase(input: string): string {
   if (!input) return "";
 
-  const lowerCaseInput = input.toLowerCase();
-  return lowerCaseInput.charAt(0).toUpperCase() + lowerCaseInput.slice(1);
+  const words = input.split("_");
+  const titleCaseWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+  );
+
+  return titleCaseWords.join(" ");
 }
 
 export function formatStartDate(

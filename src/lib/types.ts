@@ -10,7 +10,7 @@ export interface Manga {
     large: string;
     extraLarge: string;
   };
-  bannerImage: string;
+  bannerImage: string | null;
   genres: string[];
   tags: {
     name: string;
@@ -26,15 +26,13 @@ export interface Manga {
     month: number;
     day: number;
   } | null;
-  rankings:
-    | [
-        {
-          rank: number;
-          type: string;
-          context: string;
-        }
-      ]
-    | [];
+  rankings: [
+    {
+      rank: number;
+      type: string;
+      context: string;
+    }
+  ];
   averageScore: number | null;
   popularity: number | null;
   chapters: number | null;

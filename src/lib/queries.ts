@@ -137,6 +137,8 @@ export const GET_MANGA = {
           month
           day
         }
+        genres
+        chapters
           
       }
     }
