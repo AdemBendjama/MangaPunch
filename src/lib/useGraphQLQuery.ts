@@ -3,15 +3,23 @@ import { Manga } from "./types";
 
 function useGraphQLQuery(
   query: { name: string; body: string },
-  variables?: { [key: string]: any }
+  variables?: { [key: string]: string }
 ) {
   const [mangaData, setMangaData] = useState<Manga[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem(query.name);
-    const cachedTimestamp = localStorage.getItem(`${query.name}_timestamp`);
+    const cachedData = localStorage.getItem(
+      `${query.name}${
+        variables ? `_${new URLSearchParams(variables).toString()}` : ""
+      }`
+    );
+    const cachedTimestamp = localStorage.getItem(
+      `${query.name}${
+        variables ? `_${new URLSearchParams(variables).toString()}` : ""
+      }_timestamp`
+    );
     if (cachedData && cachedTimestamp) {
       const parsedData = JSON.parse(cachedData);
       const timestamp = parseInt(cachedTimestamp, 10);
@@ -34,6 +42,7 @@ function useGraphQLQuery(
           },
           body: JSON.stringify({
             query: query.body,
+            variables: variables || {},
           }),
         });
         const { data, errors } = await response.json();
@@ -53,9 +62,16 @@ function useGraphQLQuery(
       .then((data) => {
         setMangaData(data.Page.media);
         setLoading(false);
-        localStorage.setItem(query.name, JSON.stringify(data.Page.media));
         localStorage.setItem(
-          `${query.name}_timestamp`,
+          `${query.name}${
+            variables ? `_${new URLSearchParams(variables).toString()}` : ""
+          }`,
+          JSON.stringify(data.Page.media)
+        );
+        localStorage.setItem(
+          `${query.name}${
+            variables ? `_${new URLSearchParams(variables).toString()}` : ""
+          }_timestamp`,
           String(new Date().getTime())
         );
       })
@@ -67,7 +83,7 @@ function useGraphQLQuery(
         }
         setLoading(false);
       });
-  }, [query, variables]);
+  }, []);
 
   return { mangaData, loading, error };
 }
