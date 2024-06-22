@@ -28,6 +28,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.5",
+    "react-intersection-observer": "^9.10.3",
     "react-slick": "^0.30.2",
     "sharp": "^0.33.3",
     "slick-carousel": "^1.8.1",

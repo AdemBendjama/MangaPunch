@@ -54,7 +54,9 @@ function useGraphQLQuery(
         return data;
       } catch (error) {
         console.error("Error fetching data:", error);
-        throw new Error("Failed to fetch data");
+        throw new Error(
+          "Too Many Requests: We're momentarily overwhelmed. Please try again shortly."
+        );
       }
     };
 
