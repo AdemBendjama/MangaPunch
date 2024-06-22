@@ -7,10 +7,6 @@ import {
 } from "@/lib/queries";
 
 function Home() {
-  // const variables = { page: 1, pages: "ssadsa" };
-  // const queryString = new URLSearchParams(variables).toString();
-  // console.log(queryString);
-
   return (
     <>
       <SlideShow />
