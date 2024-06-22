@@ -3,22 +3,21 @@ import { Manga } from "./types";
 
 function useGraphQLQuery(
   query: { name: string; body: string },
-  variables?: { [key: string]: string }
+  variables?: { [key: string]: string | number }
 ) {
   const [mangaData, setMangaData] = useState<Manga[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
+  const varParams = variables
+    ? `_${new URLSearchParams(
+        Object.entries(variables).map(([key, value]) => [key, value.toString()])
+      )}`
+    : "";
 
   useEffect(() => {
-    const cachedData = localStorage.getItem(
-      `${query.name}${
-        variables ? `_${new URLSearchParams(variables).toString()}` : ""
-      }`
-    );
+    const cachedData = localStorage.getItem(`${query.name}${varParams}`);
     const cachedTimestamp = localStorage.getItem(
-      `${query.name}${
-        variables ? `_${new URLSearchParams(variables).toString()}` : ""
-      }_timestamp`
+      `${query.name}${varParams}_timestamp`
     );
     if (cachedData && cachedTimestamp) {
       const parsedData = JSON.parse(cachedData);
@@ -65,15 +64,11 @@ function useGraphQLQuery(
         setMangaData(data.Page.media);
         setLoading(false);
         localStorage.setItem(
-          `${query.name}${
-            variables ? `_${new URLSearchParams(variables).toString()}` : ""
-          }`,
+          `${query.name}${varParams}`,
           JSON.stringify(data.Page.media)
         );
         localStorage.setItem(
-          `${query.name}${
-            variables ? `_${new URLSearchParams(variables).toString()}` : ""
-          }_timestamp`,
+          `${query.name}${varParams}_timestamp`,
           String(new Date().getTime())
         );
       })

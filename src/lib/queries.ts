@@ -100,3 +100,40 @@ export const GET_MOST_POPULAR_ALL_TIME_MANGA = {
     }
   }`,
 };
+
+export const GET_MANGA = {
+  name: "GET_MANGA",
+  body: `query GetManga($id: Int!) {
+    Page(perPage: 1) {
+      media(id: $id) {
+        id
+        title {
+          romaji
+          english
+        }
+        coverImage {
+          large
+        }
+        bannerImage
+        description
+        rankings {
+          rank
+          context
+        }
+        averageScore
+        staff {
+          edges {
+            node {
+              name {
+                full
+              }
+            }
+            role
+          }
+        }
+        status
+          
+      }
+    }
+  }`,
+};

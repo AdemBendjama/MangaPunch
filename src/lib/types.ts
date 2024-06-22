@@ -10,6 +10,7 @@ export interface Manga {
     large: string;
     extraLarge: string;
   };
+  bannerImage: string;
   genres: string[];
   tags: {
     name: string;
@@ -25,13 +26,15 @@ export interface Manga {
     month: number;
     day: number;
   } | null;
-  rankings: [
-    {
-      rank: number;
-      type: string;
-      context: string;
-    }
-  ];
+  rankings:
+    | [
+        {
+          rank: number;
+          type: string;
+          context: string;
+        }
+      ]
+    | [];
   averageScore: number | null;
   popularity: number | null;
   chapters: number | null;
@@ -39,6 +42,18 @@ export interface Manga {
   status: string | null;
   siteUrl: string | null;
   isAdult: boolean | null;
+  staff: {
+    edges: [
+      {
+        node: {
+          name: {
+            full: string;
+          };
+        };
+        role: string;
+      }
+    ];
+  } | null;
 }
 
 export interface PageData {

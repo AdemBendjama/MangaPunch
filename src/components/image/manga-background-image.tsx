@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-function MangaBackgroundImage() {
+function MangaBackgroundImage({ src }: { src: string }) {
   return (
     <div className="w-full h-[350px] relative shadow-slide-inner-bg">
       <Image
-        src="https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-xpU0zxrlU2Ux.jpg"
+        src={src}
         alt="background Image"
         width={1920}
         height={350}
