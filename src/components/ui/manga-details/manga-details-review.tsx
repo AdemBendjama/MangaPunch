@@ -19,6 +19,7 @@ function MangaDetailsReview({ reviews }: { reviews: ReviewsResponse }) {
             const review = edge.node;
             return (
               <Review
+                key={review.id}
                 summary={review.summary}
                 avatar={review.user.avatar.medium}
               />
