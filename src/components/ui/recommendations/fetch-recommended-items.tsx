@@ -8,10 +8,12 @@ function FetchRecommendedItems({
   id,
   page,
   perPage,
+  toggleLimitReached,
 }: {
   id: number;
   page: string;
   perPage: number;
+  toggleLimitReached: () => void;
 }) {
   const { mangaData, loading, error } = useGraphQLQuery(
     GET_MANGA_RECOMMENDATIONS,
@@ -31,16 +33,17 @@ function FetchRecommendedItems({
       </>
     );
   }
-  if (error) return <div>{error.message}</div>;
-  if (!mangaData) return notFound();
+  if (error) {
+    toggleLimitReached();
+    return <div>{error.message}</div>;
+  }
 
-  return (
-    <>
-      {mangaData.length !== 0 && (
-        <RecommendedItems recommendations={mangaData[0].recommendations} />
-      )}
-    </>
-  );
+  if (mangaData[0].recommendations.edges.length === 0) {
+    toggleLimitReached();
+    return;
+  }
+
+  return <RecommendedItems recommendations={mangaData[0].recommendations} />;
 }
 
 export default FetchRecommendedItems;

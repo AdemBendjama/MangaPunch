@@ -80,9 +80,9 @@ export const GET_SEINEN_MANGA = {
 
 export const GET_MOST_POPULAR_ALL_TIME_MANGA = {
   name: "GET_MOST_POPULAR_ALL_TIME_MANGA",
-  body: `query GetMostPopularAllTimeManga($page: Int!){
-    Page(page: $page, perPage: 50) {
-      media(sort: SCORE_DESC, type: MANGA,format: MANGA) {
+  body: `query GetMostPopularAllTimeManga($page: Int!, $perPage: Int!){
+    Page(page: $page, perPage: $perPage) {
+      media(sort: SCORE_DESC, type: MANGA, format: MANGA) {
         id
         title {
           romaji

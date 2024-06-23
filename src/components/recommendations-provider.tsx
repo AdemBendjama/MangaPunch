@@ -15,6 +15,11 @@ function RecommendationsProvider({
   const { ref, inView } = useInView();
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState([1]);
+  const [hasReachedLimit, setHasReachedLimit] = useState<boolean>(false);
+
+  const handleLimitReached = () => {
+    setHasReachedLimit(true);
+  };
 
   useEffect(() => {
     if (inView) {
@@ -39,9 +44,10 @@ function RecommendationsProvider({
               id={id}
               page={`${page}`}
               perPage={18}
+              toggleLimitReached={handleLimitReached}
             />
           ))}
-          <div ref={ref}></div>
+          {!hasReachedLimit && <div ref={ref} />}
         </>
       )}
     </div>
