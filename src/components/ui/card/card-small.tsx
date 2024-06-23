@@ -9,7 +9,17 @@ import { CardWithForm } from "../card-modal/card-modal";
 import EllipsisIcon from "@/components/icons/ellipsis-icon";
 import { useRouter } from "next/navigation";
 
-function CardSmall({ hover }: { hover?: boolean }) {
+function CardSmall({
+  hover,
+  coverImage,
+  id,
+  title,
+}: {
+  hover?: boolean;
+  coverImage: string;
+  id: number;
+  title: string;
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
@@ -25,11 +35,11 @@ function CardSmall({ hover }: { hover?: boolean }) {
     <div className="flex flex-col gap-[0.5rem] 3xl:w-[9vw] xl:w-[11vw] lg:w-[12.5vw] md:w-[16vw] xs:w-[20vw] w-[28vw]">
       <div className="3xl:h-[14.5vw] xl:h-[17.5vw] lg:h-[20vw] md:h-[26vw] xs:h-[31vw] h-[45.5vw] rounded-[0.375rem] overflow-hidden relative">
         <Image
-          src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105778-74YTFlQzcFPg.png"
+          src={coverImage}
           alt="cover image"
           fill={true}
           className="object-cover lg:z-auto z-10 cursor-pointer"
-          onClick={() => router.push("/manga/70")}
+          onClick={() => router.push(`/manga/${id}`)}
         />
         {hover && (
           <>
@@ -84,7 +94,7 @@ function CardSmall({ hover }: { hover?: boolean }) {
                   className="w-1/3 h-full p-[0.5rem] border-2 border-card-hover"
                   variant="ghost"
                 >
-                  <Link href="/manga/70">
+                  <Link href={`/manga/${id}`}>
                     <ArrowRightIcon className="stroke-card-hover w-[1rem] h-[1rem]" />
                   </Link>
                 </Button>
@@ -93,9 +103,9 @@ function CardSmall({ hover }: { hover?: boolean }) {
           </>
         )}
       </div>
-      <Link href="/manga/70">
+      <Link href={`/manga/${id}`}>
         <span className="font-semibold sm:text-sm text-xs sm:min-h-[2.5rem] min-h-[2rem] text-muted-foreground w-full overflow-hidden text-ellipsis line-clamp-2">
-          Chainsaw Man
+          {title}
         </span>
       </Link>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} />

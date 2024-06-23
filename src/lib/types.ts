@@ -52,16 +52,18 @@ export interface Manga {
       }
     ];
   } | null;
-  recommendations: {
-    edges: [
-      {
-        node: {
-          id: number;
-          mediaRecommendation: Manga;
-        };
-      }
-    ];
-  };
+  recommendations: Recommendations;
+}
+
+export interface Recommendations {
+  edges: [
+    {
+      node: {
+        id: number;
+        mediaRecommendation: Manga;
+      };
+    }
+  ];
 }
 
 export interface PageData {

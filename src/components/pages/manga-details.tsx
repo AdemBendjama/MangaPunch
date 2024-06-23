@@ -59,7 +59,7 @@ function MangaDetails() {
       />
       <MangaDetailsProvider>
         <MangaSection description={description} />
-        <RecommendedMangaCards id={id} />
+        <RecommendedMangaCards id={id} recommendations={recommendations} />
         <MangaDetailsReview />
       </MangaDetailsProvider>
     </div>

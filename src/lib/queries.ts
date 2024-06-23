@@ -139,7 +139,7 @@ export const GET_MANGA = {
         }
         genres
         chapters
-        recommendations(sort: RATING_DESC, perPage: 12) {
+        recommendations(sort: RATING_DESC, perPage: 6) {
           edges {
             node {
               id
