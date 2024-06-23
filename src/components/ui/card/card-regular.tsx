@@ -15,7 +15,7 @@ function CardRegular({
   return (
     <div className="flex flex-col gap-[0.5rem] lg:w-[176px] md:w-[16vw] w-[28vw] relative">
       {rank && (
-        <div className="flex absolute z-10 top-[-10px] left-[-10px] justify-center items-center text-white sm:text-base text-sm font-bold sm:pt-[0.125rem] sm:w-[2.5rem] sm:h-[2.5rem] w-[2rem] h-[2rem] rounded-[50%] bg-primary">
+        <div className="flex absolute z-10 top-[-10px] left-[-10px] justify-center items-center text-white sm:text-base text-sm font-bold sm:pt-[0.125rem] sm:w-[2.75rem] sm:h-[2.75rem] w-[2.25rem] h-[2.25rem] rounded-[50%] bg-primary">
           #{rank}
         </div>
       )}
