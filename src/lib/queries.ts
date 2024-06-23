@@ -139,6 +139,67 @@ export const GET_MANGA = {
         }
         genres
         chapters
+        recommendations(sort: RATING_DESC, perPage: 12) {
+          edges {
+            node {
+              id
+              mediaRecommendation {
+                id
+                title {
+                  romaji
+                  english
+                }
+                coverImage {
+                  large
+                }
+              }
+            }
+          }
+        }
+          
+      }
+    }
+  }`,
+};
+
+export const GET_MANGA_RECOMMENDATIONS = {
+  name: "GET_MANGA_RECOMMENDATIONS",
+  body: `query GetMangaRecommendations($id: Int!) {
+    Page(perPage: 1) {
+      media(id: $id) {
+        id
+        title {
+          romaji
+          english
+        }
+        coverImage {
+          large
+        }
+        bannerImage
+        description
+        rankings {
+          rank
+          context
+        }
+        averageScore
+        staff {
+          edges {
+            node {
+              name {
+                full
+              }
+            }
+            role
+          }
+        }
+        status
+        startDate {
+          year
+          month
+          day
+        }
+        genres
+        chapters
           
       }
     }

@@ -52,6 +52,16 @@ export interface Manga {
       }
     ];
   } | null;
+  recommendations: {
+    edges: [
+      {
+        node: {
+          id: number;
+          mediaRecommendation: Manga;
+        };
+      }
+    ];
+  };
 }
 
 export interface PageData {

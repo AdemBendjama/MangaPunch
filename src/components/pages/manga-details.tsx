@@ -1,24 +1,28 @@
 "use client";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import MangaBackgroundImage from "../image/manga-background-image";
 import MangaMetaData from "../ui/manga-details/manga-meta-data";
 import MangaSection from "../ui/manga-details/manga-section";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import { GET_MANGA } from "@/lib/queries";
 import { extractAuthors } from "@/lib/utils";
+import RecommendedMangaCards from "../ui/manga-details/recommended-manga-card";
+import MangaDetailsProvider from "../ui/manga-details/manga-details-provider";
+import MangaDetailsReview from "../ui/manga-details/manga-details-review";
 
 function MangaDetails() {
   const { mangaId } = useParams();
-  const id = parseInt(Array.isArray(mangaId) ? mangaId[0] : mangaId);
 
   const { mangaData, loading, error } = useGraphQLQuery(GET_MANGA, {
-    id: id,
+    id: parseInt(Array.isArray(mangaId) ? mangaId[0] : mangaId),
   });
 
   if (loading) return;
   if (error) return <div>{error.message}</div>;
+  if (mangaData.length === 0) return notFound();
 
   const {
+    id,
     title,
     staff,
     status,
@@ -30,6 +34,7 @@ function MangaDetails() {
     coverImage,
     rankings,
     averageScore,
+    recommendations,
   } = mangaData[0];
 
   const popularity = rankings.find(
@@ -52,7 +57,11 @@ function MangaDetails() {
         genres={genres}
         chapters={chapters}
       />
-      <MangaSection description={description} />
+      <MangaDetailsProvider>
+        <MangaSection description={description} />
+        <RecommendedMangaCards id={id} />
+        <MangaDetailsReview />
+      </MangaDetailsProvider>
     </div>
   );
 }
