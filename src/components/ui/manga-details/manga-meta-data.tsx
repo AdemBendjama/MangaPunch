@@ -123,13 +123,17 @@ function MangaMetaData({
                 {Array.from(
                   { length: Math.floor(averageScore / 10) },
                   (_, index) => (
-                    <StarIcon className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]" />
+                    <StarIcon
+                      key={index}
+                      className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
+                    />
                   )
                 )}
                 {Array.from(
                   { length: 10 - Math.floor(averageScore / 10) },
                   (_, index) => (
                     <StarIcon
+                      key={index}
                       className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
                       fill="none"
                     />
