@@ -25,7 +25,7 @@ function useGraphQLQuery(
       const now = new Date().getTime();
       const timeDiff = now - timestamp;
 
-      if (timeDiff < 24 * 60 * 60 * 1000) {
+      if (timeDiff < 3 * 60 * 60 * 1000) {
         setMangaData(parsedData);
         setLoading(false);
         return;
