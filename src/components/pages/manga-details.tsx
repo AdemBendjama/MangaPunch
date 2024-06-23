@@ -35,6 +35,7 @@ function MangaDetails() {
     rankings,
     averageScore,
     recommendations,
+    reviews,
   } = mangaData[0];
 
   const popularity = rankings.find(
@@ -60,7 +61,7 @@ function MangaDetails() {
       <MangaDetailsProvider>
         <MangaSection description={description} />
         <RecommendedMangaCards id={id} recommendations={recommendations} />
-        <MangaDetailsReview />
+        <MangaDetailsReview reviews={reviews} />
       </MangaDetailsProvider>
     </div>
   );

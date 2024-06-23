@@ -156,6 +156,21 @@ export const GET_MANGA = {
             }
           }
         }
+        reviews(sort:RATING_DESC,perPage:3) {
+          edges {
+            node{
+              id
+              summary
+              user {
+                id
+                avatar {
+                  large
+                  medium
+                }
+              }
+            }
+          }
+        }
           
       }
     }

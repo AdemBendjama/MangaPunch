@@ -53,6 +53,25 @@ export interface Manga {
     ];
   } | null;
   recommendations: Recommendations;
+  reviews: ReviewsResponse;
+}
+
+export interface Review {
+  node: {
+    id: number;
+    summary: string;
+    user: {
+      id: number;
+      name: string;
+      avatar: {
+        large: string;
+        medium: string;
+      };
+    };
+  };
+}
+export interface ReviewsResponse {
+  edges: Review[];
 }
 
 export interface Recommendations {
