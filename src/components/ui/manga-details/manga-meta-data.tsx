@@ -97,29 +97,41 @@ function MangaMetaData({
         {/* details */}
         <div className="flex flex-col sm:text-base text-sm gap-[0.5rem] py-[0.5rem]">
           <div className="flex gap-[1rem] leading-[1.25rem]">
-            <span className="min-w-[100px] font-semibold">Author(s):</span>
+            <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
+              Author(s):
+            </span>
             <span className="line-clamp-1">{authors.join(", ")}</span>
           </div>
           <div className="flex gap-[1rem] leading-[1.25rem]">
-            <span className="min-w-[100px] font-semibold">Status:</span>
+            <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
+              Status:
+            </span>
             <span>{status ? toTitleCase(status) : "N/A"}</span>
           </div>
           <div className="flex gap-[1rem] leading-[1.25rem]">
-            <span className="min-w-[100px] font-semibold">Start Date:</span>
+            <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
+              Start Date:
+            </span>
             <span>{formatStartDate(startDate)}</span>
           </div>
           <div className="flex gap-[1rem] leading-[1.25rem]">
-            <span className="min-w-[100px] font-semibold">Genres:</span>
+            <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
+              Genres:
+            </span>
             <span className="sm:line-clamp-2">{genres.join(", ")}</span>
           </div>
           <div className="flex gap-[1rem] leading-[1.25rem]">
-            <span className="min-w-[100px] font-semibold">Chapters:</span>
+            <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
+              Chapters:
+            </span>
             <span>{chapters ? chapters : "Ongoing"}</span>
           </div>
           {averageScore && (
             <div className="flex gap-[1rem] leading-[1.25rem]">
-              <span className="min-w-[100px] font-semibold">Rating:</span>
-              <div className="flex gap-[0.5rem]">
+              <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
+                Rating:
+              </span>
+              <div className="flex sm:gap-[0.5rem] gap-[0.25rem] items-center">
                 {Array.from(
                   { length: Math.floor(averageScore / 10) },
                   (_, index) => (
