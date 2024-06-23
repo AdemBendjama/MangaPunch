@@ -78,9 +78,9 @@ export const GET_SEINEN_MANGA = {
   `,
 };
 
-export const GET_MOST_POPULAR_ALL_TIME_MANGA = {
-  name: "GET_MOST_POPULAR_ALL_TIME_MANGA",
-  body: `query GetMostPopularAllTimeManga($page: Int!, $perPage: Int!){
+export const GET_HIGHEST_RATED_ALL_TIME_MANGA = {
+  name: "GET_HIGHEST_RATED_ALL_TIME_MANGA",
+  body: `query GetHighestRatedAllTimeManga($page: Int!, $perPage: Int!){
     Page(page: $page, perPage: $perPage) {
       media(sort: SCORE_DESC, type: MANGA, format: MANGA) {
         id

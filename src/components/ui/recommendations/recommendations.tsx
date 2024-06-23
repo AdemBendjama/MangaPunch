@@ -3,7 +3,7 @@ import { useState } from "react";
 import RecommendedItems from "./recommended-items";
 import ChevronDown from "@/components/icons/chevron-down";
 import { Recommendations as RecommendationsInterface } from "@/lib/types";
-import RecommendationsProvider from "@/components/recommendations-provider";
+import RecommendationsProvider from "@/components/ui/recommendations/recommendations-provider";
 
 function Recommendations({
   id,

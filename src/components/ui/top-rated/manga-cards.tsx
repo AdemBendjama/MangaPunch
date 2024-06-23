@@ -1,12 +1,20 @@
 "use client";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import CardRegular from "../card/card-regular";
-import { GET_MOST_POPULAR_ALL_TIME_MANGA } from "@/lib/queries";
+import { GET_HIGHEST_RATED_ALL_TIME_MANGA } from "@/lib/queries";
 import CardRegularLoading from "../card/card-regular-loading";
 
-function MangaCards({ page, perPage }: { page: number; perPage: number }) {
+function MangaCards({
+  page,
+  perPage,
+  toggleLimitReached,
+}: {
+  page: number;
+  perPage: number;
+  toggleLimitReached: () => void;
+}) {
   const { mangaData, loading, error } = useGraphQLQuery(
-    GET_MOST_POPULAR_ALL_TIME_MANGA,
+    GET_HIGHEST_RATED_ALL_TIME_MANGA,
     {
       page: page,
       perPage: perPage,
@@ -23,6 +31,7 @@ function MangaCards({ page, perPage }: { page: number; perPage: number }) {
     );
   }
   if (error) {
+    toggleLimitReached();
     return <div className="w-full flex justify-center">{error.message}</div>;
   }
 
@@ -33,6 +42,7 @@ function MangaCards({ page, perPage }: { page: number; perPage: number }) {
           (ranking) => ranking.context === "highest rated all time"
         );
         if (!ranking) return;
+        if (ranking.rank === 500) toggleLimitReached();
         return (
           <CardRegular
             key={manga.id}

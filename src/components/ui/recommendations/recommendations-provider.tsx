@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import FetchRecommendedItems from "./ui/recommendations/fetch-recommended-items";
+import FetchRecommendedItems from "./fetch-recommended-items";
 
 function RecommendationsProvider({
   id,
