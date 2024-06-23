@@ -8,7 +8,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./select-slider.css";
-export const genreItems = [
+
+const genreItems = [
   "Action",
   "Adventure",
   "Comedy",
@@ -23,7 +24,7 @@ export const genreItems = [
   "Thriller",
 ];
 
-export const formatItems = [
+const formatItems = [
   "Tankobon",
   "Webtoon",
   "Light Novel",
@@ -31,7 +32,7 @@ export const formatItems = [
   "Doujinshi",
 ];
 
-export const yearItems = [
+const yearItems = [
   "2024",
   "2023",
   "2022",
@@ -48,14 +49,9 @@ export const yearItems = [
   "1980-1989",
 ];
 
-export const publishingStatusItems = [
-  "Ongoing",
-  "Completed",
-  "Hiatus",
-  "Cancelled",
-];
+const publishingStatusItems = ["Ongoing", "Completed", "Hiatus", "Cancelled"];
 
-export const countryItems = ["Japan", "South Korea", "China"];
+const countryItems = ["Japan", "South Korea", "China"];
 
 function SearchPage() {
   var settings = {
