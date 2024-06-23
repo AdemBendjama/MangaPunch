@@ -1,4 +1,4 @@
-function MangaSection({ description }: { description: string | null }) {
+function Description({ description }: { description: string | null }) {
   return (
     <>
       <div className="flex flex-col gap-[1rem] py-[1rem]">
@@ -14,4 +14,4 @@ function MangaSection({ description }: { description: string | null }) {
   );
 }
 
-export default MangaSection;
+export default Description;

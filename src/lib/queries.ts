@@ -179,10 +179,10 @@ export const GET_MANGA = {
 
 export const GET_MANGA_RECOMMENDATIONS = {
   name: "GET_MANGA_RECOMMENDATIONS",
-  body: `query GetMangaRecommendations($id: Int!,$page: Int!) {
+  body: `query GetMangaRecommendations($id: Int!, $page: Int!, $perPage: Int!) {
     Page(perPage: 1) {
       media(id: $id) {
-        recommendations(sort: RATING_DESC, page: $page, perPage:18 ) {
+        recommendations(sort: RATING_DESC, page: $page, perPage: $perPage ) {
           edges {
             node {
               id

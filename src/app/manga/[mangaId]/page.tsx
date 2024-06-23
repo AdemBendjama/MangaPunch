@@ -3,12 +3,12 @@ import { GET_MANGA } from "@/lib/queries";
 import { extractAuthors } from "@/lib/utils";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import { notFound, useParams } from "next/navigation";
-import MangaSection from "@/components/ui/manga-details/manga-section";
-import MangaMetaData from "@/components/ui/manga-details/manga-meta-data";
-import MangaDetailsReview from "@/components/ui/manga-details/manga-details-review";
+import Description from "@/components/ui/description/description";
 import MangaBackgroundImage from "@/components/image/manga-background-image";
-import MangaDetailsProvider from "@/components/ui/manga-details/manga-details-provider";
-import RecommendedMangaCards from "@/components/ui/manga-details/recommended-manga-card";
+import Recommendations from "@/components/ui/recommendations/recommendations";
+import MangaMetaData from "@/components/ui/manga-meta-data/manga-meta-data";
+import Reviews from "@/components/ui/reviews/reviews";
+import WriteReview from "@/components/forms/write-review";
 
 function MangaDetailsPage() {
   const { mangaId } = useParams();
@@ -59,9 +59,10 @@ function MangaDetailsPage() {
         chapters={chapters}
       />
       <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[10rem] sm:px-[3rem] px-[1rem]">
-        <MangaSection description={description} />
-        <RecommendedMangaCards id={id} recommendations={recommendations} />
-        <MangaDetailsReview reviews={reviews} />
+        <Description description={description} />
+        <Recommendations id={id} recommendations={recommendations} />
+        <WriteReview />
+        <Reviews reviews={reviews} />
       </div>
     </div>
   );

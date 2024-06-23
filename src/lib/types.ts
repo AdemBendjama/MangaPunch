@@ -53,7 +53,7 @@ export interface Manga {
     ];
   } | null;
   recommendations: Recommendations;
-  reviews: ReviewsResponse;
+  reviews: Reviews;
 }
 
 export interface Review {
@@ -70,19 +70,20 @@ export interface Review {
     };
   };
 }
-export interface ReviewsResponse {
+
+export interface Reviews {
   edges: Review[];
 }
 
+export interface Recommendation {
+  node: {
+    id: number;
+    mediaRecommendation: Manga;
+  };
+}
+
 export interface Recommendations {
-  edges: [
-    {
-      node: {
-        id: number;
-        mediaRecommendation: Manga;
-      };
-    }
-  ];
+  edges: Recommendation[];
 }
 
 export interface PageData {

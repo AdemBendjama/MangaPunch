@@ -1,16 +1,16 @@
 "use client";
-import ChevronDown from "@/components/icons/chevron-down";
-import { Recommendations } from "@/lib/types";
-import RecommendedProvider from "./recommended-provider";
 import { useState } from "react";
-import CardsRecommended from "./cards-recommended";
+import RecommendedItems from "./recommended-items";
+import ChevronDown from "@/components/icons/chevron-down";
+import { Recommendations as RecommendationsInterface } from "@/lib/types";
+import RecommendationsProvider from "@/components/recommendations-provider";
 
-function RecommendedMangaCards({
+function Recommendations({
   id,
   recommendations,
 }: {
   id: number;
-  recommendations: Recommendations;
+  recommendations: RecommendationsInterface;
 }) {
   const [isViewMore, setIsViewMore] = useState<boolean>(false);
 
@@ -34,11 +34,11 @@ function RecommendedMangaCards({
           <ChevronDown className="sm:w-[1rem] sm:h-[1rem] w-[0.75rem] h-[0.75rem] stroke-muted-foreground" />
         </div>
       </div>
-      <RecommendedProvider id={id} displayMore={isViewMore}>
-        {!isViewMore && <CardsRecommended recommendations={recommendations} />}
-      </RecommendedProvider>
+      <RecommendationsProvider id={id} displayMore={isViewMore}>
+        {!isViewMore && <RecommendedItems recommendations={recommendations} />}
+      </RecommendationsProvider>
     </div>
   );
 }
 
-export default RecommendedMangaCards;
+export default Recommendations;

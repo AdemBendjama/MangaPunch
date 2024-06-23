@@ -1,7 +1,7 @@
-import { Recommendations } from "@/lib/types";
 import CardSmall from "../card/card-small";
+import { Recommendations } from "@/lib/types";
 
-function CardsRecommended({
+function RecommendedItems({
   recommendations,
 }: {
   recommendations: Recommendations;
@@ -25,4 +25,4 @@ function CardsRecommended({
   );
 }
 
-export default CardsRecommended;
+export default RecommendedItems;

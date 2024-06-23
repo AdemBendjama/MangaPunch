@@ -1,12 +1,9 @@
 "use client";
-
-import { Recommendations } from "@/lib/types";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import CardsRecommended from "./cards-recommended";
-import CardsRecommendedMore from "./cards-recommended-more";
+import FetchRecommendedItems from "./ui/recommendations/fetch-recommended-items";
 
-function RecommendedProvider({
+function RecommendationsProvider({
   id,
   displayMore,
   children,
@@ -37,7 +34,12 @@ function RecommendedProvider({
       {displayMore && (
         <>
           {pages.map((page) => (
-            <CardsRecommendedMore key={page} page={`${page}`} id={id} />
+            <FetchRecommendedItems
+              key={page}
+              id={id}
+              page={`${page}`}
+              perPage={18}
+            />
           ))}
           <div ref={ref}></div>
         </>
@@ -46,4 +48,4 @@ function RecommendedProvider({
   );
 }
 
-export default RecommendedProvider;
+export default RecommendationsProvider;
