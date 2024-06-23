@@ -58,11 +58,11 @@ function MangaDetailsPage() {
         genres={genres}
         chapters={chapters}
       />
-      <MangaDetailsProvider>
+      <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[10rem] sm:px-[3rem] px-[1rem]">
         <MangaSection description={description} />
         <RecommendedMangaCards id={id} recommendations={recommendations} />
         <MangaDetailsReview reviews={reviews} />
-      </MangaDetailsProvider>
+      </div>
     </div>
   );
 }
