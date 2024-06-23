@@ -12,6 +12,7 @@ function CardsRecommended({
         const manga = edge.node.mediaRecommendation;
         return (
           <CardSmall
+            key={manga.id}
             coverImage={manga.coverImage.large}
             id={manga.id}
             title={

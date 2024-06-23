@@ -72,15 +72,16 @@ function SlideCategory({
     <div className="w-full flex flex-col pt-[1rem] lg:px-[7%] px-[9.9vw] items-start lg:gap-[1rem] sm:[0.75rem] gap-[0.5rem] slider-container">
       <SlideCategoryHeader title={title} />
       <Slider {...settings} className="w-full">
-        {mangaData.map((manga, index) => (
-          <Slide
-            key={index}
-            coverImage={manga.coverImage?.large}
-            title={
-              manga.title.english ? manga.title.english : manga.title.romaji
-            }
-          />
-        ))}
+        {mangaData.length === 0 &&
+          mangaData.map((manga, index) => (
+            <Slide
+              key={index}
+              coverImage={manga.coverImage?.large}
+              title={
+                manga.title.english ? manga.title.english : manga.title.romaji
+              }
+            />
+          ))}
       </Slider>
     </div>
   );

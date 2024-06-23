@@ -164,42 +164,26 @@ export const GET_MANGA = {
 
 export const GET_MANGA_RECOMMENDATIONS = {
   name: "GET_MANGA_RECOMMENDATIONS",
-  body: `query GetMangaRecommendations($id: Int!) {
+  body: `query GetMangaRecommendations($id: Int!,$page: Int!) {
     Page(perPage: 1) {
       media(id: $id) {
-        id
-        title {
-          romaji
-          english
-        }
-        coverImage {
-          large
-        }
-        bannerImage
-        description
-        rankings {
-          rank
-          context
-        }
-        averageScore
-        staff {
+        recommendations(sort: RATING_DESC, page: $page, perPage:18 ) {
           edges {
             node {
-              name {
-                full
+              id
+              mediaRecommendation {
+                id
+                title {
+                  romaji
+                  english
+                }
+                coverImage {
+                  large
+                }
               }
             }
-            role
           }
         }
-        status
-        startDate {
-          year
-          month
-          day
-        }
-        genres
-        chapters
           
       }
     }

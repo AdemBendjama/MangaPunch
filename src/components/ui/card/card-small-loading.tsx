@@ -1,0 +1,9 @@
+function CardSmallLoading() {
+  return (
+    <div className="animate-pulse flex flex-col gap-[0.5rem] 3xl:w-[9vw] xl:w-[11vw] lg:w-[12.5vw] md:w-[16vw] xs:w-[20vw] w-[28vw]">
+      <div className="bg-gray-200 3xl:h-[14.5vw] xl:h-[17.5vw] lg:h-[20vw] md:h-[26vw] xs:h-[31vw] h-[45.5vw] rounded-[0.375rem] overflow-hidden relative"></div>
+      <span className="bg-gray-200 rounded-[0.375rem] font-semibold sm:text-sm text-xs sm:min-h-[2.5rem] min-h-[2rem] text-muted-foreground w-full overflow-hidden text-ellipsis line-clamp-2"></span>
+    </div>
+  );
+}
+export default CardSmallLoading;

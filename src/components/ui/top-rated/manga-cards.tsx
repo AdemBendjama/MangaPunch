@@ -24,25 +24,27 @@ function MangaCards({ page }: { page: string }) {
   if (error) {
     return <div className="w-full flex justify-center">{error.message}</div>;
   }
+
   return (
     <>
-      {mangaData.map((manga) => {
-        const ranking = manga.rankings.find(
-          (ranking) => ranking.context === "highest rated all time"
-        );
-        if (!ranking) return;
-        return (
-          <CardRegular
-            key={manga.id}
-            id={manga.id}
-            rank={ranking.rank}
-            title={
-              manga.title.english ? manga.title.english : manga.title.romaji
-            }
-            coverImage={manga.coverImage.large}
-          />
-        );
-      })}
+      {mangaData.length === 0 &&
+        mangaData.map((manga) => {
+          const ranking = manga.rankings.find(
+            (ranking) => ranking.context === "highest rated all time"
+          );
+          if (!ranking) return;
+          return (
+            <CardRegular
+              key={manga.id}
+              id={manga.id}
+              rank={ranking.rank}
+              title={
+                manga.title.english ? manga.title.english : manga.title.romaji
+              }
+              coverImage={manga.coverImage.large}
+            />
+          );
+        })}
     </>
   );
 }
