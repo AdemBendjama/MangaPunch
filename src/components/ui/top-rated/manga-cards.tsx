@@ -27,7 +27,7 @@ function MangaCards({ page }: { page: string }) {
 
   return (
     <>
-      {mangaData.length === 0 &&
+      {mangaData.length !== 0 &&
         mangaData.map((manga) => {
           const ranking = manga.rankings.find(
             (ranking) => ranking.context === "highest rated all time"

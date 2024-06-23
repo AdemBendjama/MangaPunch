@@ -27,7 +27,7 @@ function CardsRecommendedMore({ page, id }: { page: string; id: number }) {
 
   return (
     <>
-      {mangaData.length === 0 &&
+      {mangaData.length !== 0 &&
         mangaData[0].recommendations.edges.map((edge) => {
           const manga = edge.node.mediaRecommendation;
           return (
