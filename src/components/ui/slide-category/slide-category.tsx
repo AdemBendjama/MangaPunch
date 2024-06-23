@@ -76,6 +76,7 @@ function SlideCategory({
           mangaData.map((manga, index) => (
             <Slide
               key={index}
+              id={manga.id}
               coverImage={manga.coverImage?.large}
               title={
                 manga.title.english ? manga.title.english : manga.title.romaji
