@@ -8,7 +8,7 @@ function CardRegular({
   coverImage,
 }: {
   id: number;
-  rank?: number;
+  rank?: number | null;
   title: string;
   coverImage: string;
 }) {

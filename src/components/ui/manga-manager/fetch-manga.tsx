@@ -1,30 +1,28 @@
 "use client";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import CardRegular from "../card/card-regular";
-import { GET_HIGHEST_RATED_ALL_TIME_MANGA } from "@/lib/queries";
 import CardRegularLoading from "../card/card-regular-loading";
 
-function MangaCards({
+function FetchManga({
+  query,
   page,
   perPage,
   toggleLimitReached,
 }: {
+  query: { name: string; body: string };
   page: number;
   perPage: number;
   toggleLimitReached: () => void;
 }) {
-  const { mangaData, loading, error } = useGraphQLQuery(
-    GET_HIGHEST_RATED_ALL_TIME_MANGA,
-    {
-      page: page,
-      perPage: perPage,
-    }
-  );
+  const { mangaData, loading, error } = useGraphQLQuery(query, {
+    page: page,
+    perPage: perPage,
+  });
 
   if (loading) {
     return (
       <>
-        {Array.from({ length: 15 }).map((_, index) => (
+        {Array.from({ length: perPage }).map((_, index) => (
           <CardRegularLoading key={index} />
         ))}
       </>
@@ -34,20 +32,25 @@ function MangaCards({
     toggleLimitReached();
     return <div className="w-full flex justify-center">{error.message}</div>;
   }
+  const requiresRank = query.name === "GET_HIGHEST_RATED_ALL_TIME_MANGA";
 
   return (
     <>
       {mangaData.map((manga) => {
-        const ranking = manga.rankings.find(
-          (ranking) => ranking.context === "highest rated all time"
-        );
-        if (!ranking) return;
-        if (ranking.rank === 500) toggleLimitReached();
+        let rank = null;
+        if (requiresRank) {
+          const ranking = manga.rankings.find(
+            (ranking) => ranking.context === "highest rated all time"
+          );
+          if (!ranking) return;
+          rank = ranking.rank;
+          if (rank === 500) toggleLimitReached();
+        }
         return (
           <CardRegular
             key={manga.id}
             id={manga.id}
-            rank={ranking.rank}
+            rank={rank}
             title={
               manga.title.english ? manga.title.english : manga.title.romaji
             }
@@ -59,4 +62,4 @@ function MangaCards({
   );
 }
 
-export default MangaCards;
+export default FetchManga;
