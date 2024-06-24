@@ -58,11 +58,13 @@ function MangaDetailsPage() {
         genres={genres}
         chapters={chapters}
       />
-      <div className="flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:px-[10rem] sm:px-[3rem] px-[1rem]">
-        <Description description={description} />
-        <Recommendations id={id} recommendations={recommendations} />
-        <WriteReview />
-        <Reviews reviews={reviews} />
+      <div className="bg-background">
+        <div className="flex flex-col gap-[1rem] lg:mx-auto lg:w-[63rem] pt-[1rem] pb-[10rem] lg:px-[0] sm:px-[3rem] px-[1rem]">
+          <Description description={description} />
+          <Recommendations id={id} recommendations={recommendations} />
+          <WriteReview />
+          <Reviews reviews={reviews} />
+        </div>
       </div>
     </div>
   );

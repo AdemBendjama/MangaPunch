@@ -23,7 +23,7 @@ function SlideContent({
           {title}
         </div>
         <div className="sm:block hidden">
-          <span className="sm:text-[1rem] overflow-hidden text-ellipsis 3xl:line-clamp-[7] lg:line-clamp-5 line-clamp-4">
+          <span className="sm:text-[1rem] overflow-hidden text-ellipsis lg:line-clamp-5 line-clamp-4">
             {description}
           </span>
         </div>

@@ -30,7 +30,7 @@ function MangaMetaData({
   chapters: number | null;
 }) {
   return (
-    <div className="sm:h-[19rem] bg-background-secondary lg:px-[10rem] md:[3rem] sm:px-[1rem] px-[1rem] relative">
+    <div className="sm:h-[19rem] bg-background-secondary lg:mx-auto lg:w-[63rem] lg:px-[0] md:px-[3rem] sm:px-[1rem] px-[1rem] relative">
       {/* cover + actions */}
       <div className="sm:w-auto w-[90vw] flex sm:flex-col sm:items-start sm:justify-normal sm:gap-[0.875rem] flex-row items-end justify-between gap-[0.625rem] absolute lg:top-[-60%] sm:top-[-40%] top-[-95px]">
         <div className="xl:min-w-[14.375rem] xl:min-h-[22.5rem] lg:min-w-[11rem] lg:min-h-[18rem] sm:min-w-[9.5rem] sm:min-h-[15.5rem] min-w-[7.2rem] min-h-[11.5rem] relative">
@@ -71,7 +71,7 @@ function MangaMetaData({
         </div>
       </div>
       {/* content */}
-      <div className="3xl:ml-[14vw] 2xl:ml-[18vw] lg:ml-[20vw] md:ml-[22vw] sm:ml-[25vw] h-full gap-[0.5rem] sm:pt-[0.5rem] pt-[100px] sm:py-[0.5rem] py-[1rem]">
+      <div className="lg:ml-[25%] md:ml-[22vw] sm:ml-[25vw] h-full gap-[0.5rem] sm:pt-[0.5rem] pt-[100px] sm:py-[0.5rem] py-[1rem]">
         {/* title */}
         <div className="flex justify-between items-start py-[0.5rem] 2xl:gap-[1rem] gap-[0.5rem]">
           <span className="font-semibold text-lg sm:line-clamp-2">{title}</span>

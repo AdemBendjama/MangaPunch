@@ -32,8 +32,8 @@ function CardSmall({
   };
 
   return (
-    <div className="flex flex-col gap-[0.5rem] 3xl:w-[9vw] xl:w-[11vw] lg:w-[12.5vw] md:w-[16vw] xs:w-[20vw] w-[28vw]">
-      <div className="3xl:h-[14.5vw] xl:h-[17.5vw] lg:h-[20vw] md:h-[26vw] xs:h-[31vw] h-[45.5vw] rounded-[0.375rem] overflow-hidden relative">
+    <div className="flex flex-col gap-[0.5rem] lg:w-[150px] md:w-[16vw] xs:w-[20vw] w-[28vw]">
+      <div className="lg:h-[240px] md:h-[26vw] xs:h-[31vw] h-[45.5vw] rounded-[0.375rem] overflow-hidden relative">
         <Image
           src={coverImage}
           alt="cover image"
