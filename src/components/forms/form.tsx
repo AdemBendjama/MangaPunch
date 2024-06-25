@@ -15,8 +15,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { usePathname } from "next/navigation";
+import { useToast } from "../ui/use-toast";
 
 export function InputForm({
   type,
@@ -41,6 +41,7 @@ export function InputForm({
     old_password?: string;
   };
 }) {
+  const { toast } = useToast();
   const pathname = usePathname();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -84,6 +85,11 @@ export function InputForm({
                         {...field}
                         type={fieldType}
                         className={inputClassname}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            form.handleSubmit(onSubmit)();
+                          }
+                        }}
                       />
                     </FormControl>
                     <FormDescription>{description}</FormDescription>
