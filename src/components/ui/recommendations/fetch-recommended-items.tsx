@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import RecommendedItems from "./recommended-items";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import { GET_MANGA_RECOMMENDATIONS } from "@/lib/queries";

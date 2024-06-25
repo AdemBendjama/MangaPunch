@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./select-slider.css";
+import MangaManager from "@/components/ui/manga-manager/manga-manager";
+import { GET_TRENDING_MANGA } from "@/lib/queries";
 
 const genreItems = [
   "Action",
@@ -130,11 +132,11 @@ function SearchPage() {
           </div>
         </div>
         <div className="grid lg:grid-cols-[repeat(5,_176px)] sm:grid-cols-[repeat(5,_18vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
-          <CardLarge />
-          <CardLarge />
-          <CardLarge />
-          <CardLarge />
-          <CardLarge />
+          <MangaManager
+            query={GET_TRENDING_MANGA}
+            perPage={5}
+            cardType="large"
+          />
         </div>
       </div>
     </div>

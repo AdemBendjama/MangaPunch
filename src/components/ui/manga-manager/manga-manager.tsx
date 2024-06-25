@@ -6,9 +6,13 @@ import FetchManga from "./fetch-manga";
 function MangaManager({
   query,
   perPage,
+  cardType,
+  infiniteScroll,
 }: {
   query: { name: string; body: string };
   perPage: number;
+  cardType: "large" | "regular" | "small";
+  infiniteScroll?: boolean;
 }) {
   const { ref, inView } = useInView();
   const [page, setPage] = useState<number>(1);
@@ -39,11 +43,12 @@ function MangaManager({
           page={page}
           perPage={perPage}
           query={query}
+          cardType={cardType}
           toggleLimitReached={handleLimitReached}
         />
       ))}
 
-      {!hasReachedLimit && <div ref={ref} />}
+      {!hasReachedLimit && infiniteScroll && <div ref={ref} />}
     </>
   );
 }

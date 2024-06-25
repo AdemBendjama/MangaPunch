@@ -8,7 +8,12 @@ function TopRatedPage() {
         Most Popular Manga of All Time
       </div>
       <div className="grid lg:grid-cols-[repeat(5,_176px)] md:grid-cols-[repeat(5,_16vw)] grid-cols-[repeat(3,_28vw)] gap-y-[1.25rem] pb-[1.25rem] justify-between items-stretch">
-        <MangaManager perPage={50} query={GET_HIGHEST_RATED_ALL_TIME_MANGA} />
+        <MangaManager
+          perPage={50}
+          query={GET_HIGHEST_RATED_ALL_TIME_MANGA}
+          cardType="regular"
+          infiniteScroll
+        />
       </div>
     </div>
   );

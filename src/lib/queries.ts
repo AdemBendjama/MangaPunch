@@ -1,8 +1,8 @@
 export const GET_TRENDING_MANGA = {
   name: "GET_TRENDING_MANGA",
   body: `
-    {
-      Page(perPage: 10) {
+    query GetTrendingManga($perPage: Int!){
+      Page(perPage: $perPage) {
         media(
           sort: TRENDING_DESC
           popularity_greater:10000
@@ -27,8 +27,8 @@ export const GET_TRENDING_MANGA = {
 export const GET_SHOUNEN_MANGA = {
   name: "GET_SHOUNEN_MANGA",
   body: `
-    {
-      Page(perPage: 10) {
+    query GetShounenManga($perPage: Int!){
+      Page(perPage: $perPage) {
         media(
           sort: TRENDING_DESC
           popularity_greater:10000
@@ -54,8 +54,8 @@ export const GET_SHOUNEN_MANGA = {
 export const GET_SEINEN_MANGA = {
   name: "GET_SEINEN_MANGA",
   body: `
-    {
-      Page(perPage: 10) {
+    query GetSeinenManga($perPage: Int!){
+      Page(perPage: $perPage) {
         media(
           sort: TRENDING_DESC
           popularity_greater:10000

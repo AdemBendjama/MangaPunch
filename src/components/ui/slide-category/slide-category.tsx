@@ -44,11 +44,15 @@ var settings = {
 function SlideCategory({
   title,
   query,
+  perPage,
 }: {
   title: string;
   query: { name: string; body: string };
+  perPage: number;
 }) {
-  const { mangaData, loading, error } = useGraphQLQuery(query);
+  const { mangaData, loading, error } = useGraphQLQuery(query, {
+    perPage: perPage,
+  });
 
   if (loading) {
     const slides = [];
