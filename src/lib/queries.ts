@@ -204,3 +204,22 @@ export const GET_MANGA_RECOMMENDATIONS = {
     }
   }`,
 };
+
+export const GET_MANGA_SEARCH = {
+  name: "GET_MANGA_SEARCH",
+  body: `query GetMangaSearch($search: String!) {
+    Page(perPage: 10) {
+      media(search: $search, type: MANGA ,isAdult: false, genre_not_in: "Ecchi") {
+        id
+        title {
+          romaji
+          english
+        }
+        coverImage {
+          large
+        }
+
+      }
+    }
+  }`,
+};

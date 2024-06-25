@@ -17,6 +17,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { usePathname } from "next/navigation";
 import { useToast } from "../ui/use-toast";
+import { getSearch } from "@/actions/getSearch";
+import { error } from "console";
 
 export function InputForm({
   type,
@@ -48,15 +50,31 @@ export function InputForm({
     defaultValues: defaultValues,
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+  async function onSubmit(formData: z.infer<typeof FormSchema>) {
+    if (formData["search"]) {
+      const { data, errors } = await getSearch(formData.search);
+      if (errors) {
+        errors.forEach((error) => {
+          console.log(error.message);
+        });
+      }
+
+      const results = data
+        ?.map((manga) =>
+          manga.title.english ? manga.title.english : manga.title.romaji
+        )
+        .join("\n");
+      toast({
+        title: "You submitted the following values:",
+        description: (
+          <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+            <code className="text-white">
+              {results ? results : "None Found"}
+            </code>
+          </pre>
+        ),
+      });
+    }
   }
 
   return (
