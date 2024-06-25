@@ -24,19 +24,19 @@ export function ChangePasswordForm() {
       name: "old_password",
       label: "Old Password",
       description: "Enter your old password",
-      type: "password",
+      fieldType: "password",
     },
     {
       name: "new_password",
       label: "New Password",
       description: "Enter your new password",
-      type: "password",
+      fieldType: "password",
     },
     {
       name: "confirm_password",
       label: "Confirm Password",
       description: "Re-Enter your new password",
-      type: "password",
+      fieldType: "password",
     },
   ];
   return (

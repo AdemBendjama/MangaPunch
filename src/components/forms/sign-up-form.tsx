@@ -24,24 +24,24 @@ export function SignUpForm() {
     {
       name: "email",
       label: "Email",
-      type: "email",
+      fieldType: "email",
       placeholder: "example@gmail.com",
     },
     {
       name: "username",
       label: "Username",
-      type: "text",
+      fieldType: "text",
       placeholder: "Jhon Doe",
     },
     {
       name: "password",
       label: "Password",
-      type: "password",
+      fieldType: "password",
     },
     {
       name: "confirm_password",
       label: "Confirm Password",
-      type: "password",
+      fieldType: "password",
     },
   ];
   return (

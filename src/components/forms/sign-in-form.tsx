@@ -13,13 +13,13 @@ export function SignInForm() {
     {
       name: "email",
       label: "Email",
-      type: "email",
+      fieldType: "email",
       placeholder: "example@gmail.com",
     },
     {
       name: "password",
       label: "Password",
-      type: "password",
+      fieldType: "password",
     },
   ];
   return (

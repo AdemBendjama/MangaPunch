@@ -25,15 +25,16 @@ export function InputForm({
   buttonLabel,
   formFields,
 }: {
-  type: "auth" | "profile";
+  type: "auth" | "profile" | "search";
   FormSchema: z.ZodObject<any, any> | z.ZodEffects<z.ZodObject<any, any, any>>;
-  buttonLabel: string;
+  buttonLabel?: string;
   formFields: {
     name: string;
-    label: string;
+    fieldType: string;
+    label?: string;
     description?: string;
     placeholder?: string;
-    type: string;
+    inputClassname?: string;
   }[];
   defaultValues?: {
     username?: string;
@@ -60,25 +61,39 @@ export function InputForm({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
-        {formFields.map(({ name, label, description, placeholder, type }) => {
-          return (
-            <FormField
-              key={name}
-              control={form.control}
-              name={name}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{label}</FormLabel>
-                  <FormControl>
-                    <Input placeholder={placeholder} {...field} type={type} />
-                  </FormControl>
-                  <FormDescription>{description}</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          );
-        })}
+        {formFields.map(
+          ({
+            name,
+            label,
+            description,
+            placeholder,
+            fieldType,
+            inputClassname,
+          }) => {
+            return (
+              <FormField
+                key={name}
+                control={form.control}
+                name={name}
+                render={({ field }) => (
+                  <FormItem className={type === "search" ? "space-y-0" : ""}>
+                    <FormLabel>{label}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={placeholder}
+                        {...field}
+                        type={fieldType}
+                        className={inputClassname}
+                      />
+                    </FormControl>
+                    <FormDescription>{description}</FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            );
+          }
+        )}
         {type === "auth" && (
           <div className="w-full pb-[1rem]">
             {pathname === "/auth/signin" && (

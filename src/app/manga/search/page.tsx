@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import "./select-slider.css";
 import MangaManager from "@/components/ui/manga-manager/manga-manager";
 import { GET_TRENDING_MANGA } from "@/lib/queries";
+import { SearchForm } from "@/components/forms/search-form";
 
 const genreItems = [
   "Action",
@@ -75,11 +76,7 @@ function SearchPage() {
             <SearchIcon className="w-[1rem] h-[1rem] stroke-[3px]" />
           </div>
           <div className="overflow-hidden sm:w-auto w-full">
-            <Input
-              className="flex justify-start items-center
-            sm:w-[29rem] w-full h-[3rem] p-[0.5rem] rounded-none border-0 
-            bg-background-secondary dark:bg-background text-black dark:text-foreground"
-            />
+            <SearchForm />
           </div>
         </div>
       </div>
