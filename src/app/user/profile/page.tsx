@@ -12,7 +12,7 @@ function Profile() {
         <ProfileBackgroundImage />
         <ProfileImage />
       </div>
-      <div className="flex sm:flex-row flex-col justify-evenly gap-[2rem] lg:mx-auto lg:w-[63rem] lg:px-[0] sm:px-[2rem] px-[1rem] lg:pb-[10rem] sm:pb-[6rem] pb-[3rem] pt-[2rem] bg-card dark:bg-background-secondary">
+      <div className="flex sm:flex-row flex-col justify-evenly gap-[2rem] lg:mx-auto lg:w-[63rem] lg:px-[0] sm:px-[2rem] px-[1rem] lg:pb-[10rem] sm:pb-[6rem] pb-[3rem] pt-[2rem] dark:bg-background-secondary">
         <div className="sm:w-[24rem]">
           <div className="font-semibold text-2xl my-[0.5rem]">Account</div>
           <div className="flex flex-row gap-[0.5rem]">
