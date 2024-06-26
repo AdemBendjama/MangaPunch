@@ -46,7 +46,7 @@ export function InputForm({
     old_password?: string;
   };
   setSearchData?: Dispatch<SetStateAction<Manga[] | null>>;
-  setLoading: Dispatch<SetStateAction<boolean>>;
+  setLoading?: Dispatch<SetStateAction<boolean>>;
 }) {
   const { toast } = useToast();
   const pathname = usePathname();
@@ -56,7 +56,7 @@ export function InputForm({
   });
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
-    if (formData["search"] && setSearchData) {
+    if (formData["search"] && setSearchData && setLoading) {
       setLoading(true);
       const { data, errors } = await getSearch(formData.search);
       setLoading(false);
