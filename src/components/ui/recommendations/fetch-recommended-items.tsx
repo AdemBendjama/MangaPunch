@@ -2,6 +2,7 @@ import RecommendedItems from "./recommended-items";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import { GET_MANGA_RECOMMENDATIONS } from "@/lib/queries";
 import CardSmallLoading from "../card/card-small-loading";
+import MangaLoading from "../manga-manager/manga-loading";
 
 function FetchRecommendedItems({
   id,
@@ -24,13 +25,7 @@ function FetchRecommendedItems({
   );
 
   if (loading) {
-    return (
-      <>
-        {Array.from({ length: 18 }).map((_, index) => (
-          <CardSmallLoading key={index} />
-        ))}
-      </>
-    );
+    return <MangaLoading perPage={18} cardType="small" />;
   }
   if (error) {
     toggleLimitReached();

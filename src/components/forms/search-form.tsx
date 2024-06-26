@@ -1,11 +1,19 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
+import { Manga } from "@/lib/types";
 import { InputForm } from "./form";
 import { z } from "zod";
 const FormSchema = z.object({
   search: z.string(),
 });
 
-export function SearchForm() {
+export function SearchForm({
+  setSearchData,
+  setLoading,
+}: {
+  setSearchData: Dispatch<SetStateAction<Manga[] | null>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+}) {
   const formFields = [
     {
       name: "search",
@@ -16,6 +24,12 @@ export function SearchForm() {
     },
   ];
   return (
-    <InputForm type="search" FormSchema={FormSchema} formFields={formFields} />
+    <InputForm
+      type="search"
+      FormSchema={FormSchema}
+      formFields={formFields}
+      setSearchData={setSearchData}
+      setLoading={setLoading}
+    />
   );
 }

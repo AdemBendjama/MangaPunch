@@ -18,7 +18,8 @@ import { Input } from "@/components/ui/input";
 import { usePathname } from "next/navigation";
 import { useToast } from "../ui/use-toast";
 import { getSearch } from "@/actions/getSearch";
-import { error } from "console";
+import { Dispatch, SetStateAction } from "react";
+import { Manga } from "@/lib/types";
 
 export function InputForm({
   type,
@@ -26,6 +27,8 @@ export function InputForm({
   FormSchema,
   buttonLabel,
   formFields,
+  setSearchData,
+  setLoading,
 }: {
   type: "auth" | "profile" | "search";
   FormSchema: z.ZodObject<any, any> | z.ZodEffects<z.ZodObject<any, any, any>>;
@@ -42,6 +45,8 @@ export function InputForm({
     username?: string;
     old_password?: string;
   };
+  setSearchData?: Dispatch<SetStateAction<Manga[] | null>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }) {
   const { toast } = useToast();
   const pathname = usePathname();
@@ -51,29 +56,18 @@ export function InputForm({
   });
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
-    if (formData["search"]) {
+    if (formData["search"] && setSearchData) {
+      setLoading(true);
       const { data, errors } = await getSearch(formData.search);
+      setLoading(false);
       if (errors) {
         errors.forEach((error) => {
           console.log(error.message);
         });
       }
-
-      const results = data
-        ?.map((manga) =>
-          manga.title.english ? manga.title.english : manga.title.romaji
-        )
-        .join("\n");
-      toast({
-        title: "You submitted the following values:",
-        description: (
-          <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
-            <code className="text-white">
-              {results ? results : "None Found"}
-            </code>
-          </pre>
-        ),
-      });
+      if (data) {
+        setSearchData(data);
+      }
     }
   }
 
@@ -111,7 +105,7 @@ export function InputForm({
                       />
                     </FormControl>
                     <FormDescription>{description}</FormDescription>
-                    <FormMessage />
+                    {type !== "search" && <FormMessage />}
                   </FormItem>
                 )}
               />

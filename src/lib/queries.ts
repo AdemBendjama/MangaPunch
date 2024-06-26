@@ -208,7 +208,7 @@ export const GET_MANGA_RECOMMENDATIONS = {
 export const GET_MANGA_SEARCH = {
   name: "GET_MANGA_SEARCH",
   body: `query GetMangaSearch($search: String!) {
-    Page(perPage: 10) {
+    Page(perPage: 50) {
       media(search: $search, type: MANGA ,isAdult: false, genre_not_in: "Ecchi") {
         id
         title {
