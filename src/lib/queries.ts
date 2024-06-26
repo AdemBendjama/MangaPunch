@@ -209,7 +209,7 @@ export const GET_MANGA_SEARCH = {
   name: "GET_MANGA_SEARCH",
   body: `query GetMangaSearch($search: String!) {
     Page(perPage: 50) {
-      media(search: $search, type: MANGA ,isAdult: false, genre_not_in: "Ecchi") {
+      media(search: $search, type: MANGA, isAdult: false) {
         id
         title {
           romaji
