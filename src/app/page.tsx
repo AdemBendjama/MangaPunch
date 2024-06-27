@@ -5,19 +5,30 @@ import {
   GET_SHOUNEN_MANGA,
   GET_TRENDING_MANGA,
 } from "@/lib/queries";
+import { Suspense } from "react";
 
 function Home() {
   return (
     <>
       <SlideShow />
       <div className="flex flex-col lg:gap-[1rem] xl:pt-[3rem] lg:pt-[2rem] sm:pt-[rem] pt-[0.5rem] lg:pb-[10rem] pb-[3rem] ">
-        <SlideCategory
-          title="Trending"
-          query={GET_TRENDING_MANGA}
-          perPage={10}
-        />
-        <SlideCategory title="Shounen" query={GET_SHOUNEN_MANGA} perPage={10} />
-        <SlideCategory title="Seinen" query={GET_SEINEN_MANGA} perPage={10} />
+        <Suspense>
+          <SlideCategory
+            title="Trending"
+            query={GET_TRENDING_MANGA}
+            perPage={10}
+          />
+        </Suspense>
+        <Suspense>
+          <SlideCategory
+            title="Shounen"
+            query={GET_SHOUNEN_MANGA}
+            perPage={10}
+          />
+        </Suspense>
+        <Suspense>
+          <SlideCategory title="Seinen" query={GET_SEINEN_MANGA} perPage={10} />
+        </Suspense>
       </div>
     </>
   );

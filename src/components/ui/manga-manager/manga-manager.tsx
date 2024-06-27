@@ -1,6 +1,6 @@
 "use client";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import FetchManga from "./fetch-manga";
 
 function MangaManager({
@@ -38,14 +38,15 @@ function MangaManager({
   return (
     <>
       {pages.map((page) => (
-        <FetchManga
-          key={page}
-          page={page}
-          perPage={perPage}
-          query={query}
-          cardType={cardType}
-          toggleLimitReached={handleLimitReached}
-        />
+        <Suspense key={page}>
+          <FetchManga
+            page={page}
+            perPage={perPage}
+            query={query}
+            cardType={cardType}
+            toggleLimitReached={handleLimitReached}
+          />
+        </Suspense>
       ))}
 
       {!hasReachedLimit && infiniteScroll && <div ref={ref} />}
