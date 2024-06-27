@@ -32,12 +32,13 @@ function CardSmall({
   };
 
   return (
-    <div className="flex flex-col gap-[0.5rem] lg:w-[150px] md:w-[16vw] xs:w-[20vw] w-[28vw]">
+    <div className="flex flex-col gap-[0.5rem]">
       <div className="lg:h-[240px] md:h-[26vw] xs:h-[31vw] h-[45.5vw] rounded-[0.375rem] overflow-hidden relative">
         <Image
           src={coverImage}
           alt="cover image"
           fill={true}
+          sizes="(min-width: 1024px) 150px, (min-width: 768px) 16vw,(min-width: 480px) 20vw, 28vw"
           className="object-cover lg:z-auto z-10 cursor-pointer"
           onClick={() => router.push(`/manga/${id}`)}
         />

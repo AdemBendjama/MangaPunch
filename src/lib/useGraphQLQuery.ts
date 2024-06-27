@@ -4,7 +4,8 @@ import { useSearchParams } from "next/navigation";
 
 function useGraphQLQuery(
   query: { name: string; body: string },
-  variables?: { [key: string]: string | number }
+  variables?: { [key: string]: string | number },
+  shouldntFetch?: boolean
 ) {
   const [mangaData, setMangaData] = useState<Manga[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -17,6 +18,9 @@ function useGraphQLQuery(
     : "";
 
   useEffect(() => {
+    if (shouldntFetch) {
+      return;
+    }
     setLoading(true);
     const cachedData = localStorage.getItem(`${query.name}${varParams}`);
     const cachedTimestamp = localStorage.getItem(
@@ -64,8 +68,6 @@ function useGraphQLQuery(
 
     fetchData()
       .then((data) => {
-        setMangaData(data.Page.media);
-        setLoading(false);
         localStorage.setItem(
           `${query.name}${varParams}`,
           JSON.stringify(data.Page.media)
@@ -74,6 +76,8 @@ function useGraphQLQuery(
           `${query.name}${varParams}_timestamp`,
           String(new Date().getTime())
         );
+        setMangaData(data.Page.media);
+        setLoading(false);
       })
       .catch((error) => {
         if (error instanceof Error) {

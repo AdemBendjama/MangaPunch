@@ -13,7 +13,7 @@ function CardRegular({
   coverImage: string;
 }) {
   return (
-    <div className="flex flex-col gap-[0.5rem] lg:w-[176px] md:w-[16vw] w-[28vw] relative">
+    <div className="flex flex-col gap-[0.5rem] relative">
       {rank && (
         <div className="flex absolute z-10 top-[-10px] left-[-10px] justify-center items-center text-white sm:text-base text-sm font-bold sm:pt-[0.125rem] sm:w-[2.75rem] sm:h-[2.75rem] w-[2.25rem] h-[2.25rem] rounded-[50%] bg-primary">
           #{rank}
@@ -25,6 +25,7 @@ function CardRegular({
             src={coverImage}
             alt="cover image"
             fill={true}
+            sizes="(min-width: 1024px) 176px, (min-width: 768px) 16vw, 28vw"
             className="object-cover"
           />
         </div>

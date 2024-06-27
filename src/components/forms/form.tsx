@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,11 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { usePathname } from "next/navigation";
-import { useToast } from "../ui/use-toast";
-import { getSearch } from "@/actions/getSearch";
-import { Dispatch, SetStateAction } from "react";
-import { Manga } from "@/lib/types";
+import { usePathname, useRouter } from "next/navigation";
 
 export function InputForm({
   type,
@@ -27,8 +22,6 @@ export function InputForm({
   FormSchema,
   buttonLabel,
   formFields,
-  setSearchData,
-  setLoading,
 }: {
   type: "auth" | "profile" | "search";
   FormSchema: z.ZodObject<any, any> | z.ZodEffects<z.ZodObject<any, any, any>>;
@@ -44,30 +37,28 @@ export function InputForm({
   defaultValues?: {
     username?: string;
     old_password?: string;
+    search?: string;
   };
-  setSearchData?: Dispatch<SetStateAction<Manga[] | null>>;
-  setLoading?: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { toast } = useToast();
   const pathname = usePathname();
+  const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: defaultValues,
   });
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
-    if (formData["search"] && setSearchData && setLoading) {
-      setLoading(true);
-      const { data, errors } = await getSearch(formData.search);
-      setLoading(false);
-      if (errors) {
-        errors.forEach((error) => {
-          console.log(error.message);
-        });
-      }
-      if (data) {
-        setSearchData(data);
-      }
+    if (formData["search"]) {
+      const query = { search: formData.search };
+      const url = {
+        pathname: pathname,
+        query,
+      };
+
+      const newUrl = `${url.pathname}?${new URLSearchParams(
+        url.query
+      ).toString()}`;
+      router.push(newUrl);
     }
   }
 

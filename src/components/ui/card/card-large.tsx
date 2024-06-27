@@ -12,13 +12,14 @@ function CardLarge({
   coverImage: string;
 }) {
   return (
-    <div className="flex flex-col gap-[0.5rem] lg:w-[176px] sm:w-[18vw] w-[28vw]">
+    <div className="flex flex-col gap-[0.5rem] lg:w-[176px]">
       <Link href={`/manga/${id}`}>
         <div className="w-full lg:h-[276px] sm:h-[28vw] h-[45.5vw] rounded-[0.375rem] relative overflow-hidden">
           <Image
             src={coverImage}
             alt="cover image of manga title"
             fill={true}
+            sizes="(min-width: 640px) 18vw, 28vw"
             className="object-cover"
           />
         </div>

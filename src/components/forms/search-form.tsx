@@ -3,17 +3,12 @@ import { Dispatch, SetStateAction } from "react";
 import { Manga } from "@/lib/types";
 import { InputForm } from "./form";
 import { z } from "zod";
+import { genreItems } from "@/lib/filter-data";
 const FormSchema = z.object({
   search: z.string(),
 });
 
-export function SearchForm({
-  setSearchData,
-  setLoading,
-}: {
-  setSearchData: Dispatch<SetStateAction<Manga[] | null>>;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-}) {
+export function SearchForm() {
   const formFields = [
     {
       name: "search",
@@ -26,10 +21,9 @@ export function SearchForm({
   return (
     <InputForm
       type="search"
+      defaultValues={{ search: "" }}
       FormSchema={FormSchema}
       formFields={formFields}
-      setSearchData={setSearchData}
-      setLoading={setLoading}
     />
   );
 }

@@ -7,56 +7,19 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./select-slider.css";
 import MangaManager from "@/components/ui/manga-manager/manga-manager";
-import { GET_TRENDING_MANGA } from "@/lib/queries";
+import { GET_MANGA_SEARCH, GET_TRENDING_MANGA } from "@/lib/queries";
 import { SearchForm } from "@/components/forms/search-form";
-import { useState } from "react";
-import { Manga } from "@/lib/types";
 import RenderManga from "@/components/ui/manga-manager/render-manga";
 import MangaLoading from "@/components/ui/manga-manager/manga-loading";
-
-const genreItems = [
-  "Action",
-  "Adventure",
-  "Comedy",
-  "Drama",
-  "Fantasy",
-  "Horror",
-  "Mystery",
-  "Romance",
-  "Sci-Fi",
-  "Slice of Life",
-  "Sports",
-  "Thriller",
-];
-
-const formatItems = [
-  "Tankobon",
-  "Webtoon",
-  "Light Novel",
-  "One-shot",
-  "Doujinshi",
-];
-
-const yearItems = [
-  "2024",
-  "2023",
-  "2022",
-  "2021",
-  "2020",
-  "2019",
-  "2018",
-  "2017",
-  "2016",
-  "2015",
-  "2010-2014",
-  "2000-2009",
-  "1990-1999",
-  "1980-1989",
-];
-
-const publishingStatusItems = ["Ongoing", "Completed", "Hiatus", "Cancelled"];
-
-const countryItems = ["Japan", "South Korea", "China"];
+import { useSearchParams } from "next/navigation";
+import useGraphQLQuery from "@/lib/useGraphQLQuery";
+import {
+  countryItems,
+  formatItems,
+  genreItems,
+  publishingStatusItems,
+  yearItems,
+} from "@/lib/filter-data";
 
 var settings = {
   infinite: false,
@@ -65,9 +28,18 @@ var settings = {
   slidesToScroll: 1,
   arrows: false,
 };
+
 function SearchPage() {
-  const [searchData, setSearchData] = useState<Manga[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search");
+
+  const { mangaData, error, loading } = useGraphQLQuery(
+    GET_MANGA_SEARCH,
+    {
+      search: searchQuery?.toString() || "",
+    },
+    searchQuery === null
+  );
 
   return (
     <div className="lg:mx-auto lg:w-[63rem] lg:px-[0rem] sm:px-[1rem] pb-[10rem]">
@@ -81,7 +53,7 @@ function SearchPage() {
             <SearchIcon className="w-[1rem] h-[1rem] stroke-[3px]" />
           </div>
           <div className="overflow-hidden sm:w-auto w-full">
-            <SearchForm setSearchData={setSearchData} setLoading={setLoading} />
+            <SearchForm />
           </div>
         </div>
       </div>
@@ -118,7 +90,7 @@ function SearchPage() {
         </Slider>
       </div>
       <div className="sm:px-0 px-[1rem]">
-        {!searchData && !loading && (
+        {!searchQuery && !loading && (
           <div className="flex flex-col justify-center gap-[1rem]">
             <div className="flex justify-between text-foreground">
               <div className="flex justify-end items-center lg:text-2xl sm:text-xl text-base font-bold h-full">
@@ -149,11 +121,14 @@ function SearchPage() {
             <MangaLoading perPage={10} cardType="large" />
           </div>
         )}
-        {searchData &&
+        {error && <div>{error.message}</div>}
+
+        {mangaData &&
+          searchQuery &&
           !loading &&
-          (searchData.length !== 0 ? (
+          (mangaData.length !== 0 ? (
             <div className="grid lg:grid-cols-[repeat(5,_176px)] sm:grid-cols-[repeat(5,_18vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
-              <RenderManga mangaData={searchData} cardType="large" />
+              <RenderManga mangaData={mangaData} cardType="large" />
             </div>
           ) : (
             <h1 className="w-full flex justify-center my-[1rem]">
