@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Manga } from "./types";
+import { useSearchParams } from "next/navigation";
 
 function useGraphQLQuery(
   query: { name: string; body: string },
   variables?: { [key: string]: string | number }
 ) {
   const [mangaData, setMangaData] = useState<Manga[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const searchParams = useSearchParams();
   const varParams = variables
     ? `_${new URLSearchParams(
         Object.entries(variables).map(([key, value]) => [key, value.toString()])
@@ -15,6 +17,7 @@ function useGraphQLQuery(
     : "";
 
   useEffect(() => {
+    setLoading(true);
     const cachedData = localStorage.getItem(`${query.name}${varParams}`);
     const cachedTimestamp = localStorage.getItem(
       `${query.name}${varParams}_timestamp`
@@ -80,7 +83,7 @@ function useGraphQLQuery(
         }
         setLoading(false);
       });
-  }, []);
+  }, [searchParams]);
 
   return { mangaData, loading, error };
 }
