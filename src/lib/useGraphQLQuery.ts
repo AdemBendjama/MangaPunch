@@ -8,7 +8,7 @@ function useGraphQLQuery(
   shouldntFetch?: boolean
 ) {
   const [mangaData, setMangaData] = useState<Manga[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const searchParams = useSearchParams();
   const varParams = variables
@@ -19,6 +19,7 @@ function useGraphQLQuery(
 
   useEffect(() => {
     if (shouldntFetch) {
+      setLoading(false);
       return;
     }
     setLoading(true);
