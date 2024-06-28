@@ -37,7 +37,6 @@ export function InputForm({
   defaultValues?: {
     username?: string;
     old_password?: string;
-    search?: string;
   };
 }) {
   const pathname = usePathname();
@@ -45,17 +44,19 @@ export function InputForm({
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: defaultValues,
+    defaultValues: { ...defaultValues, search: "" },
   });
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
-    if (formData["search"]) {
-      const currentParams = new URLSearchParams(searchParams.toString());
+    const currentParams = new URLSearchParams(searchParams.toString());
+    if (formData.search !== "") {
       currentParams.set("search", formData.search);
-      const newUrl = `${pathname}?${currentParams.toString()}`;
-
-      router.push(newUrl);
+    } else {
+      currentParams.delete("search");
     }
+    const newUrl = `${pathname}?${currentParams.toString()}`;
+
+    router.push(newUrl);
   }
 
   return (

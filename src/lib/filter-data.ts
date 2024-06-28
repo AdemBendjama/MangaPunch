@@ -7,7 +7,6 @@ export const genreItems: FilterItem[] = [
   { label: "Drama", value: "Drama" },
   { label: "Ecchi", value: "Ecchi" },
   { label: "Fantasy", value: "Fantasy" },
-  { label: "Hentai", value: "Hentai" },
   { label: "Horror", value: "Horror" },
   { label: "Mahou Shoujo", value: "Mahou Shoujo" },
   { label: "Mecha", value: "Mecha" },

@@ -20,7 +20,6 @@ export function SearchForm() {
     <Suspense>
       <InputForm
         type="search"
-        defaultValues={{ search: "" }}
         FormSchema={FormSchema}
         formFields={formFields}
       />

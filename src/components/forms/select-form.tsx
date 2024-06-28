@@ -25,6 +25,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./select-slider.css";
 import Slider from "react-slick";
+import { useEffect, useState } from "react";
 
 const formSelectFields: FormSelectFields[] = [
   {
@@ -75,7 +76,13 @@ export function SelectForm() {
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: { genre: "", format: "", year: "", status: "", country: "" },
+    defaultValues: {
+      genre: searchParams.get("genre") || "",
+      format: searchParams.get("format") || "",
+      year: searchParams.get("year") || "",
+      status: searchParams.get("status") || "",
+      country: searchParams.get("country") || "",
+    },
   });
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {

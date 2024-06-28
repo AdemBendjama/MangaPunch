@@ -7,21 +7,27 @@ import { useSearchParams } from "next/navigation";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import ChevronRight from "@/components/icons/chevron-right";
 
+const possibleSearchParams = ["search", "genre"];
 function SearchResults() {
   const searchParams = useSearchParams();
-  const searchQuery = searchParams.get("search");
+  const variables: { [key: string]: string | number } = {};
+  possibleSearchParams.forEach((param) => {
+    const value = searchParams.get(param);
+    if (value !== null) {
+      variables[param] = value;
+    }
+  });
+  const isEmptyVariables = Object.keys(variables).length === 0;
 
   const { mangaData, error, loading } = useGraphQLQuery(
     GET_MANGA_SEARCH,
-    {
-      search: searchQuery?.toString() || "",
-    },
-    searchQuery === null
+    variables,
+    isEmptyVariables
   );
 
   return (
     <div className="sm:px-0 px-[1rem]">
-      {!searchQuery && !loading && (
+      {isEmptyVariables && !loading && (
         <div className="flex flex-col justify-center gap-[1rem]">
           <div className="flex justify-between text-foreground">
             <div className="flex justify-end items-center lg:text-2xl sm:text-xl text-base font-bold h-full">
@@ -55,7 +61,7 @@ function SearchResults() {
       {error && <div>{error.message}</div>}
 
       {mangaData &&
-        searchQuery &&
+        !isEmptyVariables &&
         !loading &&
         (mangaData.length !== 0 ? (
           <div className="grid lg:grid-cols-[repeat(5,_176px)] sm:grid-cols-[repeat(5,_18vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
