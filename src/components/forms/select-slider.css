@@ -1,0 +1,11 @@
+.select-slider-container {
+    overflow: hidden;
+}
+
+.select-slider-container .slick-list {
+    overflow: visible;
+}
+
+.select-slider-container .slick-slide {
+    width: 45.5vw !important;
+}

@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { InputForm } from "./form";
 import { z } from "zod";
 const FormSchema = z.object({
@@ -45,11 +46,13 @@ export function SignUpForm() {
     },
   ];
   return (
-    <InputForm
-      type="auth"
-      FormSchema={FormSchema}
-      buttonLabel="Sign Up"
-      formFields={formFields}
-    />
+    <Suspense>
+      <InputForm
+        type="auth"
+        FormSchema={FormSchema}
+        buttonLabel="Sign Up"
+        formFields={formFields}
+      />
+    </Suspense>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { InputForm } from "./form";
 import { z } from "zod";
 const FormSchema = z.object({
@@ -23,11 +24,13 @@ export function SignInForm() {
     },
   ];
   return (
-    <InputForm
-      type="auth"
-      FormSchema={FormSchema}
-      buttonLabel="Log In"
-      formFields={formFields}
-    />
+    <Suspense>
+      <InputForm
+        type="auth"
+        FormSchema={FormSchema}
+        buttonLabel="Log In"
+        formFields={formFields}
+      />
+    </Suspense>
   );
 }

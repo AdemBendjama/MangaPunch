@@ -1,25 +1,26 @@
-export const genreItems = [
-  "Action",
-  "Adventure",
-  "Comedy",
-  "Drama",
-  "Ecchi",
-  "Fantasy",
-  "Hentai",
-  "Horror",
-  "Mahou Shoujo",
-  "Mecha",
-  "Music",
-  "Mystery",
-  "Psychological",
-  "Romance",
-  "Sci-Fi",
-  "Slice of Life",
-  "Sports",
-  "Supernatural",
-  "Thriller",
-];
+import { CountryofOrigin, FilterItem } from "./types";
 
+export const genreItems: FilterItem[] = [
+  { label: "Action", value: "Action" },
+  { label: "Adventure", value: "Adventure" },
+  { label: "Comedy", value: "Comedy" },
+  { label: "Drama", value: "Drama" },
+  { label: "Ecchi", value: "Ecchi" },
+  { label: "Fantasy", value: "Fantasy" },
+  { label: "Hentai", value: "Hentai" },
+  { label: "Horror", value: "Horror" },
+  { label: "Mahou Shoujo", value: "Mahou Shoujo" },
+  { label: "Mecha", value: "Mecha" },
+  { label: "Music", value: "Music" },
+  { label: "Mystery", value: "Mystery" },
+  { label: "Psychological", value: "Psychological" },
+  { label: "Romance", value: "Romance" },
+  { label: "Sci-Fi", value: "Sci-Fi" },
+  { label: "Slice of Life", value: "Slice of Life" },
+  { label: "Sports", value: "Sports" },
+  { label: "Supernatural", value: "Supernatural" },
+  { label: "Thriller", value: "Thriller" },
+];
 export const formatItems = ["Manga", "Light Novel", "One-shot"];
 
 export const yearItems = [
@@ -120,3 +121,10 @@ export const publishingStatusItems = [
 ];
 
 export const countryItems = ["Japan", "South Korea", "China", "Taiwan"];
+
+const countries: CountryofOrigin[] = [
+  { name: "Japan", code: "JP" },
+  { name: "South Korea", code: "KR" },
+  { name: "China", code: "CN" },
+  { name: "Taiwan", code: "TW" },
+];

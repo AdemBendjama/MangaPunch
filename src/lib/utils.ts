@@ -42,3 +42,8 @@ export function formatStartDate(
 
   return formattedDate;
 }
+
+export function toFuzzyDateInt(year: number): number {
+  const yearStr = year.toString().padStart(4, "0");
+  return parseInt(`${yearStr}0000`, 10);
+}

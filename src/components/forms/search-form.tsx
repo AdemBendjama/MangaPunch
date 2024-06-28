@@ -1,11 +1,9 @@
 "use client";
-import { Dispatch, SetStateAction } from "react";
-import { Manga } from "@/lib/types";
+import { Suspense } from "react";
 import { InputForm } from "./form";
 import { z } from "zod";
-import { genreItems } from "@/lib/filter-data";
 const FormSchema = z.object({
-  search: z.string(),
+  search: z.string().optional(),
 });
 
 export function SearchForm() {
@@ -19,11 +17,13 @@ export function SearchForm() {
     },
   ];
   return (
-    <InputForm
-      type="search"
-      defaultValues={{ search: "" }}
-      FormSchema={FormSchema}
-      formFields={formFields}
-    />
+    <Suspense>
+      <InputForm
+        type="search"
+        defaultValues={{ search: "" }}
+        FormSchema={FormSchema}
+        formFields={formFields}
+      />
+    </Suspense>
   );
 }

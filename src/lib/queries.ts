@@ -207,9 +207,13 @@ export const GET_MANGA_RECOMMENDATIONS = {
 
 export const GET_MANGA_SEARCH = {
   name: "GET_MANGA_SEARCH",
-  body: `query GetMangaSearch($search: String!) {
+  body: `query GetMangaSearch($search: String!, $genre: String, $format: MediaFormat,
+   $year_lesser: FuzzyDateInt, $year_greater: FuzzyDateInt, $status: MediaStatus) {
     Page(perPage: 50) {
-      media(search: $search, type: MANGA, isAdult: false) {
+      media(search: $search, type: MANGA, isAdult: false, 
+      genre: $genre, format: $format,
+      startDate_lesser: $year_lesser, startDate_greater: $year_greater,
+      status: $status) {
         id
         title {
           romaji

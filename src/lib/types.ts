@@ -91,3 +91,32 @@ export interface PageData {
     media: Manga[];
   };
 }
+
+export type CountryofOrigin = {
+  name: string;
+  code: string;
+};
+
+enum format {
+  MANGA = "MANGA",
+  ONE_SHOT = "ONE_SHOT",
+  NOVEL = "NOVEL",
+}
+enum status {
+  FINISHED = "FINISHED",
+  RELEASING = "RELEASING",
+  NOT_YET_RELEASED = "NOT_YET_RELEASED",
+  CANCELLED = "CANCELLED",
+  HIATUS = "HIATUS",
+}
+
+export type FilterItem = {
+  label: string;
+  value: status | format | string | number;
+};
+
+export type FormSelectFields = {
+  name: "genre" | "format" | "year" | "status" | "country";
+  label: string;
+  items: FilterItem[];
+};

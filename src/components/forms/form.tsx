@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export function InputForm({
   type,
@@ -41,6 +41,7 @@ export function InputForm({
   };
 }) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -49,15 +50,10 @@ export function InputForm({
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
     if (formData["search"]) {
-      const query = { search: formData.search };
-      const url = {
-        pathname: pathname,
-        query,
-      };
+      const currentParams = new URLSearchParams(searchParams.toString());
+      currentParams.set("search", formData.search);
+      const newUrl = `${pathname}?${currentParams.toString()}`;
 
-      const newUrl = `${url.pathname}?${new URLSearchParams(
-        url.query
-      ).toString()}`;
       router.push(newUrl);
     }
   }
