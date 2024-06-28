@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 export function InputForm({
   type,
@@ -44,7 +45,10 @@ export function InputForm({
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: { ...defaultValues, search: "" },
+    defaultValues: {
+      ...defaultValues,
+      search: searchParams.get("search") || "",
+    },
   });
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
@@ -58,6 +62,10 @@ export function InputForm({
 
     router.push(newUrl);
   }
+
+  useEffect(() => {
+    form.setValue("search", searchParams.get("search") || "");
+  }, [searchParams]);
 
   return (
     <Form {...form}>
@@ -83,6 +91,7 @@ export function InputForm({
                       <Input
                         placeholder={placeholder}
                         {...field}
+                        value={form.getValues(name)}
                         type={fieldType}
                         className={inputClassname}
                         onKeyDown={(e) => {

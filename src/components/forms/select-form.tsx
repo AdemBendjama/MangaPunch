@@ -25,7 +25,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./select-slider.css";
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const formSelectFields: FormSelectFields[] = [
   {
@@ -100,6 +100,14 @@ export function SelectForm() {
     router.push(newUrl);
   }
 
+  useEffect(() => {
+    form.setValue("genre", searchParams.get("genre") || "");
+    form.setValue("format", searchParams.get("format") || "");
+    form.setValue("year", searchParams.get("year") || "");
+    form.setValue("status", searchParams.get("status") || "");
+    form.setValue("country", searchParams.get("country") || "");
+  }, [searchParams]);
+
   return (
     <Form {...form}>
       <form
@@ -119,6 +127,7 @@ export function SelectForm() {
                   </FormLabel>
                   <div className="w-fit">
                     <Select
+                      value={form.getValues(name)}
                       onValueChange={(value) => {
                         field.onChange(value);
                         form.handleSubmit(onSubmit)();
