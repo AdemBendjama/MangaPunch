@@ -193,9 +193,6 @@ export function SelectForm() {
           })}
         </Slider>
       </form>
-      {/* <div className="w-full px-[4.5vw] pb-[2rem] sm:hidden select-slider-container">
-        <Slider {...settings} className="w-full py-[0.5rem]"></Slider>
-      </div> */}
     </Form>
   );
 }
