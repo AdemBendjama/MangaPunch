@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import ChevronRight from "@/components/icons/chevron-right";
 
-const possibleSearchParams = ["search", "genre"];
+const possibleSearchParams = ["search", "genre", "format"];
 function SearchResults() {
   const searchParams = useSearchParams();
   const variables: { [key: string]: string | number } = {};

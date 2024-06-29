@@ -1,4 +1,4 @@
-import { CountryofOrigin, FilterItem } from "./types";
+import { CountryofOrigin, FilterItem, format } from "./types";
 
 export const genreItems: FilterItem[] = [
   { label: "Action", value: "Action" },
@@ -20,7 +20,12 @@ export const genreItems: FilterItem[] = [
   { label: "Supernatural", value: "Supernatural" },
   { label: "Thriller", value: "Thriller" },
 ];
-export const formatItems = ["Manga", "Light Novel", "One-shot"];
+
+export const formatItems: FilterItem[] = [
+  { label: "Manga", value: format.MANGA },
+  { label: "Light Novel", value: format.NOVEL },
+  { label: "One-shot", value: format.ONE_SHOT },
+];
 
 export const yearItems = [
   "2025",

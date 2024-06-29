@@ -97,12 +97,12 @@ export type CountryofOrigin = {
   code: string;
 };
 
-enum format {
+export enum format {
   MANGA = "MANGA",
   ONE_SHOT = "ONE_SHOT",
   NOVEL = "NOVEL",
 }
-enum status {
+export enum status {
   FINISHED = "FINISHED",
   RELEASING = "RELEASING",
   NOT_YET_RELEASED = "NOT_YET_RELEASED",
