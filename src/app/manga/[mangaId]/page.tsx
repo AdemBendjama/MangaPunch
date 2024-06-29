@@ -49,7 +49,7 @@ function MangaDetailsPage() {
       <MangaBackgroundImage src={bannerImage} />
       <div className="bg-background-secondary">
         <MangaMetaData
-          coverImage={coverImage?.large}
+          coverImage={coverImage?.extraLarge}
           popularity={popularity}
           averageScore={averageScore}
           title={title.english ? title.english : title.romaji}
@@ -58,6 +58,7 @@ function MangaDetailsPage() {
           startDate={startDate}
           genres={genres}
           chapters={chapters}
+          titles={title}
         />
       </div>
       <div className="bg-background">

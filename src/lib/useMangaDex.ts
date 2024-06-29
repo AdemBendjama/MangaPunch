@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { MangaDex } from "./types";
 import { useSearchParams } from "next/navigation";
-import { formatTitle } from "./utils";
+import { normalizeTitletoEmptySpace, normalizeTitletoSpace } from "./utils";
 
-function useMangaDex(query: string) {
+function useMangaDex(titles: {
+  romaji: string;
+  english: string | null;
+  native: string | null;
+}) {
   const [mangaDexData, setMangaDexData] = useState<MangaDex[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -11,8 +15,8 @@ function useMangaDex(query: string) {
 
   useEffect(() => {
     setLoading(true);
-    const cachedData = localStorage.getItem(`${query}`);
-    const cachedTimestamp = localStorage.getItem(`${query}_timestamp`);
+    const cachedData = localStorage.getItem(`${titles.romaji}`);
+    const cachedTimestamp = localStorage.getItem(`${titles.romaji}_timestamp`);
     if (cachedData && cachedTimestamp) {
       const parsedData = JSON.parse(cachedData);
       const timestamp = parseInt(cachedTimestamp, 10);
@@ -26,10 +30,10 @@ function useMangaDex(query: string) {
       }
     }
 
-    const fetchData = async () => {
+    const fetchByTitle = async (title: string): Promise<MangaDex[]> => {
       try {
         const response = await fetch(
-          `https://api.mangadex.org/manga?title=${query}`,
+          `https://api.mangadex.org/manga?title=${encodeURIComponent(title)}`,
           {
             method: "GET",
             headers: {
@@ -39,7 +43,28 @@ function useMangaDex(query: string) {
         );
 
         const { data } = await response.json();
-        console.log(data);
+
+        return data;
+      } catch (error) {
+        throw error;
+      }
+    };
+
+    const fetchData = async () => {
+      try {
+        let data: MangaDex[] = [];
+        // search by native naming first like ワンピース
+        if (titles.native) data = await fetchByTitle(titles.native);
+
+        // search by romaji format like Kokoro Himeru no Zen Himitsu
+        if (data.length === 0) data = await fetchByTitle(titles.romaji);
+
+        // normilazation fo title required since some title has '-' which can affect results
+        if (data.length === 0)
+          data = await fetchByTitle(normalizeTitletoEmptySpace(titles.romaji));
+
+        if (data.length === 0)
+          data = await fetchByTitle(normalizeTitletoSpace(titles.romaji));
 
         return data;
       } catch (error) {
@@ -52,9 +77,9 @@ function useMangaDex(query: string) {
 
     fetchData()
       .then((data) => {
-        localStorage.setItem(`${query}`, JSON.stringify(data));
+        localStorage.setItem(`${titles.romaji}`, JSON.stringify(data));
         localStorage.setItem(
-          `${query}_timestamp`,
+          `${titles.romaji}_timestamp`,
           String(new Date().getTime())
         );
         setMangaDexData(data);

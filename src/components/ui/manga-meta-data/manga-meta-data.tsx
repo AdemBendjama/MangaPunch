@@ -1,11 +1,10 @@
-"use client";
 import StarIcon from "@/components/icons/star-icon";
 import Image from "next/image";
 import { ButtonWithIcon } from "../button-variants/button-with-icon";
 import HeartIcon from "@/components/icons/heart-icon";
-import { formatStartDate, formatTitle, toTitleCase } from "@/lib/utils";
+import { formatStartDate, toTitleCase } from "@/lib/utils";
 import ReadMangaDex from "./read-mangadex";
-import useMangaDex from "@/lib/useMangaDex";
+import { Suspense } from "react";
 
 function MangaMetaData({
   coverImage,
@@ -17,6 +16,7 @@ function MangaMetaData({
   startDate,
   genres,
   chapters,
+  titles,
 }: {
   coverImage: string;
   popularity?: number;
@@ -31,23 +31,22 @@ function MangaMetaData({
   } | null;
   genres: string[];
   chapters: number | null;
+  titles: {
+    romaji: string;
+    english: string | null;
+    native: string | null;
+  };
 }) {
-  const { mangaDexData, loading, error } = useMangaDex(formatTitle(title));
-
-  if (loading) return;
-  if (error) return <div>{error.message}</div>;
-  console.log(mangaDexData);
-
   return (
     <div className="sm:h-[19rem] lg:mx-auto lg:w-[63rem] lg:px-[0] md:px-[3rem] sm:px-[1rem] px-[1rem] relative">
       {/* cover + actions */}
-      <div className="sm:w-auto w-[90vw] flex sm:flex-col sm:items-start sm:justify-normal sm:gap-[0.875rem] flex-row items-end justify-between gap-[0.625rem] absolute lg:top-[-60%] sm:top-[-40%] top-[-50px]">
-        <div className="xl:min-w-[14.375rem] xl:min-h-[22.5rem] lg:min-w-[11rem] lg:min-h-[18rem] sm:min-w-[9.5rem] sm:min-h-[15.5rem] min-w-[7.2rem] min-h-[11.5rem] rounded-[6px] overflow-hidden relative shadow-card-drop dark:shadow-none">
+      <div className="sm:w-auto w-[90vw] flex sm:flex-col sm:items-start sm:justify-normal sm:gap-[0.875rem] flex-row items-end justify-between gap-[0.625rem] absolute sm:top-[-60%] top-[-50px]">
+        <div className="xl:min-w-[230px] xl:min-h-[22.5rem] sm:min-w-[176px] sm:min-h-[18rem] min-w-[115px] min-h-[11.5rem] rounded-[6px] overflow-hidden relative shadow-card-drop dark:shadow-none">
           <Image
             src={coverImage}
             alt="cover image"
             fill={true}
-            sizes="(min-width: 1280px) 230px, (min-width: 1024px) 176px, (min-width: 640px) 152px, 115px"
+            sizes="(min-width: 1280px) 230px, (min-width: 640px) 176px, 115px"
             className="object-cover"
           />
         </div>
@@ -72,26 +71,22 @@ function MangaMetaData({
             <ButtonWithIcon className="w-full" type="plus">
               Add to Library
             </ButtonWithIcon>
-            {mangaDexData.length !== 0 && (
-              <ReadMangaDex
-                href={`https://mangadex.org/title/${mangaDexData[0].id}`}
-              />
-            )}
+            <Suspense>
+              <ReadMangaDex titles={titles} />
+            </Suspense>
           </div>
         </div>
         <div className="w-full flex-col gap-[0.5rem] sm:flex hidden">
           <ButtonWithIcon className="w-full" type="plus">
             Add to Library
           </ButtonWithIcon>
-          {mangaDexData.length !== 0 && (
-            <ReadMangaDex
-              href={`https://mangadex.org/title/${mangaDexData[0].id}`}
-            />
-          )}
+          <Suspense>
+            <ReadMangaDex titles={titles} />
+          </Suspense>
         </div>
       </div>
       {/* content */}
-      <div className="lg:ml-[25%] md:ml-[22vw] sm:ml-[25vw] h-full gap-[0.5rem] sm:pt-[0.5rem] pt-[150px] sm:py-[0.5rem] py-[1rem]">
+      <div className="lg:ml-[25%] md:ml-[24vw] sm:ml-[29vw] h-full gap-[0.5rem] sm:pt-[0.5rem] pt-[150px] sm:py-[0.5rem] py-[1rem]">
         {/* title */}
         <div className="flex justify-between items-start py-[0.5rem] 2xl:gap-[1rem] gap-[0.5rem]">
           <span className="font-semibold text-lg sm:line-clamp-2">{title}</span>

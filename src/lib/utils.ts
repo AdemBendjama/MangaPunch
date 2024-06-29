@@ -48,6 +48,10 @@ export function toFuzzyDateInt(year: number): number {
   return parseInt(`${yearStr}0000`, 10);
 }
 
-export function formatTitle(input: string): string {
+export function normalizeTitletoEmptySpace(input: string): string {
   return input.replace(/[-_]/g, "");
+}
+
+export function normalizeTitletoSpace(input: string): string {
+  return input.replace(/[-_]/g, " ");
 }

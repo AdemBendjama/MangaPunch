@@ -112,6 +112,7 @@ export const GET_MANGA = {
           english
         }
         coverImage {
+          extraLarge
           large
         }
         bannerImage
