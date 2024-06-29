@@ -6,6 +6,16 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const clearLocalStorageOnVersionChange = () => {
+  const currentVersion = process.env.NEXT_PUBLIC_APP_VERSION;
+  const storedVersion = localStorage.getItem("app_version");
+
+  if (currentVersion !== storedVersion) {
+    localStorage.clear();
+    localStorage.setItem("app_version", currentVersion || "");
+  }
+};
+
 export function extractAuthors(staff: Manga["staff"]): string[] {
   if (!staff) return ["N/A"];
   const rolesOfInterest = new Set(["Story & Art", "Story", "Art"]);

@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import NavbarProvider from "@/components/navbar-provider";
 import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
+import VersionChecker from "@/components/version-checker";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
           overpass.variable
         )}
       >
+        <VersionChecker />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
