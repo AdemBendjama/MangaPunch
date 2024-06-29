@@ -6,15 +6,29 @@ import MangaLoading from "@/components/ui/manga-manager/manga-loading";
 import { useSearchParams } from "next/navigation";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import ChevronRight from "@/components/icons/chevron-right";
+import { toFuzzyDateInt } from "@/lib/utils";
 
-const possibleSearchParams = ["search", "genre", "format"];
+const possibleSearchParams = [
+  "search",
+  "genre",
+  "format",
+  "year",
+  "status",
+  "country",
+];
+
 function SearchResults() {
   const searchParams = useSearchParams();
   const variables: { [key: string]: string | number } = {};
   possibleSearchParams.forEach((param) => {
     const value = searchParams.get(param);
     if (value !== null) {
-      variables[param] = value;
+      if (param === "year") {
+        variables["year_lesser"] = toFuzzyDateInt(parseInt(value + 1));
+        variables["year_greater"] = toFuzzyDateInt(parseInt(value));
+      } else {
+        variables[param] = value;
+      }
     }
   });
   const isEmptyVariables = Object.keys(variables).length === 0;

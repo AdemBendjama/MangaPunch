@@ -92,11 +92,6 @@ export interface PageData {
   };
 }
 
-export type CountryofOrigin = {
-  name: string;
-  code: string;
-};
-
 export enum format {
   MANGA = "MANGA",
   ONE_SHOT = "ONE_SHOT",
@@ -108,6 +103,13 @@ export enum status {
   NOT_YET_RELEASED = "NOT_YET_RELEASED",
   CANCELLED = "CANCELLED",
   HIATUS = "HIATUS",
+}
+
+export enum country {
+  JP = "JP",
+  KR = "KR",
+  CN = "CN",
+  TW = "TW",
 }
 
 export type FilterItem = {

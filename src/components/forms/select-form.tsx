@@ -19,7 +19,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { formatItems, genreItems } from "@/lib/filter-data";
+import {
+  countryItems,
+  formatItems,
+  genreItems,
+  statusItems,
+  yearItems,
+} from "@/lib/filter-data";
 import { FormSelectFields } from "@/lib/types";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,17 +47,17 @@ const formSelectFields: FormSelectFields[] = [
   {
     name: "year",
     label: "Year",
-    items: genreItems,
+    items: yearItems,
   },
   {
     name: "status",
     label: "Publishing Status",
-    items: genreItems,
+    items: statusItems,
   },
   {
     name: "country",
     label: "Country of Origin",
-    items: genreItems,
+    items: countryItems,
   },
 ];
 
