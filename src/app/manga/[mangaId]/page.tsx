@@ -46,8 +46,12 @@ function MangaDetailsPage() {
 
   return (
     <div className="text-foreground">
-      <MangaBackgroundImage src={bannerImage} />
-      <div className="bg-background-secondary">
+      {bannerImage ? (
+        <MangaBackgroundImage src={bannerImage} />
+      ) : (
+        <div className="h-[16rem] dark:bg-background"></div>
+      )}
+      <div className="bg-background-secondary lg:pb-[1rem]">
         <MangaMetaData
           coverImage={coverImage?.extraLarge}
           popularity={popularity}
