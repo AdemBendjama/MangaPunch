@@ -177,6 +177,7 @@ export function SelectForm() {
                     </FormLabel>
                     <div className="w-fit">
                       <Select
+                        value={form.getValues(name)}
                         onValueChange={(value) => {
                           field.onChange(value);
                           form.handleSubmit(onSubmit)();
