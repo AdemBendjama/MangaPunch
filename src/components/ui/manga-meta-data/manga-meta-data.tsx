@@ -4,7 +4,6 @@ import { ButtonWithIcon } from "../button-variants/button-with-icon";
 import HeartIcon from "@/components/icons/heart-icon";
 import { formatStartDate, toTitleCase } from "@/lib/utils";
 import ReadMangaDex from "./read-mangadex";
-import { Suspense } from "react";
 
 function MangaMetaData({
   coverImage,
@@ -71,18 +70,14 @@ function MangaMetaData({
             <ButtonWithIcon className="w-full" type="plus">
               Add to Library
             </ButtonWithIcon>
-            <Suspense>
-              <ReadMangaDex titles={titles} />
-            </Suspense>
+            <ReadMangaDex titles={titles} />
           </div>
         </div>
         <div className="w-full flex-col gap-[0.5rem] sm:flex hidden">
           <ButtonWithIcon className="w-full" type="plus">
             Add to Library
           </ButtonWithIcon>
-          <Suspense>
-            <ReadMangaDex titles={titles} />
-          </Suspense>
+          <ReadMangaDex titles={titles} />
         </div>
       </div>
       {/* content */}

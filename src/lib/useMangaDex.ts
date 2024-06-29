@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { MangaDex } from "./types";
-import { useSearchParams } from "next/navigation";
 import { normalizeTitletoEmptySpace, normalizeTitletoSpace } from "./utils";
 
 function useMangaDex(titles: {
