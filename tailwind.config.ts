@@ -39,6 +39,7 @@ const config = {
         "card-hover": "hsl(201 ,5% ,90%)",
         "card-description": "hsla(201 ,50% ,5%,0.65)",
         "border-auth": "hsl(var(--border-auth))",
+        mangadex: "hsl(var(--mangadex))",
         background: {
           DEFAULT: "hsl(var(--background))",
           secondary: "hsl(var(--background-secondary))",

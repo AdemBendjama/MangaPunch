@@ -39,6 +39,7 @@
     --form-error: 0 100% 30%;
     --input-shadow: 201, 90%, 30%, 0.1;
     --input-shadow-side: 201, 90%, 30%, 0.04;
+    --mangadex: 11 87% 50%
   }
 
   .dark {
@@ -76,6 +77,7 @@
     --form-error: 0 100% 55%;
     --input-shadow: 201, 90%, 30%, 0;
     --input-shadow-side: 201, 90%, 30%, 0;
+    --mangadex: 11 87% 50%
   }
 
 }

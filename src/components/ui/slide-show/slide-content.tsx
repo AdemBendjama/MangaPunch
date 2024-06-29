@@ -42,7 +42,9 @@ function SlideContent({
         </div>
       </div>
       <Link href={`/manga/${id}`}>
-        <ButtonWithIcon className="sm:w-auto w-full">Read More</ButtonWithIcon>
+        <ButtonWithIcon className="sm:w-[8rem] w-full">
+          Read More
+        </ButtonWithIcon>
       </Link>
     </div>
   );
