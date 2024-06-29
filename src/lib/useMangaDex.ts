@@ -31,7 +31,9 @@ function useMangaDex(titles: {
     const fetchByTitle = async (title: string): Promise<MangaDex[]> => {
       try {
         const response = await fetch(
-          `https://api.mangadex.org/manga?title=${encodeURIComponent(title)}`,
+          `https://api.mangadex.org/manga?title=${encodeURIComponent(
+            title
+          )}&order[relevance]=desc`,
           {
             method: "GET",
             headers: {
