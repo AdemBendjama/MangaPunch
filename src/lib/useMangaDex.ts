@@ -11,7 +11,6 @@ function useMangaDex(titles: {
   const [mangaDexData, setMangaDexData] = useState<MangaDex[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     setLoading(true);
@@ -93,7 +92,7 @@ function useMangaDex(titles: {
         }
         setLoading(false);
       });
-  }, [searchParams]);
+  }, []);
 
   return { mangaDexData, loading, error };
 }
