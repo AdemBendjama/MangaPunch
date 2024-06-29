@@ -1,12 +1,12 @@
 "use client";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./slide-category.css";
 import Slider from "react-slick";
 import SlideCategoryHeader from "./slide-category-header";
 import SlideArrow from "../slide-show/slide-arrow";
-import Slide from "./slide";
-import "./slide-category.css";
-import SlideLoading from "./slide-loading";
+import CardExtraLarge from "../card/card-extra-large";
+import CardExtraLargeLoading from "../card/card-extra-large-loading";
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 
 var settings = {
@@ -57,7 +57,7 @@ function SlideCategory({
   if (loading) {
     const slides = [];
     for (let i = 0; i < 10; i++) {
-      slides.push(<SlideLoading key={i} />);
+      slides.push(<CardExtraLargeLoading key={i} />);
     }
     return (
       <div className="w-full flex flex-col pt-[1rem] lg:px-[7%] px-[9.9vw] items-start lg:gap-[1rem] sm:[0.75rem] gap-[0.5rem] slider-container">
@@ -77,7 +77,7 @@ function SlideCategory({
       <SlideCategoryHeader title={title} />
       <Slider {...settings} className="w-full">
         {mangaData.map((manga, index) => (
-          <Slide
+          <CardExtraLarge
             key={index}
             id={manga.id}
             coverImage={manga.coverImage?.large}

@@ -30,7 +30,7 @@ function AuthProvider({ type }: { type: string }) {
             </span>
           </Link>
         </div>
-        <div className="bg-card dark:bg-background-secondary border-t-4 border-border-auth rounded-t-[0.25rem] shadow-card-drop mb-[1.5rem]">
+        <div className="bg-card dark:bg-background-secondary border-t-4 border-border-auth rounded-t-[0.25rem] shadow-form-card-drop mb-[1.5rem]">
           <div className="flex flex-col gap-[0.5rem] sm:px-[2.5rem] px-[1.25rem] sm:py-[2rem] py-[1rem]">
             <div className="mx-auto pt-[0.5rem] pb-[1.5rem] font-bold sm:text-[1.375rem] text-[1.25rem]">
               {type === "signin" && "Log in to your account"}

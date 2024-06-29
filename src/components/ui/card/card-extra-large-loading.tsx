@@ -1,4 +1,4 @@
-const SlideLoading = () => {
+const CardExtraLargeLoading = () => {
   return (
     <div className="flex flex-col gap-[0.5rem] 2xl:w-[13vw] lg:w-[15vw] sm:w-[18vw] w-[36vw] animate-pulse">
       <div className="w-full 2xl:h-[20.5vw] lg:h-[23.5vw] sm:h-[28vw] h-[58vw] rounded-[0.375rem] bg-gray-200"></div>
@@ -7,4 +7,4 @@ const SlideLoading = () => {
   );
 };
 
-export default SlideLoading;
+export default CardExtraLargeLoading;

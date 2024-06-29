@@ -105,7 +105,8 @@ const config = {
         "slide-inner-sm": "inset 100vw 0 2px 0 hsla(0,0%,0%,0.8)",
         "slide-inner-bg": "inset 0 -100px 250px 0 hsla(0,0%,0%,0.8)",
         "auth-inner": "inset 0 100px 250px 0 hsla(0,0%,0%,1)",
-        "card-drop": "0 20px 30px 0 hsla(0,0%,0%,0.6)",
+        "card-drop": "4px 2px 8px 0 hsla(0,0%,0%,0.25)",
+        "form-card-drop": "0 20px 30px 0 hsla(0,0%,0%,0.6)",
         "input-drop":
           "0 12px 25px hsla(var(--input-shadow)),0 4px 4px hsla(var(--input-shadow-side))",
         "menu-drop": "0 4px 15px hsla(0,0%,0%,0.6),0 2px 4px hsla(0,0%,0%,0.6)",

@@ -47,17 +47,19 @@ function MangaDetailsPage() {
   return (
     <div className="text-foreground">
       <MangaBackgroundImage src={bannerImage} />
-      <MangaMetaData
-        src={coverImage?.large}
-        popularity={popularity}
-        averageScore={averageScore}
-        title={title.english ? title.english : title.romaji}
-        authors={authors}
-        status={status}
-        startDate={startDate}
-        genres={genres}
-        chapters={chapters}
-      />
+      <div className="bg-background-secondary">
+        <MangaMetaData
+          coverImage={coverImage?.large}
+          popularity={popularity}
+          averageScore={averageScore}
+          title={title.english ? title.english : title.romaji}
+          authors={authors}
+          status={status}
+          startDate={startDate}
+          genres={genres}
+          chapters={chapters}
+        />
+      </div>
       <div className="bg-background">
         <div className="flex flex-col gap-[1rem] lg:mx-auto lg:w-[63rem] pt-[1rem] pb-[10rem] lg:px-[0] sm:px-[3rem] px-[1rem]">
           <Description description={description} />

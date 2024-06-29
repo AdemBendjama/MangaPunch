@@ -5,7 +5,7 @@ import HeartIcon from "@/components/icons/heart-icon";
 import { formatStartDate, toTitleCase } from "@/lib/utils";
 
 function MangaMetaData({
-  src,
+  coverImage,
   popularity,
   averageScore,
   title,
@@ -15,7 +15,7 @@ function MangaMetaData({
   genres,
   chapters,
 }: {
-  src: string;
+  coverImage: string;
   popularity?: number;
   averageScore: number | null;
   title: string;
@@ -30,15 +30,16 @@ function MangaMetaData({
   chapters: number | null;
 }) {
   return (
-    <div className="sm:h-[19rem] bg-background-secondary lg:mx-auto lg:w-[63rem] lg:px-[0] md:px-[3rem] sm:px-[1rem] px-[1rem] relative">
+    <div className="sm:h-[19rem] lg:mx-auto lg:w-[63rem] lg:px-[0] md:px-[3rem] sm:px-[1rem] px-[1rem] relative">
       {/* cover + actions */}
       <div className="sm:w-auto w-[90vw] flex sm:flex-col sm:items-start sm:justify-normal sm:gap-[0.875rem] flex-row items-end justify-between gap-[0.625rem] absolute lg:top-[-60%] sm:top-[-40%] top-[-95px]">
-        <div className="xl:min-w-[14.375rem] xl:min-h-[22.5rem] lg:min-w-[11rem] lg:min-h-[18rem] sm:min-w-[9.5rem] sm:min-h-[15.5rem] min-w-[7.2rem] min-h-[11.5rem] relative">
+        <div className="xl:min-w-[14.375rem] xl:min-h-[22.5rem] lg:min-w-[11rem] lg:min-h-[18rem] sm:min-w-[9.5rem] sm:min-h-[15.5rem] min-w-[7.2rem] min-h-[11.5rem] relative shadow-card-drop dark:shadow-none">
           <Image
-            src={src}
+            src={coverImage}
             alt="cover image"
             fill={true}
-            className="object-contain"
+            sizes="(min-width: 1280px) 230px, (min-width: 1024px) 176px, (min-width: 640px) 152px, 115px"
+            className="object-cover"
           />
         </div>
         <div className="w-full sm:hidden flex flex-col gap-[0.875rem]">

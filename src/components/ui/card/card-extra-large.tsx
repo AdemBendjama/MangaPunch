@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function Slide({
+function CardExtraLarge({
   id,
   coverImage,
   title,
@@ -13,7 +13,7 @@ function Slide({
   return (
     <div className="flex flex-col gap-[0.5rem] 2xl:w-[13vw] lg:w-[15vw] sm:w-[18vw] w-[36vw]">
       <Link href={`/manga/${id}`}>
-        <div className="w-full 2xl:h-[20.5vw] lg:h-[23.5vw] sm:h-[28vw] h-[58vw] rounded-[0.375rem] relative overflow-hidden">
+        <div className="w-full 2xl:h-[20.5vw] lg:h-[23.5vw] sm:h-[28vw] h-[58vw] rounded-[0.375rem] relative overflow-hidden shadow-card-drop dark:shadow-none">
           <Image
             src={coverImage}
             alt="cover image of manga title"
@@ -31,4 +31,4 @@ function Slide({
   );
 }
 
-export default Slide;
+export default CardExtraLarge;

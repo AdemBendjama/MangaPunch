@@ -20,7 +20,7 @@ function CardRegular({
         </div>
       )}
       <Link href={`/manga/${id}`}>
-        <div className="lg:h-[276px] md:h-[26vw] h-[45.5vw] rounded-[6px] overflow-hidden relative">
+        <div className="lg:h-[276px] md:h-[26vw] h-[45.5vw] rounded-[6px] overflow-hidden relative shadow-card-drop dark:shadow-none">
           <Image
             src={coverImage}
             alt="cover image"
