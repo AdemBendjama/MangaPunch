@@ -24,7 +24,7 @@ function SearchResults() {
     const value = searchParams.get(param);
     if (value !== null) {
       if (param === "year") {
-        variables["year_lesser"] = toFuzzyDateInt(parseInt(value + 1));
+        variables["year_lesser"] = toFuzzyDateInt(parseInt(value) + 1);
         variables["year_greater"] = toFuzzyDateInt(parseInt(value));
       } else {
         variables[param] = value;
