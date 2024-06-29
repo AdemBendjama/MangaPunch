@@ -2,6 +2,7 @@ import SearchResults from "@/components/ui/search/search-results";
 import SearchBar from "@/components/ui/search/search-bar";
 import { Suspense } from "react";
 import { SelectForm } from "@/components/forms/select-form";
+import { SortForm } from "@/components/forms/sort-form";
 
 function SearchPage() {
   return (
@@ -9,6 +10,9 @@ function SearchPage() {
       <SearchBar />
       <Suspense>
         <SelectForm />
+      </Suspense>
+      <Suspense>
+        <SortForm />
       </Suspense>
       <Suspense>
         <SearchResults />

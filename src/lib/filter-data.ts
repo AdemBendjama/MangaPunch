@@ -1,4 +1,4 @@
-import { country, FilterItem, format, status } from "./types";
+import { country, FilterItem, format, sort, status } from "./types";
 
 export const genreItems: FilterItem[] = [
   { label: "Action", value: "Action" },
@@ -116,7 +116,7 @@ export const yearItems: FilterItem[] = [
   { label: "1940", value: "1940" },
 ];
 
-export const statusItems = [
+export const statusItems: FilterItem[] = [
   { label: "Releasing", value: status.RELEASING },
   { label: "Not Yet Released", value: status.NOT_YET_RELEASED },
   { label: "Finished", value: status.FINISHED },
@@ -124,9 +124,17 @@ export const statusItems = [
   { label: "Cancelled", value: status.CANCELLED },
 ];
 
-export const countryItems = [
+export const countryItems: FilterItem[] = [
   { label: "Japan", value: country.JP },
   { label: "South Korea", value: country.KR },
   { label: "China", value: country.CN },
   { label: "Taiwan", value: country.TW },
+];
+
+export const sortItems: FilterItem[] = [
+  { label: "Title", value: sort.TITLE_ENGLISH_DESC },
+  { label: "Popularity", value: sort.POPULARITY_DESC },
+  { label: "Trending", value: sort.TRENDING_DESC },
+  { label: "Rating", value: sort.SCORE_DESC },
+  { label: "Latest", value: sort.UPDATED_AT_DESC },
 ];

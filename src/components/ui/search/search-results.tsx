@@ -15,6 +15,7 @@ const possibleSearchParams = [
   "year",
   "status",
   "country",
+  "sort",
 ];
 
 function SearchResults() {

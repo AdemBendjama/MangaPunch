@@ -47,3 +47,7 @@ export function toFuzzyDateInt(year: number): number {
   const yearStr = year.toString().padStart(4, "0");
   return parseInt(`${yearStr}0000`, 10);
 }
+
+export function formatTitle(input: string): string {
+  return input.replace(/[-_]/g, "");
+}
