@@ -16,7 +16,7 @@ export function ButtonWithIcon({
   return (
     <Button
       variant={variant || "default"}
-      className={`flex justify-center text-[14px] leading-none sm:px-[0.75rem] px-[0.5rem] ${className}`}
+      className={`flex justify-center xs:text-[0.875rem] text-[0.75rem] leading-none px-[0.75rem] ${className}`}
     >
       <div className="flex justify-center flex-1">{children}</div>
       {type === "read" && (
