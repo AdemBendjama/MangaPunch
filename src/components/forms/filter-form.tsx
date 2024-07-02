@@ -31,7 +31,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./select-slider.css";
 import Slider from "react-slick";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useFilterContext } from "@/context/filter-context-provider";
 
 const formSelectFields: FormSelectFields[] = [
   {
@@ -77,6 +78,8 @@ var settings = {
 };
 
 export function FilterForm() {
+  const { toggleFilterOpen } = useFilterContext();
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -139,6 +142,7 @@ export function FilterForm() {
                         form.handleSubmit(onSubmit)();
                       }}
                       defaultValue={field.value}
+                      onOpenChange={toggleFilterOpen}
                     >
                       <FormControl className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs">
                         <SelectTrigger>
@@ -189,6 +193,7 @@ export function FilterForm() {
                           form.handleSubmit(onSubmit)();
                         }}
                         defaultValue={field.value}
+                        onOpenChange={toggleFilterOpen}
                       >
                         <FormControl className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs">
                           <SelectTrigger>

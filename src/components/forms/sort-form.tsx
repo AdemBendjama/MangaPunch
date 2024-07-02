@@ -29,11 +29,13 @@ import {
 } from "@/lib/filter-data";
 import { FormSelectFields, sort } from "@/lib/types";
 import { useEffect } from "react";
+import { useFilterContext } from "@/context/filter-context-provider";
 
 const FormSchema = z.object({
   sort: z.string(),
 });
 export function SortForm() {
+  const { toggleFilterOpen } = useFilterContext();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const hasNoSearchParams = !searchParams.toString();
@@ -86,6 +88,7 @@ export function SortForm() {
                     form.handleSubmit(onSubmit)();
                   }}
                   defaultValue={field.value}
+                  onOpenChange={toggleFilterOpen}
                 >
                   <FormControl className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs">
                     <SelectTrigger>

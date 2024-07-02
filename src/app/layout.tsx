@@ -7,6 +7,7 @@ import NavbarProvider from "@/components/navbar-provider";
 import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import VersionChecker from "@/components/version-checker";
+import { FilterContextProvider } from "@/context/filter-context-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -43,12 +44,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NavbarProvider
-            isSideBarOpen={isSideBarOpen}
-            setIsSideBarOpen={setIsSideBarOpen}
-          >
-            {children}
-          </NavbarProvider>
+          <FilterContextProvider>
+            <NavbarProvider
+              isSideBarOpen={isSideBarOpen}
+              setIsSideBarOpen={setIsSideBarOpen}
+            >
+              {children}
+            </NavbarProvider>
+          </FilterContextProvider>
           <Toaster />
         </ThemeProvider>
       </body>
