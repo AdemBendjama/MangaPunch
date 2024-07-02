@@ -70,7 +70,7 @@ export function SortForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="sm:flex w-full pb-[2rem] justify-end hidden"
+        className="flex w-full pb-[2rem] sm:px-0 px-[1rem] justify-end"
       >
         <FormField
           key="sort"
