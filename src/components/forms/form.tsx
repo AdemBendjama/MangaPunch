@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import { signin, signup } from "@/lib/actions/auth";
 
 export function InputForm({
   type,
@@ -65,19 +66,21 @@ export function InputForm({
         router.push(newUrl);
       case "auth":
         if (pathname === "/auth/signin") {
-          ("use server");
           try {
             //
+            await signin({
+              email: formData.email,
+              password: formData.password,
+            });
           } catch (error) {
             //
           }
         } else if (pathname === "/auth/signup") {
-          ("use server");
-          try {
-            //
-          } catch (error) {
-            //
-          }
+          await signup({
+            email: formData.email,
+            username: formData.username,
+            password: formData.password,
+          });
         }
 
       case "profile":
