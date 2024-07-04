@@ -52,15 +52,36 @@ export function InputForm({
   });
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
-    const currentParams = new URLSearchParams(searchParams.toString());
-    if (formData.search !== "") {
-      currentParams.set("search", formData.search);
-    } else {
-      currentParams.delete("search");
-    }
-    const newUrl = `${pathname}?${currentParams.toString()}`;
+    switch (type) {
+      case "search":
+        const currentParams = new URLSearchParams(searchParams.toString());
+        if (formData.search !== "") {
+          currentParams.set("search", formData.search);
+        } else {
+          currentParams.delete("search");
+        }
+        const newUrl = `${pathname}?${currentParams.toString()}`;
 
-    router.push(newUrl);
+        router.push(newUrl);
+      case "auth":
+        if (pathname === "/auth/signin") {
+          ("use server");
+          try {
+            //
+          } catch (error) {
+            //
+          }
+        } else if (pathname === "/auth/signup") {
+          ("use server");
+          try {
+            //
+          } catch (error) {
+            //
+          }
+        }
+
+      case "profile":
+    }
   }
 
   useEffect(() => {
