@@ -19,6 +19,7 @@ function CardLarge({
             src={coverImage}
             alt="cover image of manga title"
             fill={true}
+            unoptimized={true}
             sizes="(min-width: 640px) 18vw, 28vw"
             className="object-cover"
           />

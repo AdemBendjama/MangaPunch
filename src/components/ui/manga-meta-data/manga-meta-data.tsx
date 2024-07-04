@@ -45,6 +45,7 @@ function MangaMetaData({
             src={coverImage}
             alt="cover image"
             fill={true}
+            unoptimized={true}
             sizes="(min-width: 1024px) 230px, (min-width: 640px) 176px, 115px"
             className="object-fill"
           />

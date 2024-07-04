@@ -6,6 +6,7 @@ function ProfileBackgroundImage() {
       alt="profile background page"
       width={1920}
       height={300}
+      unoptimized={true}
       className="object-cover object-profile absolute w-full h-full -z-10"
     />
   );

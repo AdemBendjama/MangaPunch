@@ -9,6 +9,7 @@ function MangaBackgroundImage({ src }: { src: string | null }) {
           alt="background Image"
           width={1920}
           height={350}
+          unoptimized={true}
           className="absolute object-cover w-full h-full -z-10"
         />
       )}

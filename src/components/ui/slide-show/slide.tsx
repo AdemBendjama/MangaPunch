@@ -27,6 +27,7 @@ function Slide({
               src={coverImage}
               alt="cover image of manga title"
               fill={true}
+              unoptimized={true}
               className="object-cover"
               loading="eager"
             />
@@ -49,6 +50,7 @@ function Slide({
         src={backgroundImage}
         alt="background slide image"
         fill={true}
+        unoptimized={true}
         className="object-cover -z-10"
       />
     </div>

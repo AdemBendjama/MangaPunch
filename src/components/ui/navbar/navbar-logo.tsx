@@ -11,7 +11,8 @@ function NavbarLogo() {
             alt="logo"
             width={32}
             height={32}
-          ></Image>
+            unoptimized={true}
+          />
         </Link>
       </div>
       <Link href={`/`}>

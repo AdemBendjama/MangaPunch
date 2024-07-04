@@ -38,6 +38,7 @@ function CardSmall({
           src={coverImage}
           alt="cover image"
           fill={true}
+          unoptimized={true}
           sizes="(min-width: 1024px) 150px, (min-width: 768px) 16vw,(min-width: 480px) 20vw, 28vw"
           className="object-cover lg:z-auto z-10 cursor-pointer"
           onClick={() => router.push(`/manga/${id}`)}

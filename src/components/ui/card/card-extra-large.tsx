@@ -18,6 +18,7 @@ function CardExtraLarge({
             src={coverImage}
             alt="cover image of manga title"
             fill={true}
+            unoptimized={true}
             className="object-cover"
           />
         </div>

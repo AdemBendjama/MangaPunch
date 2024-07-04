@@ -25,6 +25,7 @@ function CardRegular({
             src={coverImage}
             alt="cover image"
             fill={true}
+            unoptimized={true}
             sizes="(min-width: 1024px) 176px, (min-width: 768px) 16vw, 28vw"
             className="object-cover"
           />

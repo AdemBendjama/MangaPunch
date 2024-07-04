@@ -48,14 +48,16 @@ function Footer() {
           width={188}
           height={200}
           alt="footer image"
-        ></Image>
+          unoptimized={true}
+        />
         <div className="sm:hidden flex self-end items-end w-[7.5rem] h-[9rem] relative">
           <Image
             className="object-left-bottom"
             src="/assets/images/footer-mobile.png"
             fill={true}
             alt="footer image"
-          ></Image>
+            unoptimized={true}
+          />
         </div>
       </div>
 

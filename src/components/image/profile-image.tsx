@@ -7,6 +7,7 @@ function ProfileImage() {
           src="/assets/images/footer.png"
           alt="footer image"
           fill={true}
+          unoptimized={true}
           className="object-contain"
         />
       </div>

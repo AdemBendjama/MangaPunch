@@ -22,7 +22,8 @@ function AuthProvider({ type }: { type: string }) {
               alt="logo"
               width={48}
               height={48}
-            ></Image>
+              unoptimized={true}
+            />
           </Link>
           <Link href={`/`}>
             <span className="font-bold text-logo text-[2rem] text-shadow-lg">
