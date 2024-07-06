@@ -73,14 +73,21 @@ export function InputForm({
               password: formData.password,
             });
           } catch (error) {
-            //
+            console.log("Sign in failed");
+            console.error(error);
           }
         } else if (pathname === "/auth/signup") {
-          await signup({
-            email: formData.email,
-            username: formData.username,
-            password: formData.password,
-          });
+          try {
+            await signup({
+              email: formData.email,
+              username: formData.username,
+              password: formData.password,
+            });
+            router.push("/");
+          } catch (error) {
+            console.log("Sign up failed");
+            console.error(error);
+          }
         }
 
       case "profile":
@@ -140,8 +147,18 @@ export function InputForm({
                 Forget Password?
               </div>
             )}
-            <Button type="submit" className="w-full font-bold text-base">
-              {buttonLabel}
+            <Button
+              type="submit"
+              className="w-full font-bold text-base"
+              disabled={
+                form.formState.isSubmitting || form.formState.isSubmitSuccessful
+              }
+            >
+              {form.formState.isSubmitting
+                ? "Submitting..."
+                : form.formState.isSubmitSuccessful
+                ? "Success !"
+                : buttonLabel}
             </Button>
           </div>
         )}

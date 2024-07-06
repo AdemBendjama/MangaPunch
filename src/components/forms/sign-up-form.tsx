@@ -2,23 +2,28 @@
 import { Suspense } from "react";
 import { InputForm } from "./form";
 import { z } from "zod";
-const FormSchema = z.object({
-  email: z.string().email(),
-  username: z
-    .string()
-    .min(3, {
-      message: "Username must be at least 3 characters.",
-    })
-    .max(14, {
-      message: "Username must not be 16 characters or more.",
+const FormSchema = z
+  .object({
+    email: z.string().email(),
+    username: z
+      .string()
+      .min(3, {
+        message: "Username must be at least 3 characters.",
+      })
+      .max(14, {
+        message: "Username must not be 16 characters or more.",
+      }),
+    password: z.string().min(8, {
+      message: "Password must be at least 8 characters.",
     }),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-  confirm_password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-});
+    confirm_password: z.string().min(8, {
+      message: "Password must be at least 8 characters.",
+    }),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "Passwords do not match",
+    path: ["confirm_password"],
+  });
 
 export function SignUpForm() {
   const formFields = [
