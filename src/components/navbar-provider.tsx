@@ -1,17 +1,9 @@
+"use client";
 import Navbar from "./ui/navbar/navbar";
 import Footer from "./ui/footer/footer";
 import { usePathname } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
 
-function NavbarProvider({
-  children,
-  isSideBarOpen,
-  setIsSideBarOpen,
-}: {
-  isSideBarOpen: boolean;
-  setIsSideBarOpen: Dispatch<SetStateAction<boolean>>;
-  children: React.ReactNode;
-}) {
+function NavbarProvider({ children }: { children: React.ReactNode }) {
   const currentPathname = usePathname();
   const pathnames: RegExp[] = [/^\/auth\/signin$/, /^\/auth\/signup$/];
   let hideUI = false;
@@ -24,12 +16,7 @@ function NavbarProvider({
 
   return (
     <div className="min-h-screen flex flex-col">
-      {!hideUI && (
-        <Navbar
-          isSideBarOpen={isSideBarOpen}
-          setIsSideBarOpen={setIsSideBarOpen}
-        />
-      )}
+      {!hideUI && <Navbar />}
       <main className="flex-grow">{children}</main>
       {!hideUI && <Footer />}
     </div>

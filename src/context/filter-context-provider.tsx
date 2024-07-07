@@ -12,9 +12,7 @@ const FilterContext = createContext<FilterContextType | undefined>(undefined);
 export const useFilterContext = () => {
   const context = useContext(FilterContext);
   if (!context) {
-    throw new Error(
-      "useFilterContext needs to be used in scope of FilterContextProvider"
-    );
+    throw new Error("context out of scope of FilterContextProvider");
   }
   return context;
 };

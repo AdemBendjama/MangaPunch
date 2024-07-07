@@ -1,19 +1,14 @@
 "use client";
-import { Dispatch, SetStateAction } from "react";
 import NavbarSideBar from "./navbar-sidebar";
 import NavbarIconNavigation from "./navbar-icon-navigation";
 import NavbarTitleNavigation from "./navbar-title-navigation";
 import NavbarLogo from "./navbar-logo";
 import { usePathname } from "next/navigation";
+import { useSideBarContext } from "@/context/sidebar-context-provider";
 
-function Navbar({
-  isSideBarOpen,
-  setIsSideBarOpen,
-}: {
-  isSideBarOpen: boolean;
-  setIsSideBarOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+function Navbar() {
   // change navbar ui based on current page
+  const { isSideBarOpen, toggleSideBar } = useSideBarContext();
   const currentPathname = usePathname();
   const pathnames: RegExp[] = [
     /^\/manga\/\d+$/,
@@ -27,10 +22,6 @@ function Navbar({
       break;
     }
   }
-
-  const toggleSideBar = () => {
-    setIsSideBarOpen((prevState) => !prevState);
-  };
 
   return (
     <header

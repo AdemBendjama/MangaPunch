@@ -1,13 +1,12 @@
-"use client";
 import "@/styles/globals.css";
 import { Overpass } from "next/font/google";
 import { cn } from "../lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import NavbarProvider from "@/components/navbar-provider";
-import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import VersionChecker from "@/components/version-checker";
 import { FilterContextProvider } from "@/context/filter-context-provider";
+import { SideBarContextProvider } from "@/context/sidebar-context-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -19,7 +18,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -32,8 +30,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          `min-h-screen bg-background dark:bg-background-secondary font-overpass antialiased
-          ${isSideBarOpen && "overflow-hidden"}`,
+          `min-h-screen bg-background dark:bg-background-secondary font-overpass antialiased`,
           overpass.variable
         )}
       >
@@ -45,12 +42,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <FilterContextProvider>
-            <NavbarProvider
-              isSideBarOpen={isSideBarOpen}
-              setIsSideBarOpen={setIsSideBarOpen}
-            >
-              {children}
-            </NavbarProvider>
+            <SideBarContextProvider>
+              <NavbarProvider>{children}</NavbarProvider>
+            </SideBarContextProvider>
           </FilterContextProvider>
           <Toaster />
         </ThemeProvider>
