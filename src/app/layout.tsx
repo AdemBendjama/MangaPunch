@@ -7,17 +7,20 @@ import { Toaster } from "@/components/ui/toaster";
 import VersionChecker from "@/components/version-checker";
 import { FilterContextProvider } from "@/context/filter-context-provider";
 import { SideBarContextProvider } from "@/context/sidebar-context-provider";
+import { getServerSession } from "next-auth";
+import SessionProvider from "@/components/session-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
   variable: "--font-overpass",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession();
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -35,19 +38,21 @@ export default function RootLayout({
         )}
       >
         <VersionChecker />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <FilterContextProvider>
-            <SideBarContextProvider>
-              <NavbarProvider>{children}</NavbarProvider>
-            </SideBarContextProvider>
-          </FilterContextProvider>
-          <Toaster />
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <FilterContextProvider>
+              <SideBarContextProvider>
+                <NavbarProvider>{children}</NavbarProvider>
+              </SideBarContextProvider>
+            </FilterContextProvider>
+            <Toaster />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

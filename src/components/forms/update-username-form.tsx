@@ -13,7 +13,11 @@ const FormSchema = z.object({
     }),
 });
 
-export function UpdateUsernameForm() {
+export function UpdateUsernameForm({
+  username,
+}: {
+  username: string | null | undefined;
+}) {
   const formFields = [
     {
       name: "username",
@@ -28,7 +32,7 @@ export function UpdateUsernameForm() {
       <InputForm
         type="profile"
         defaultValues={{
-          username: "Naden2020",
+          username: username || "",
         }}
         FormSchema={FormSchema}
         buttonLabel="Update Username"
