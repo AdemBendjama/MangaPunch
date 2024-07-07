@@ -31,7 +31,3 @@ export async function signup(formData: {
     throw error;
   }
 }
-
-export async function signin(formData: { email: string; password: string }) {
-  console.log(formData);
-}

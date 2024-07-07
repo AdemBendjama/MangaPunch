@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { signin, signup } from "@/lib/actions/auth";
+import { signup } from "@/lib/actions/auth_actions";
 
 export function InputForm({
   type,
@@ -66,28 +66,17 @@ export function InputForm({
         router.push(newUrl);
       case "auth":
         if (pathname === "/auth/signin") {
-          try {
-            //
-            await signin({
-              email: formData.email,
-              password: formData.password,
-            });
-          } catch (error) {
-            console.log("Sign in failed");
-            console.error(error);
-          }
+          //
         } else if (pathname === "/auth/signup") {
-          try {
-            await signup({
-              email: formData.email,
-              username: formData.username,
-              password: formData.password,
-            });
-            router.push("/");
-          } catch (error) {
-            console.log("Sign up failed");
-            console.error(error);
-          }
+          await signup({
+            email: formData.email,
+            username: formData.username,
+            password: formData.password,
+          })
+            .then(() => {
+              router.push("/auth/signin");
+            })
+            .catch((error) => console.log(error.message));
         }
 
       case "profile":
@@ -150,15 +139,9 @@ export function InputForm({
             <Button
               type="submit"
               className="w-full font-bold text-base"
-              disabled={
-                form.formState.isSubmitting || form.formState.isSubmitSuccessful
-              }
+              disabled={form.formState.isSubmitting}
             >
-              {form.formState.isSubmitting
-                ? "Submitting..."
-                : form.formState.isSubmitSuccessful
-                ? "Success !"
-                : buttonLabel}
+              {form.formState.isSubmitting ? "Submitting..." : buttonLabel}
             </Button>
           </div>
         )}
