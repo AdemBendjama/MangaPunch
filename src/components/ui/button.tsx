@@ -10,7 +10,8 @@ export type ButtonVariant =
   | "secondary"
   | "ghost"
   | "link"
-  | "mangadex";
+  | "mangadex"
+  | "github";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
@@ -27,6 +28,7 @@ const buttonVariants = cva(
         ghost: "",
         link: "text-primary underline-offset-4 hover:underline",
         mangadex: "bg-mangadex text-primary-foreground hover:bg-mangadex/90",
+        github: "bg-black text-primary-foreground hover:bg-black/70",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -1,7 +1,15 @@
 import AuthProvider from "@/components/auth-provider";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-function SignInPage() {
-  return <AuthProvider type="signin"></AuthProvider>;
+async function SignInPage() {
+  const session = await getServerSession();
+
+  if (session) {
+    redirect("/");
+  }
+
+  return <AuthProvider type="signin" />;
 }
 
 export default SignInPage;

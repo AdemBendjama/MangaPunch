@@ -16,7 +16,7 @@ function Profile() {
   }
 
   if (status === "unauthenticated") {
-    router.replace("/api/auth/signin");
+    router.replace("/auth/signin");
   }
   if (status === "authenticated") {
     return (

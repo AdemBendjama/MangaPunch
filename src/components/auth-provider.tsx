@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SignInForm } from "./forms/sign-in-form";
 import { SignUpForm } from "./forms/sign-up-form";
+import SignInProviders from "./ui/auth-buttons/signin-providers";
 
 function AuthProvider({ type }: { type: string }) {
   return (
@@ -37,6 +38,8 @@ function AuthProvider({ type }: { type: string }) {
               {type === "signin" && "Log in to your account"}
               {type === "signup" && "Sign up to MangaPunch"}
             </div>
+            {type === "signin" && <SignInProviders />}
+            <div className="w-full my-[1rem] rounded-[12px] border-[1px] border-foreground border-solid"></div>
             {type === "signin" && <SignInForm />}
             {type === "signup" && <SignUpForm />}
           </div>
