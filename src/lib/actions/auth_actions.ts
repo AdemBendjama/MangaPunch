@@ -40,7 +40,6 @@ export async function signup(formData: {
       .collection("users")
       .insertOne({ ...formData, password: hashedPassword });
 
-    await client.close();
     return { error: null };
   } catch (error: any) {
     console.log(error);
@@ -50,5 +49,7 @@ export async function signup(formData: {
         message: "Unexpected interal error please try again later",
       },
     };
+  } finally {
+    await client.close();
   }
 }
