@@ -47,6 +47,11 @@ export const authOptions = {
             return null;
           }
 
+          const emailVerified = user.verified;
+          if (!emailVerified) {
+            return null;
+          }
+
           //
           const comparedPasswords = await bcrypt.compare(
             password,

@@ -1,6 +1,8 @@
 "use server";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import bcrypt from "bcrypt";
+import nodemailer from "nodemailer";
+
 const uri = process.env.MONGODB_URI || "";
 const client = new MongoClient(uri, {
   serverApi: {
@@ -9,13 +11,14 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
-import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
+  port: 465,
+  secure: true,
   auth: {
-    user: "your-email@gmail.com",
-    pass: "your-email-password",
+    user: process.env.GMAIL_ID || "",
+    pass: process.env.GMAIL_SECRET || "",
   },
 });
 
@@ -25,7 +28,7 @@ export const sendEmail = async (
   html: string
 ): Promise<void> => {
   const mailOptions = {
-    from: "your-email@gmail.com",
+    from: process.env.GMAIL_ID || "",
     to,
     subject,
     html,
@@ -45,10 +48,7 @@ export async function signup(formData: {
   password: string;
 }): Promise<{ error: { type: "email" | "internal"; message: string } | null }> {
   try {
-    //
     await client.connect();
-
-    const hashedPassword = await bcrypt.hash(formData.password, 10);
 
     const emailAlreadyExists = await client
       .db("mangapunch")
@@ -64,10 +64,35 @@ export async function signup(formData: {
       };
     }
 
+    // 6 digit code
+    const verificationCode = Math.floor(
+      100000 + Math.random() * 900000
+    ).toString();
+    const hashedPassword = await bcrypt.hash(formData.password, 10);
+    const hashedVerificationCode = await bcrypt.hash(verificationCode, 10);
+
     await client
       .db("mangapunch")
       .collection("users")
-      .insertOne({ ...formData, password: hashedPassword });
+      .insertOne({
+        ...formData,
+        password: hashedPassword,
+        verificationCode: hashedVerificationCode,
+        verified: false,
+        createdAt: new Date(),
+      });
+
+    await sendEmail(
+      formData.email,
+      "Email Verification",
+      `<div>
+        This is your email verification code: ${verificationCode}.
+      </div>
+      <div>
+        If you don't submit this code after 24 hours it will expire requiring you to signup again to aquire a new code.
+      </div>
+      `
+    );
 
     return { error: null };
   } catch (error: any) {
@@ -75,7 +100,66 @@ export async function signup(formData: {
     return {
       error: {
         type: "internal",
-        message: "Unexpected interal error please try again later",
+        message: "Unexpected internal error, please try again later",
+      },
+    };
+  } finally {
+    await client.close();
+  }
+}
+
+export async function verifyEmail(formData: {
+  email: string;
+  code: string;
+}): Promise<{
+  error: { type: "verification" | "internal"; message: string } | null;
+}> {
+  try {
+    await client.connect();
+
+    const user = await client
+      .db("mangapunch")
+      .collection("users")
+      .findOne({ email: formData.email });
+
+    if (!user) {
+      return {
+        error: {
+          type: "verification",
+          message: "Invalid email or verification code.",
+        },
+      };
+    }
+
+    const isCodeValid = await bcrypt.compare(
+      formData.code,
+      user.verificationCode
+    );
+
+    if (!isCodeValid) {
+      return {
+        error: {
+          type: "verification",
+          message: "Invalid email or verification code.",
+        },
+      };
+    }
+
+    await client
+      .db("mangapunch")
+      .collection("users")
+      .updateOne(
+        { email: formData.email },
+        { $set: { verified: true }, $unset: { verificationCode: "" } }
+      );
+
+    return { error: null };
+  } catch (error: any) {
+    console.log(error);
+    return {
+      error: {
+        type: "internal",
+        message: "Unexpected internal error, please try again later",
       },
     };
   } finally {

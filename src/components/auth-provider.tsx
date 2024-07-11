@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SignInForm } from "./forms/sign-in-form";
 import { SignUpForm } from "./forms/sign-up-form";
 import SignInProviders from "./ui/auth-buttons/signin-providers";
+import { VerifyEmailForm } from "./forms/verify-email-form";
 
 function AuthProvider({ type }: { type: string }) {
   return (
@@ -37,6 +38,7 @@ function AuthProvider({ type }: { type: string }) {
             <div className="mx-auto pt-[0.5rem] pb-[1.5rem] font-bold sm:text-[1.375rem] text-[1.25rem]">
               {type === "signin" && "Log in to your account"}
               {type === "signup" && "Sign up to MangaPunch"}
+              {type === "verify_email" && "Check your inbox"}
             </div>
             {type === "signin" && (
               <>
@@ -46,19 +48,22 @@ function AuthProvider({ type }: { type: string }) {
             )}
             {type === "signin" && <SignInForm />}
             {type === "signup" && <SignUpForm />}
+            {type === "verify_email" && <VerifyEmailForm />}
           </div>
-          <div className="flex justify-center py-[0.75rem] h-[3rem] sm:w-[29rem] w-[91vw] bg-card-footer">
-            <span className="text-sm text-black dark:text-white">
-              {type === "signin" && "No account? "}
-              {type === "signup" && "Already have an account? "}
-              <span className="font-bold text-sm text-primary dark:text-primary-bright">
-                {type === "signin" && (
-                  <Link href="/auth/signup">CREATE ONE</Link>
-                )}
-                {type === "signup" && <Link href="/auth/signin">LOG IN</Link>}
+          {type !== "verify_email" && (
+            <div className="flex justify-center py-[0.75rem] h-[3rem] sm:w-[29rem] w-[91vw] bg-card-footer">
+              <span className="text-sm text-black dark:text-white">
+                {type === "signin" && "No account? "}
+                {type === "signup" && "Already have an account? "}
+                <span className="font-bold text-sm text-primary dark:text-primary-bright">
+                  {type === "signin" && (
+                    <Link href="/auth/signup">CREATE ONE</Link>
+                  )}
+                  {type === "signup" && <Link href="/auth/signin">LOG IN</Link>}
+                </span>
               </span>
-            </span>
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

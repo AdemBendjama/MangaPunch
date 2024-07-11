@@ -16,8 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { signup } from "@/actions/auth_actions";
+import { signup, verifyEmail } from "@/actions/auth_actions";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 export function InputForm({
   type,
@@ -90,6 +91,17 @@ export function InputForm({
                 setFormError(data.error.message);
               }
             } else {
+              router.push("/auth/signup/verify-email");
+            }
+          });
+        } else if (pathname === "/auth/signup/verify-email") {
+          await verifyEmail({
+            email: formData.email,
+            code: formData.code,
+          }).then((data) => {
+            if (data.error) {
+              setFormError(data.error.message);
+            } else {
               router.push("/auth/signin");
             }
           });
@@ -146,12 +158,17 @@ export function InputForm({
           }
         )}
         {searchParamsError && searchParamsError === "CredentialsSignin" && (
-          <div className="w-full pb-[1rem] text-sm font-medium text-form-error">
-            <span>
-              Sign in failed.
-              <br />
-              Please check your email and password and try again.
-            </span>
+          <div className="flex flex-col gap-[0.5rem] w-full pb-[1rem] text-sm font-medium text-form-error">
+            <div>Please check your email and password and try again.</div>
+            <div>
+              If you have already signed up for an account verify it
+              <Link
+                href="/auth/signup/verify-email"
+                className="text-primary dark:text-primary-bright"
+              >
+                &nbsp;here.
+              </Link>
+            </div>
           </div>
         )}
         {formError && (
