@@ -14,12 +14,26 @@ export async function signup(formData: {
   email: string;
   username: string;
   password: string;
-}) {
+}): Promise<{ error: { type: "email" | "internal"; message: string } | null }> {
   try {
     //
     await client.connect();
 
     const hashedPassword = await bcrypt.hash(formData.password, 10);
+
+    const emailAlreadyExists = await client
+      .db("mangapunch")
+      .collection("users")
+      .findOne({ email: formData.email });
+
+    if (emailAlreadyExists) {
+      return {
+        error: {
+          type: "email",
+          message: "An account with this email already exists.",
+        },
+      };
+    }
 
     await client
       .db("mangapunch")
@@ -27,7 +41,14 @@ export async function signup(formData: {
       .insertOne({ ...formData, password: hashedPassword });
 
     await client.close();
-  } catch (error) {
-    throw error;
+    return { error: null };
+  } catch (error: any) {
+    console.log(error);
+    return {
+      error: {
+        type: "internal",
+        message: "Unexpected interal error please try again later",
+      },
+    };
   }
 }

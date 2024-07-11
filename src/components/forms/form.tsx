@@ -15,8 +15,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { signup } from "@/lib/actions/auth_actions";
+import { signIn } from "next-auth/react";
 
 export function InputForm({
   type,
@@ -51,6 +52,8 @@ export function InputForm({
       search: searchParams.get("search") || "",
     },
   });
+  const [formError, setFormError] = useState<string | null>(null);
+  const searchParamsError = searchParams.get("error");
 
   async function onSubmit(formData: z.infer<typeof FormSchema>) {
     switch (type) {
@@ -67,16 +70,29 @@ export function InputForm({
       case "auth":
         if (pathname === "/auth/signin") {
           //
+          await signIn("credentials", {
+            email: formData.email,
+            password: formData.password,
+            redirect: true,
+          });
         } else if (pathname === "/auth/signup") {
           await signup({
             email: formData.email,
             username: formData.username,
             password: formData.password,
-          })
-            .then(() => {
+          }).then((data) => {
+            if (data.error) {
+              if (data.error.type == "email") {
+                form.setError("email", {
+                  message: data.error.message,
+                });
+              } else {
+                setFormError(data.error.message);
+              }
+            } else {
               router.push("/auth/signin");
-            })
-            .catch((error) => console.log(error.message));
+            }
+          });
         }
 
       case "profile":
@@ -128,6 +144,20 @@ export function InputForm({
               />
             );
           }
+        )}
+        {searchParamsError && searchParamsError === "CredentialsSignin" && (
+          <div className="w-full pb-[1rem] text-sm font-medium text-form-error">
+            <span>
+              Sign in failed.
+              <br />
+              Please check your email and password and try again.
+            </span>
+          </div>
+        )}
+        {formError && (
+          <div className="w-full pb-[1rem] text-sm font-medium text-form-error">
+            {formError}
+          </div>
         )}
         {type === "auth" && (
           <div className="w-full pb-[1rem]">

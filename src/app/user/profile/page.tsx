@@ -41,7 +41,7 @@ function Profile() {
               className="w-full sm:mt-[2rem] mt-[1rem]"
               variant="destructive"
               onClick={() => {
-                signOut({ callbackUrl: "/" });
+                signOut({ callbackUrl: "/auth/signin" });
               }}
             >
               Logout

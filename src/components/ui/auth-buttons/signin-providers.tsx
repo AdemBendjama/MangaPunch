@@ -10,7 +10,7 @@ function SignInProviders() {
         type="submit"
         className="w-full font-bold text-base"
         variant="github"
-        onClick={() => signIn("github")}
+        onClick={async () => await signIn("github")}
       >
         <Github size={20} className="mb-[0.1rem]" absoluteStrokeWidth />
         <div className="mr-[1.5rem] ml-[0.75rem]">Log In with GitHub</div>
