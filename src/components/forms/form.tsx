@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { signup } from "@/lib/actions/auth_actions";
+import { signup } from "@/actions/auth_actions";
 import { signIn } from "next-auth/react";
 
 export function InputForm({
