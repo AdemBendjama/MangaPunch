@@ -13,7 +13,7 @@ const client = new MongoClient(uri, {
   },
 });
 
-export const authOptions = {
+const authOptions = {
   pages: {
     signIn: "/auth/signin",
   },
