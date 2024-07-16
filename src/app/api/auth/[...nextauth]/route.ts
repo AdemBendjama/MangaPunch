@@ -1,9 +1,10 @@
-import NextAuth, { User } from "next-auth";
+import NextAuth, { Account, Session, User } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 import bcrypt from "bcrypt";
+import { AdapterUser } from "next-auth/adapters";
 const uri = process.env.MONGODB_URI || "";
 const client = new MongoClient(uri, {
   serverApi: {
@@ -74,6 +75,62 @@ const authOptions = {
       },
     }),
   ],
+  callbacks: {
+    async signIn({
+      user,
+      account,
+    }: {
+      user: User | AdapterUser;
+      account: Account | null;
+    }) {
+      if (account?.provider !== "credentials") {
+        try {
+          //
+          await client.connect();
+          const db = client.db("mangapunch").collection("users");
+          //
+          const userExists = await db.findOne({ email: user.email });
+
+          if (!userExists) {
+            await db.insertOne({
+              username: user.name,
+              email: user.email,
+              valid: true,
+              hasPassword: false,
+            });
+          }
+        } catch (error) {
+          console.log(error);
+          return false;
+        } finally {
+          await client.close();
+        }
+      }
+      return true;
+    },
+    async session({ session, token }: { session: Session; token: any }) {
+      await client.connect();
+      const db = client.db("mangapunch");
+
+      const user = await db.collection("users").findOne({ email: token.email });
+
+      if (user) {
+        session.user.id = user._id.toString();
+        session.user.name = user.username;
+        session.user.email = user.email;
+        session.user.hasPassword = user.hasPassword;
+      }
+
+      await client.close();
+      // console.log("----------------------------------------");
+      // console.log("----------------------------------------");
+      // console.log(session);
+      // console.log("----------------------------------------");
+      // console.log("----------------------------------------");
+
+      return session;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

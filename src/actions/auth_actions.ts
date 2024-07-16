@@ -79,6 +79,7 @@ export async function signup(formData: {
         password: hashedPassword,
         verificationCode: hashedVerificationCode,
         verified: false,
+        hasPassword: true,
         createdAt: new Date(),
       });
 
