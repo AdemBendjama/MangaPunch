@@ -35,7 +35,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - **Next.js 14**: The latest version of the Next.js framework using App router Paradigm.
 - **Tailwind CSS**: A utility-first CSS framework for building responsive and customizable UIs.
-- **Shadcn UI**: [Description of Shadcn UI]
+- **Shadcn UI**: A component library designed to create beautiful and accessible UIs with a focus on simplicity and ease of use.
 - **NextAuth**: Next.js authentication library for authentication and authorization.
 - **Zod**: TypeScript-first schema declaration and validation library.
 - **React Hook Form**: Performant, flexible and extensible forms with easy-to-use validation.
