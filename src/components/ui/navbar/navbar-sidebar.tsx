@@ -18,7 +18,7 @@ function NavbarSideBar({
   //
   const backgroundOverlay = isSideBarOpen && (
     <div
-      className="sm:block hidden w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem]"
+      className="sm:block hidden w-screen h-screen bg-black bg-opacity-70 absolute top-[3.75rem] disable-scroll"
       onClick={toggleSideBar}
     />
   );

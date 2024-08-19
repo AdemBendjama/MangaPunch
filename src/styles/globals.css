@@ -109,3 +109,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--scrollbar-thumb-hover));
 }
+
+:root:has(.disable-scroll) {
+  overflow: hidden
+}

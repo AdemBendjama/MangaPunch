@@ -1,14 +1,19 @@
 "use client";
-import NavbarSideBar from "./navbar-sidebar";
+
 import NavbarIconNavigation from "./navbar-icon-navigation";
-import NavbarTitleNavigation from "./navbar-title-navigation";
 import NavbarLogo from "./navbar-logo";
+import NavbarSideBar from "./navbar-sidebar";
+import NavbarTitleNavigation from "./navbar-title-navigation";
 import { usePathname } from "next/navigation";
-import { useSideBarContext } from "@/context/sidebar-context-provider";
+import { useState } from "react";
 
 function Navbar() {
   // change navbar ui based on current page
-  const { isSideBarOpen, toggleSideBar } = useSideBarContext();
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const toggleSideBar = () => {
+    setIsSideBarOpen((prevState) => !prevState);
+  };
   const currentPathname = usePathname();
   const pathnames: RegExp[] = [
     /^\/manga\/\d+$/,
@@ -25,7 +30,7 @@ function Navbar() {
 
   return (
     <header
-      className={`flex flex-row justify-between w-full h-[3.75rem] lg:px-[5rem] ${
+      className={`flex flex-row justify-between w-full h-16 lg:px-[5rem] ${
         transparent && !isSideBarOpen
           ? "bg-primary-50 dark:bg-card-50"
           : "bg-primary dark:bg-card z-50"

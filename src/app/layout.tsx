@@ -1,14 +1,14 @@
 import "@/styles/globals.css";
-import { Overpass } from "next/font/google";
-import { cn } from "../lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
+
+import { FilterContextProvider } from "@/context/filter-context-provider";
 import NavbarProvider from "@/components/navbar-provider";
+import { Overpass } from "next/font/google";
+import SessionProvider from "@/components/session-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import VersionChecker from "@/components/version-checker";
-import { FilterContextProvider } from "@/context/filter-context-provider";
-import { SideBarContextProvider } from "@/context/sidebar-context-provider";
+import { cn } from "../lib/utils";
 import { getServerSession } from "next-auth";
-import SessionProvider from "@/components/session-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -46,9 +46,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <FilterContextProvider>
-              <SideBarContextProvider>
-                <NavbarProvider>{children}</NavbarProvider>
-              </SideBarContextProvider>
+              <NavbarProvider>{children}</NavbarProvider>
             </FilterContextProvider>
             <Toaster />
           </ThemeProvider>
