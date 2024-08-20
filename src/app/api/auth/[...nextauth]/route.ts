@@ -5,6 +5,7 @@ import { AdapterUser } from "next-auth/adapters";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import { JWT } from "next-auth/jwt";
 import bcrypt from "bcrypt";
 
 const uri = process.env.MONGODB_URI || "";
@@ -110,12 +111,11 @@ const authOptions = {
       }
       return true;
     },
-    async session({ session, token }: { session: Session; token: any }) {
+    async session({ session, token }: { session: Session; token: JWT }) {
       await client.connect();
       const db = client.db("mangapunch");
 
       const user = await db.collection("users").findOne({ email: token.email });
-
       if (user) {
         session.user.id = user._id.toString();
         session.user.name = user.username;
