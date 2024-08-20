@@ -1,10 +1,11 @@
-import SlideCategory from "@/components/ui/slide-category/slide-category";
-import SlideShow from "@/components/ui/slide-show/slide-show";
 import {
   GET_SEINEN_MANGA,
   GET_SHOUNEN_MANGA,
   GET_TRENDING_MANGA,
 } from "@/lib/queries";
+
+import SlideCategory from "@/components/ui/slide-category/slide-category";
+import SlideShow from "@/components/ui/slide-show/slide-show";
 import { Suspense } from "react";
 
 function Home() {

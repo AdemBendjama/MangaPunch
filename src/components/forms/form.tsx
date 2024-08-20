@@ -1,9 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,12 +9,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { signup, verifyEmail } from "@/actions/auth_actions";
 import { signIn } from "next-auth/react";
+import { signup, verifyEmail } from "@/actions/auth_actions";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { updateUsername } from "@/actions/credentials_actions";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export function InputForm({
   type,
@@ -27,7 +29,7 @@ export function InputForm({
   buttonLabel,
   formFields,
 }: {
-  type: "auth" | "profile" | "search";
+  type: "auth" | "username" | "password" | "search";
   FormSchema: z.ZodObject<any, any> | z.ZodEffects<z.ZodObject<any, any, any>>;
   buttonLabel?: string;
   formFields: {
@@ -107,7 +109,12 @@ export function InputForm({
           });
         }
 
-      case "profile":
+      case "username":
+        await updateUsername({ username: formData.username }).then((data) => {
+          if (data.error) {
+            setFormError(data.error.message);
+          }
+        });
     }
   }
 
@@ -192,7 +199,7 @@ export function InputForm({
             </Button>
           </div>
         )}
-        {type === "profile" && (
+        {(type === "username" || type === "password") && (
           <div className="w-full flex justify-end">
             <Button type="submit">{buttonLabel}</Button>
           </div>

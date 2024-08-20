@@ -1,6 +1,7 @@
 "use client";
-import { Suspense } from "react";
+
 import { InputForm } from "./form";
+import { Suspense } from "react";
 import { z } from "zod";
 const FormSchema = z
   .object({
@@ -43,7 +44,7 @@ export function ChangePasswordForm() {
   return (
     <Suspense>
       <InputForm
-        type="profile"
+        type="password"
         defaultValues={{
           old_password: "********",
         }}

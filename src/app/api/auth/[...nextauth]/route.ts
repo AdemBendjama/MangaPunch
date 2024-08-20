@@ -1,10 +1,12 @@
+import { MongoClient, ServerApiVersion } from "mongodb";
 import NextAuth, { Account, Session, User } from "next-auth";
+
+import { AdapterUser } from "next-auth/adapters";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 import bcrypt from "bcrypt";
-import { AdapterUser } from "next-auth/adapters";
+
 const uri = process.env.MONGODB_URI || "";
 const client = new MongoClient(uri, {
   serverApi: {
@@ -122,11 +124,6 @@ const authOptions = {
       }
 
       await client.close();
-      // console.log("----------------------------------------");
-      // console.log("----------------------------------------");
-      // console.log(session);
-      // console.log("----------------------------------------");
-      // console.log("----------------------------------------");
 
       return session;
     },
