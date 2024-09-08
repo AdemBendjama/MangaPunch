@@ -9,7 +9,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { signIn } from "next-auth/react";
 import { signup, verifyEmail } from "@/actions/auth_actions";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -17,6 +16,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { signIn, useSession } from "next-auth/react";
 import { updateUsername } from "@/actions/credentials_actions";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -45,6 +45,7 @@ export function InputForm({
     old_password?: string;
   };
 }) {
+  const { data: session, update } = useSession();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -110,11 +111,25 @@ export function InputForm({
         }
 
       case "username":
-        await updateUsername({ username: formData.username }).then((data) => {
-          if (data.error) {
-            setFormError(data.error.message);
+        if (formData.username && session) {
+          const usernameUpdated = await updateUsername({
+            username: formData.username,
+          }).then((data) => {
+            if (data.error) {
+              setFormError(data.error.message);
+            }
+            return !data.error;
+          });
+          if (usernameUpdated) {
+            await update({
+              ...session,
+              user: {
+                ...session.user,
+                name: formData.username,
+              },
+            });
           }
-        });
+        }
     }
   }
 

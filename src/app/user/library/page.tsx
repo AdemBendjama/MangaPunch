@@ -23,7 +23,7 @@ function Library() {
       <div className="text-foreground">
         <div className="h-[18.75rem] relative shadow-slide-inner-bg">
           <ProfileBackgroundImage />
-          <ProfileImage username={session?.user?.name} />
+          <ProfileImage username={session.user.name} />
         </div>
         <div className="dark:bg-background-secondary flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:mx-auto lg:w-[63rem] lg:px-[0] sm:px-[3rem] px-[1rem]">
           <div className="flex flex-col gap-[0.625rem]">

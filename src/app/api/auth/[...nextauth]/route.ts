@@ -1,11 +1,12 @@
+import NextAuth from "next-auth";
+
 import { MongoClient, ServerApiVersion } from "mongodb";
-import NextAuth, { Account, Session, User } from "next-auth";
+import { Account, NextAuthOptions, User } from "next-auth";
 
 import { AdapterUser } from "next-auth/adapters";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import { JWT } from "next-auth/jwt";
 import bcrypt from "bcrypt";
 
 const uri = process.env.MONGODB_URI || "";
@@ -17,7 +18,10 @@ const client = new MongoClient(uri, {
   },
 });
 
-const authOptions = {
+const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
   pages: {
     signIn: "/auth/signin",
   },
@@ -70,7 +74,13 @@ const authOptions = {
             return null;
           }
 
-          return { id: user._id.toString(), name: user.username, email: email };
+          return {
+            id: user._id.toString(),
+            name: user.username,
+            email: email,
+            image: null,
+            hasPassword: user.hasPassword,
+          };
         } catch (error) {
           console.log(error);
           return null;
@@ -92,16 +102,27 @@ const authOptions = {
           await client.connect();
           const db = client.db("mangapunch").collection("users");
           //
-          const userExists = await db.findOne({ email: user.email });
+          const userDb = await db.findOne({ email: user.email });
 
-          if (!userExists) {
-            await db.insertOne({
+          if (!userDb) {
+            const res = await db.insertOne({
               username: user.name,
               email: user.email,
+              image: user.image,
               valid: true,
               hasPassword: false,
             });
+
+            user.id = res.insertedId.toString();
+          } else {
+            // if user exists use the data stored in the mongodb database
+            // replace only data that changes like name and image
+            // or in case of id to use the id from mongodb
+            user.id = userDb._id.toString();
+            user.name = userDb.username;
+            user.image = userDb.image;
           }
+          user.hasPassword = false;
         } catch (error) {
           console.log(error);
           return false;
@@ -111,19 +132,17 @@ const authOptions = {
       }
       return true;
     },
-    async session({ session, token }: { session: Session; token: JWT }) {
-      await client.connect();
-      const db = client.db("mangapunch");
 
-      const user = await db.collection("users").findOne({ email: token.email });
-      if (user) {
-        session.user.id = user._id.toString();
-        session.user.name = user.username;
-        session.user.email = user.email;
-        session.user.hasPassword = user.hasPassword;
+    async jwt({ token, user, trigger, session }) {
+      if (trigger === "update") {
+        return { ...token, ...session.user };
       }
 
-      await client.close();
+      return { ...token, ...user };
+    },
+
+    async session({ session, token }) {
+      session.user = token as any;
 
       return session;
     },
