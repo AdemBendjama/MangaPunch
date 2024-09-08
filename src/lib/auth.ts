@@ -104,10 +104,9 @@ export const authOptions: NextAuthOptions = {
 
           if (!userDb) {
             const res = await db.insertOne({
-              username: user.name,
               email: user.email,
+              username: user.name,
               image: user.image,
-              valid: true,
               hasPassword: false,
             });
 

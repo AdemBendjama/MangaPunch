@@ -76,10 +76,11 @@ export async function signup(formData: {
       .collection("users")
       .insertOne({
         ...formData,
-        password: hashedPassword,
-        verificationCode: hashedVerificationCode,
-        verified: false,
+        image: null,
         hasPassword: true,
+        password: hashedPassword,
+        verified: false,
+        verificationCode: hashedVerificationCode,
         createdAt: new Date(),
       });
 
@@ -151,7 +152,9 @@ export async function verifyEmail(formData: {
       .collection("users")
       .updateOne(
         { email: formData.email },
-        { $set: { verified: true }, $unset: { verificationCode: "" } }
+        {
+          $unset: { verificationCode: "", verified: "", createdAt: "" },
+        }
       );
 
     return { error: null };
