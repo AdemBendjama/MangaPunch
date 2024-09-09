@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 function Profile() {
   const { data: session, status } = useSession();
+
   const router = useRouter();
 
   if (status === "loading") {
