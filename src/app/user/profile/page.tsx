@@ -28,6 +28,7 @@ function Profile() {
         </div>
         <div className="flex sm:flex-row flex-col justify-evenly gap-[2rem] lg:mx-auto lg:w-[63rem] lg:px-[0] sm:px-[2rem] px-[1rem] lg:pb-[10rem] sm:pb-[6rem] pb-[3rem] pt-[2rem] dark:bg-background-secondary">
           <AccountSection
+            email={session.user.email}
             username={session.user.name}
             hasPassword={session.user.hasPassword}
           />
