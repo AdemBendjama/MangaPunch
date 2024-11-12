@@ -118,8 +118,8 @@ export const authOptions: NextAuthOptions = {
             user.id = userDb._id.toString();
             user.name = userDb.username;
             user.image = userDb.image;
+            user.hasPassword = userDb.hasPassword;
           }
-          user.hasPassword = false;
         } catch (error) {
           console.log(error);
           return false;
