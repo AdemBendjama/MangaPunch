@@ -153,7 +153,8 @@ export async function verifyEmail(formData: {
       .updateOne(
         { email: formData.email },
         {
-          $unset: { verificationCode: "", verified: "", createdAt: "" },
+          $unset: { verificationCode: "", createdAt: "" },
+          $set: { verified: true },
         }
       );
 
