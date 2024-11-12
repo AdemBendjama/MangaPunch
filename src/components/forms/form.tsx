@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
-import { updateUsername } from "@/actions/credentials_actions";
+import { updatePassword, updateUsername } from "@/actions/credentials_actions";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -42,7 +42,6 @@ export function InputForm({
   }[];
   defaultValues?: {
     username?: string;
-    old_password?: string;
   };
 }) {
   const { data: session, update } = useSession();
@@ -130,6 +129,23 @@ export function InputForm({
             });
           }
         }
+      case "password":
+        if (formData.oldPassword && formData.newPassword && session) {
+          await updatePassword({
+            oldPassword: formData.oldPassword,
+            newPassword: formData.newPassword,
+          }).then((data) => {
+            if (data.error) {
+              setFormError(data.error.message);
+            } else {
+              setFormError(null);
+              form.setValue("oldPassword", "");
+              form.setValue("newPassword", "");
+              form.setValue("confirmPassword", "");
+              router.push("/user/profile");
+            }
+          });
+        }
     }
   }
 
@@ -216,7 +232,9 @@ export function InputForm({
         )}
         {(type === "username" || type === "password") && (
           <div className="w-full flex justify-end">
-            <Button type="submit">{buttonLabel}</Button>
+            <Button type="submit" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? "Submitting..." : buttonLabel}
+            </Button>
           </div>
         )}
       </form>
