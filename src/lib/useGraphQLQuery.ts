@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 
 function useGraphQLQuery(
   query: { name: string; body: string },
-  variables?: { [key: string]: string | number },
+  variables?: { [key: string]: string | number | number[] },
   shouldntFetch?: boolean
 ) {
   const [mangaData, setMangaData] = useState<Manga[]>([]);

@@ -2,6 +2,7 @@
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import RenderManga from "./render-manga";
 import MangaLoading from "./manga-loading";
+import { LibraryData } from "@/app/user/library/page";
 
 function FetchManga({
   query,
@@ -9,14 +10,21 @@ function FetchManga({
   perPage,
   cardType,
   toggleLimitReached,
+  variables,
+  hover,
+  data,
 }: {
   query: { name: string; body: string };
   page: number;
   perPage: number;
   cardType: "large" | "regular" | "small";
   toggleLimitReached: () => void;
+  variables?: { [key: string]: string | number | number[] };
+  hover?: boolean;
+  data?: LibraryData[];
 }) {
   const { mangaData, loading, error } = useGraphQLQuery(query, {
+    ...variables,
     page: page,
     perPage: perPage,
   });
@@ -30,12 +38,15 @@ function FetchManga({
   }
   const requiresRank = query.name === "GET_HIGHEST_RATED_ALL_TIME_MANGA";
 
+  console.log("mangaData :", mangaData);
   return (
     <RenderManga
       mangaData={mangaData}
       cardType={cardType}
       toggleLimitReached={toggleLimitReached}
       requiresRank={requiresRank}
+      hover={hover}
+      data={data}
     />
   );
 }

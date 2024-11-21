@@ -19,8 +19,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import XIcon from "@/components/icons/x-icon";
+import { LibraryData } from "@/app/user/library/page";
 
-export function CardWithForm({ onClose }: { onClose: () => void }) {
+export function CardWithForm({
+  onClose,
+  trackedData,
+}: {
+  onClose: () => void;
+  trackedData?: Omit<LibraryData, "id">;
+}) {
   return (
     <Card className="sm:w-[400px] w-[91vw] relative">
       <XIcon
@@ -38,7 +45,7 @@ export function CardWithForm({ onClose }: { onClose: () => void }) {
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="status">Status</Label>
-              <Select value="reading">
+              <Select value={trackedData?.status}>
                 <SelectTrigger id="status">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
@@ -51,7 +58,14 @@ export function CardWithForm({ onClose }: { onClose: () => void }) {
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="progress">Progess</Label>
-              <Input id="progress" placeholder="" type="number" min={0} />
+              <Input
+                id="progress"
+                placeholder=""
+                type="number"
+                min={1}
+                max={10}
+                defaultValue={trackedData?.chapter}
+              />
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="rating">Rating</Label>
@@ -61,6 +75,7 @@ export function CardWithForm({ onClose }: { onClose: () => void }) {
                 type="number"
                 min={1}
                 max={10}
+                value={trackedData?.rating}
               />
             </div>
           </div>

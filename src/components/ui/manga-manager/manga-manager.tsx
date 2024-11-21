@@ -2,17 +2,24 @@
 import { useInView } from "react-intersection-observer";
 import { Suspense, useEffect, useState } from "react";
 import FetchManga from "./fetch-manga";
+import { LibraryData } from "@/app/user/library/page";
 
 function MangaManager({
   query,
   perPage,
   cardType,
   infiniteScroll,
+  variables,
+  hover,
+  data,
 }: {
   query: { name: string; body: string };
   perPage: number;
   cardType: "large" | "regular" | "small";
   infiniteScroll?: boolean;
+  variables?: { [key: string]: string | number | number[] };
+  hover?: boolean;
+  data?: LibraryData[];
 }) {
   const { ref, inView } = useInView();
   const [page, setPage] = useState<number>(1);
@@ -40,11 +47,14 @@ function MangaManager({
       {pages.map((page) => (
         <Suspense key={page}>
           <FetchManga
+            variables={variables}
             page={page}
             perPage={perPage}
             query={query}
             cardType={cardType}
             toggleLimitReached={handleLimitReached}
+            hover={hover}
+            data={data}
           />
         </Suspense>
       ))}

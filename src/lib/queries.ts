@@ -178,6 +178,26 @@ export const GET_MANGA = {
   }`,
 };
 
+export const GET_MANGA_IDS = {
+  name: "GET_MANGA_IDS",
+  body: `query GetMangaIds($ids: [Int]!, $page: Int!, $perPage: Int!){
+    Page(page: $page, perPage: $perPage) {
+      media(id_in: $ids) {
+        id
+        title {
+          romaji
+          english
+          native
+        }
+        coverImage {
+          large
+        }
+      }
+    }
+  }
+  `,
+};
+
 export const GET_MANGA_RECOMMENDATIONS = {
   name: "GET_MANGA_RECOMMENDATIONS",
   body: `query GetMangaRecommendations($id: Int!, $page: Int!, $perPage: Int!) {

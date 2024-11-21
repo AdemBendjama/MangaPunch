@@ -8,17 +8,20 @@ import { useState } from "react";
 import { CardWithForm } from "../card-modal/card-modal";
 import EllipsisIcon from "@/components/icons/ellipsis-icon";
 import { useRouter } from "next/navigation";
+import { LibraryData } from "@/app/user/library/page";
 
 function CardSmall({
-  hover,
   coverImage,
   id,
   title,
+  hover,
+  trackedData,
 }: {
-  hover?: boolean;
   coverImage: string;
   id: number;
   title: string;
+  hover?: boolean;
+  trackedData?: Omit<LibraryData, "id">;
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
@@ -65,7 +68,7 @@ function CardSmall({
                   </div>
                 </div>
                 <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
-                  1113/1150
+                  {trackedData?.chapter}/1150
                 </div>
               </div>
             </div>
@@ -82,7 +85,9 @@ function CardSmall({
                     8
                   </div>
                 </div>
-                <div className="text-[1.375rem] leading-[1.375rem]">5/160</div>
+                <div className="text-[1.375rem] leading-[1.375rem]">
+                  {trackedData?.chapter}/160
+                </div>
               </div>
               <div className="flex gap-[0.5rem] h-[2rem]">
                 <Button
@@ -110,7 +115,11 @@ function CardSmall({
           {title}
         </span>
       </Link>
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        trackedData={trackedData}
+      />
     </div>
   );
 }
@@ -120,9 +129,11 @@ export default CardSmall;
 const Modal = ({
   isOpen,
   onClose,
+  trackedData,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  trackedData?: Omit<LibraryData, "id">;
 }) => {
   return (
     <div
@@ -131,7 +142,7 @@ const Modal = ({
         fixed w-screen min-h-screen inset-0 
         flex items-center justify-center z-50`}
     >
-      <CardWithForm onClose={onClose} />
+      <CardWithForm onClose={onClose} trackedData={trackedData} />
       <div
         className="fixed inset-0 bg-black opacity-50 -z-10"
         onClick={onClose}
