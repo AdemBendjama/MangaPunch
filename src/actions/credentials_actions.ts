@@ -1,18 +1,8 @@
 "use server";
 
-import { MongoClient, ServerApiVersion } from "mongodb";
-
 import { getServerSession } from "next-auth";
 import bcrypt from "bcrypt";
-
-const uri = process.env.MONGODB_URI || "";
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+import { client } from "@/lib/mongodbClient";
 
 export async function updateUsername(formData: { username: string }): Promise<{
   error: { type: "internal"; message: string } | null;

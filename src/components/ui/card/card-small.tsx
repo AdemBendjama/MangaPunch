@@ -64,11 +64,11 @@ function CardSmall({
                 <div className="flex gap-[0.125rem]">
                   <StarIcon className="w-[0.75rem] h-[0.75rem]" />
                   <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem] mt-[0.0625rem] text-justify">
-                    8
+                    {trackedData?.rating}
                   </div>
                 </div>
                 <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
-                  {trackedData?.chapter}/1150
+                  {trackedData?.chapter}/
                 </div>
               </div>
             </div>
@@ -82,11 +82,11 @@ function CardSmall({
                 <div className="flex gap-[0.25rem]">
                   <StarIcon className="w-[1.75rem] h-[1.75rem]" />
                   <div className="text-[2rem] leading-[2rem] pt-[0.125rem] text-justify">
-                    8
+                    {trackedData?.rating}
                   </div>
                 </div>
                 <div className="text-[1.375rem] leading-[1.375rem]">
-                  {trackedData?.chapter}/160
+                  {trackedData?.chapter}/
                 </div>
               </div>
               <div className="flex gap-[0.5rem] h-[2rem]">

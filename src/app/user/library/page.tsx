@@ -1,15 +1,12 @@
 "use client";
 import ProfileBackgroundImage from "@/components/image/profile-background-image";
 import ProfileImage from "@/components/image/profile-image";
-import CardSmall from "@/components/ui/card/card-small";
-import FilterControls from "@/components/ui/filter-controls/filter-controls";
-import MangaLoading from "@/components/ui/manga-manager/manga-loading";
+import SortOptions from "@/components/ui/filter-controls/sort-options";
 import MangaManager from "@/components/ui/manga-manager/manga-manager";
-import RenderManga from "@/components/ui/manga-manager/render-manga";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GET_MANGA_IDS } from "@/lib/queries";
-import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import { useSession } from "next-auth/react";
-import { notFound, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export type LibraryData = {
   id: number;
@@ -75,15 +72,6 @@ function Library() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  // const { mangaData, loading, error } = useGraphQLQuery(GET_MANGA_IDS, {
-  //   ids: [30002, 30001, 30000],
-  //   page: 0,
-  //   perPage: 50,
-  // });
-
-  // if (loading) return;
-  // if (mangaData.length === 0) return notFound();
-
   if (status === "loading") {
     return;
   }
@@ -93,7 +81,6 @@ function Library() {
   }
 
   if (status === "authenticated") {
-    // console.log("mangaData : ", mangaData);
     return (
       <div className="text-foreground">
         <div className="h-[18.75rem] relative shadow-slide-inner-bg">
@@ -102,20 +89,83 @@ function Library() {
         </div>
         <div className="dark:bg-background-secondary flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:mx-auto lg:w-[63rem] lg:px-[0] sm:px-[3rem] px-[1rem]">
           <div className="flex flex-col gap-[0.625rem]">
-            <FilterControls />
-            <div className="grid lg:grid-cols-[repeat(6,_150px)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
-              <MangaManager
-                query={GET_MANGA_IDS}
-                perPage={18}
-                variables={{
-                  ids: data.map((item) => item.id),
-                }}
-                data={data}
-                cardType="small"
-                hover
-                infiniteScroll
-              />
-            </div>
+            <Tabs defaultValue="all">
+              <div className="flex items-center justify-between mb-6">
+                <TabsList>
+                  <TabsTrigger value="all">All</TabsTrigger>
+                  <TabsTrigger value="reading">Reading</TabsTrigger>
+                  <TabsTrigger value="planning">Planning</TabsTrigger>
+                  <TabsTrigger value="completed">Completed</TabsTrigger>
+                </TabsList>
+                <SortOptions />
+              </div>
+              <TabsContent value="all">
+                <div className="grid lg:grid-cols-[repeat(6,_150px)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
+                  <MangaManager
+                    query={GET_MANGA_IDS}
+                    perPage={18}
+                    variables={{
+                      ids: data.map((item) => item.id),
+                    }}
+                    data={data}
+                    cardType="small"
+                    hover
+                    infiniteScroll
+                  />
+                </div>
+              </TabsContent>
+              <TabsContent value="reading">
+                <div className="grid lg:grid-cols-[repeat(6,_150px)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
+                  <MangaManager
+                    query={GET_MANGA_IDS}
+                    perPage={18}
+                    variables={{
+                      ids: data
+                        .filter((item) => item.status === "reading")
+                        .map((item) => item.id),
+                    }}
+                    data={data}
+                    cardType="small"
+                    hover
+                    infiniteScroll
+                  />
+                </div>
+              </TabsContent>
+              <TabsContent value="planning">
+                <div className="grid lg:grid-cols-[repeat(6,_150px)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
+                  <MangaManager
+                    query={GET_MANGA_IDS}
+                    perPage={18}
+                    variables={{
+                      ids: data
+                        .filter((item) => item.status === "planning")
+                        .map((item) => item.id),
+                    }}
+                    data={data}
+                    cardType="small"
+                    hover
+                    infiniteScroll
+                  />
+                </div>
+              </TabsContent>
+              <TabsContent value="completed">
+                <div className="grid lg:grid-cols-[repeat(6,_150px)] md:grid-cols-[repeat(5,_16vw)] xs:grid-cols-[repeat(4,_20vw)] grid-cols-[repeat(3,_28vw)] gap-y-[0.625rem] justify-between items-stretch">
+                  <MangaManager
+                    query={GET_MANGA_IDS}
+                    perPage={18}
+                    variables={{
+                      ids: data
+                        .filter((item) => item.status === "completed")
+                        .map((item) => item.id),
+                    }}
+                    data={data}
+                    cardType="small"
+                    hover
+                    infiniteScroll
+                  />
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </div>
