@@ -38,7 +38,6 @@ function FetchManga({
   }
   const requiresRank = query.name === "GET_HIGHEST_RATED_ALL_TIME_MANGA";
 
-  console.log("mangaData :", mangaData);
   return (
     <RenderManga
       mangaData={mangaData}

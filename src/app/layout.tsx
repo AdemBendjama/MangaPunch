@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import VersionChecker from "@/components/version-checker";
 import { cn } from "../lib/utils";
-import { getServerSession } from "next-auth";
+import ReactQueryProvider from "@/components/react-query-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -36,20 +36,22 @@ export default async function RootLayout({
           overpass.variable
         )}
       >
-        <VersionChecker />
-        <SessionProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <FilterContextProvider>
-              <NavbarProvider>{children}</NavbarProvider>
-            </FilterContextProvider>
-            <Toaster />
-          </ThemeProvider>
-        </SessionProvider>
+        <ReactQueryProvider>
+          <VersionChecker />
+          <SessionProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <FilterContextProvider>
+                <NavbarProvider>{children}</NavbarProvider>
+              </FilterContextProvider>
+              <Toaster />
+            </ThemeProvider>
+          </SessionProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

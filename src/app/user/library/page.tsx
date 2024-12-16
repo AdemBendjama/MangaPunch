@@ -7,6 +7,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GET_MANGA_IDS } from "@/lib/queries";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { fetchLibrary } from "@/actions/fetch_actions";
+import { Loader2 } from "lucide-react";
 
 export type LibraryData = {
   id: number;
@@ -71,6 +74,26 @@ const data: LibraryData[] = [
 function Library() {
   const { data: session, status } = useSession();
   const router = useRouter();
+
+  const {
+    data: libraryData,
+    isLoading,
+    isFetching,
+    error,
+  } = useQuery({
+    queryKey: ["library"],
+    queryFn: () => fetchLibrary(),
+  });
+
+  if (isLoading || isFetching)
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <Loader2 className="animate-spin" />
+      </div>
+    );
+  if (error) return <div>{error.message}</div>;
+
+  console.log(libraryData);
 
   if (status === "loading") {
     return;
