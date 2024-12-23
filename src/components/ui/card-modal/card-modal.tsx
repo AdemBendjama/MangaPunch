@@ -19,6 +19,10 @@ import {
 } from "@/components/ui/select";
 import XIcon from "@/components/icons/x-icon";
 import { LibraryData } from "@/app/user/library/page";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import InputField from "../fields/input-field";
 
 export function CardWithForm({
   onClose,
@@ -27,6 +31,21 @@ export function CardWithForm({
   onClose: () => void;
   trackedData?: Omit<LibraryData, "id">;
 }) {
+  const form = useForm({
+    resolver: zodResolver(
+      z.object({
+        status: z.enum(["planning", "reading", "completed"]),
+        chapter: z.number(),
+        rating: z.number().min(0).max(10),
+      })
+    ),
+    defaultValues: {
+      status: trackedData?.status ? trackedData.status : "planning",
+      chapter: trackedData?.chapter ? trackedData.chapter : 0,
+      rating: trackedData?.rating ? trackedData.rating : 0,
+    },
+  });
+  const { control, handleSubmit } = form;
   return (
     <Card className="sm:w-[400px] w-[91vw] relative">
       <XIcon
@@ -59,10 +78,8 @@ export function CardWithForm({
               <Label htmlFor="progress">Progess</Label>
               <Input
                 id="progress"
-                placeholder=""
+                placeholder="Enter current chapter"
                 type="number"
-                min={1}
-                max={10}
                 defaultValue={trackedData?.chapter}
               />
             </div>
@@ -70,7 +87,7 @@ export function CardWithForm({
               <Label htmlFor="rating">Rating</Label>
               <Input
                 id="rating"
-                placeholder=""
+                placeholder="Enter rating"
                 type="number"
                 min={1}
                 max={10}
