@@ -16,7 +16,7 @@ import { z } from "zod";
 import InputField from "../fields/input-field";
 import { Form } from "../form";
 import SelectField from "../fields/select-field";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateLibrary } from "@/actions/library_actions";
 import { toast } from "sonner";
 
@@ -35,6 +35,7 @@ export function CardWithForm({
   onClose: () => void;
   libraryData: LibraryData;
 }) {
+  const queryclient = useQueryClient();
   const form = useForm<TEditLibrary>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -52,6 +53,7 @@ export function CardWithForm({
     onSuccess: () => {
       toast.success("Updated Successfully");
       onClose();
+      queryclient.invalidateQueries({ queryKey: ["library"] });
     },
     onError: (error) => {
       if (error instanceof Error) {
