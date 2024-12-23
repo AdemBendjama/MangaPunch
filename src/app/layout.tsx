@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import VersionChecker from "@/components/version-checker";
 import { cn } from "../lib/utils";
 import ReactQueryProvider from "@/components/react-query-provider";
+import ProgressBarProvider from "@/components/progress-bar-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default async function RootLayout({
               disableTransitionOnChange
             >
               <FilterContextProvider>
+                <ProgressBarProvider />
                 <NavbarProvider>{children}</NavbarProvider>
               </FilterContextProvider>
               <Toaster />
