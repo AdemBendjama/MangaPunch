@@ -8,15 +8,6 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import XIcon from "@/components/icons/x-icon";
 import { LibraryData } from "@/app/user/library/page";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -25,35 +16,56 @@ import { z } from "zod";
 import InputField from "../fields/input-field";
 import { Form } from "../form";
 import SelectField from "../fields/select-field";
+import { useMutation } from "@tanstack/react-query";
+import { updateLibrary } from "@/actions/library_actions";
+import { toast } from "sonner";
 
 const schema = z.object({
   status: z.enum(["planning", "reading", "completed"]),
-  chapter: z.number().min(0),
-  rating: z.number().min(0).max(10),
+  chapter: z.number({ message: "Required" }).min(0),
+  rating: z.number({ message: "Required" }).min(0).max(10),
 });
 
 type TEditLibrary = z.infer<typeof schema>;
 
 export function CardWithForm({
   onClose,
-  trackedData,
+  libraryData,
 }: {
   onClose: () => void;
-  trackedData?: Omit<LibraryData, "id">;
+  libraryData: LibraryData;
 }) {
   const form = useForm<TEditLibrary>({
     resolver: zodResolver(schema),
     defaultValues: {
-      status: trackedData?.status ? trackedData.status : "planning",
-      chapter: trackedData?.chapter ? trackedData.chapter : 0,
-      rating: trackedData?.rating ? trackedData.rating : 0,
+      status: libraryData.status ? libraryData.status : "planning",
+      chapter: libraryData.chapter ? libraryData.chapter : 0,
+      rating: libraryData.rating ? libraryData.rating : 0,
     },
   });
 
   const { control, handleSubmit, watch } = form;
 
-  const onSubmit: SubmitHandler<TEditLibrary> = (data) => {
-    console.log("data :", data);
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["updateLibrary"],
+    mutationFn: (data: LibraryData) => updateLibrary(data),
+    onSuccess: () => {
+      toast.success("Updated Successfully");
+      onClose();
+    },
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Error Updating library");
+      }
+    },
+  });
+
+  const onSubmit: SubmitHandler<TEditLibrary> = async (data) => {
+    // console.log("data :", data);
+
+    mutate({ id: libraryData.id, ...data });
   };
 
   return (
@@ -65,7 +77,6 @@ export function CardWithForm({
             onClick={onClose}
           />
           <CardHeader>
-            {/* <CardTitle></CardTitle> */}
             <CardDescription>
               Make sure you save your changes after editing.
             </CardDescription>
@@ -75,18 +86,17 @@ export function CardWithForm({
               <SelectField
                 control={control}
                 name="status"
+                label="Status"
                 options={[
                   { value: "planning", label: "Planning" },
                   { value: "reading", label: "Reading" },
                   { value: "completed", label: "Completed" },
                 ]}
-                label="Status"
               />
               <InputField
                 control={control}
                 name="chapter"
                 type="number"
-                placeholder="Enter current chapter"
                 label="Chapter"
                 showErrors
               />
@@ -94,19 +104,22 @@ export function CardWithForm({
                 control={control}
                 name="rating"
                 type="number"
-                placeholder="Enter rating"
                 label="Rating"
                 showErrors
               />
             </div>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button className="xs:text-sm text-xs xs:p-[1rem] p-[0.5rem]">
+            <Button
+              className="xs:text-sm text-xs xs:p-[1rem] p-[0.5rem]"
+              disabled={isPending}
+            >
               Save Changes
             </Button>
             <Button
               className="xs:text-sm text-xs xs:p-[1rem] p-[0.5rem]"
               variant="destructive"
+              disabled={isPending}
             >
               Remove from Library
             </Button>

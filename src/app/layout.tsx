@@ -5,11 +5,11 @@ import NavbarProvider from "@/components/navbar-provider";
 import { Overpass } from "next/font/google";
 import SessionProvider from "@/components/session-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
 import VersionChecker from "@/components/version-checker";
 import { cn } from "../lib/utils";
 import ReactQueryProvider from "@/components/react-query-provider";
 import ProgressBarProvider from "@/components/progress-bar-provider";
+import ToasterProvider from "@/components/toaster-provider";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -50,10 +50,10 @@ export default async function RootLayout({
                 <ProgressBarProvider />
                 <NavbarProvider>{children}</NavbarProvider>
               </FilterContextProvider>
-              <Toaster />
             </ThemeProvider>
           </SessionProvider>
         </ReactQueryProvider>
+        <ToasterProvider />
       </body>
     </html>
   );

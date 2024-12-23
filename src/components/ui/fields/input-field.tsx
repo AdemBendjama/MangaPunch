@@ -49,7 +49,7 @@ function InputField<
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("space-y-1.5", className)}>
+        <FormItem className={cn("", className)}>
           {label && <FormLabel className={labelClassName}>{label}</FormLabel>}
           <FormControl>
             <Input

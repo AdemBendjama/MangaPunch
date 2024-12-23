@@ -8,7 +8,7 @@ import { GET_MANGA_IDS } from "@/lib/queries";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { fetchLibrary } from "@/actions/fetch_actions";
+import { fetchLibrary } from "@/actions/library_actions";
 import { Loader2 } from "lucide-react";
 
 export type LibraryData = {

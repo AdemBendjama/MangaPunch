@@ -115,11 +115,13 @@ function CardSmall({
           {title}
         </span>
       </Link>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        trackedData={trackedData}
-      />
+      {trackedData && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          libraryData={{ id: id, ...trackedData }}
+        />
+      )}
     </div>
   );
 }
@@ -129,11 +131,11 @@ export default CardSmall;
 const Modal = ({
   isOpen,
   onClose,
-  trackedData,
+  libraryData,
 }: {
   isOpen: boolean;
   onClose: () => void;
-  trackedData?: Omit<LibraryData, "id">;
+  libraryData: LibraryData;
 }) => {
   return (
     <div
@@ -142,7 +144,7 @@ const Modal = ({
         fixed w-screen min-h-screen inset-0 
         flex items-center justify-center z-50`}
     >
-      <CardWithForm onClose={onClose} trackedData={trackedData} />
+      <CardWithForm onClose={onClose} libraryData={libraryData} />
       <div
         className="fixed inset-0 bg-black opacity-50 -z-10"
         onClick={onClose}
