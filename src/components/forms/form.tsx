@@ -177,7 +177,7 @@ export function InputForm({
                       <Input
                         placeholder={placeholder}
                         {...field}
-                        value={form.getValues(name)}
+                        // value={form.getValues(name)}
                         type={fieldType}
                         className={inputClassname}
                         onKeyDown={(e) => {

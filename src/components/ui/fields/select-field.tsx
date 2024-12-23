@@ -15,33 +15,38 @@ import {
 import { Input, InputProps } from "../input";
 import { cn } from "@/lib/utils";
 import { InputHTMLAttributes } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../select";
 
-function InputField<
+function SelectField<
   // define generic type
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
 >({
   control,
   name,
-  type = "text",
   label,
   placeholder,
+  options,
   className,
   labelClassName,
   inputClassName,
-  inputProps,
   showErrors,
 }: {
   // acquire generic type value from passed prop
   control: Control<TFieldValues>;
   name: TName;
-  type?: InputHTMLAttributes<HTMLInputElement>["type"];
   label?: string;
   placeholder?: string;
+  options: { value: string; label: string }[];
   className?: string;
   labelClassName?: string;
   inputClassName?: string;
-  inputProps?: Omit<InputProps, "className" | "name" | "type" | "placeholder">;
   showErrors?: boolean;
 }) {
   return (
@@ -49,28 +54,22 @@ function InputField<
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("space-y-1.5", className)}>
+        <FormItem className={cn("", className)}>
           {label && <FormLabel className={labelClassName}>{label}</FormLabel>}
-          <FormControl>
-            <Input
-              type={type}
-              placeholder={placeholder}
-              {...field}
-              className={inputClassName}
-              {...inputProps}
-              onChange={(e) => {
-                // parse numbers in input type number
-                const value = e.target.value;
-                field.onChange(
-                  type === "number"
-                    ? isNaN(parseInt(value))
-                      ? field.value
-                      : parseInt(value)
-                    : value
-                );
-              }}
-            />
-          </FormControl>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormControl>
+              <SelectTrigger className={inputClassName}>
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent>
+              {options.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           {showErrors && <FormMessage />}
         </FormItem>
       )}
@@ -78,4 +77,4 @@ function InputField<
   );
 }
 
-export default InputField;
+export default SelectField;

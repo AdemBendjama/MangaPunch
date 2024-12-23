@@ -1,9 +1,18 @@
 "use client";
+
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 function ProgressBarProvider() {
   const { theme } = useTheme();
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return;
 
   return (
     <ProgressBar
