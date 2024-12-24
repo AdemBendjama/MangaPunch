@@ -2,7 +2,6 @@
 import useGraphQLQuery from "@/lib/useGraphQLQuery";
 import RenderManga from "./render-manga";
 import MangaLoading from "./manga-loading";
-import { LibraryData } from "@/app/user/library/page";
 
 function FetchManga({
   query,

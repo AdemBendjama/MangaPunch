@@ -1,11 +1,16 @@
+"use client";
 import StarIcon from "@/components/icons/star-icon";
 import Image from "next/image";
-import { ButtonWithIcon } from "../button-variants/button-with-icon";
 import HeartIcon from "@/components/icons/heart-icon";
 import { formatStartDate, toTitleCase } from "@/lib/utils";
 import ReadMangaDex from "./read-mangadex";
+import AddLibraryButton from "@/components/forms/add-library-button";
+import { useQuery } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
+import { fetchLibraryItem } from "@/actions/library_actions";
 
 function MangaMetaData({
+  id,
   coverImage,
   popularity,
   averageScore,
@@ -17,6 +22,7 @@ function MangaMetaData({
   chapters,
   titles,
 }: {
+  id: number;
   coverImage: string;
   popularity?: number;
   averageScore: number | null;
@@ -36,6 +42,19 @@ function MangaMetaData({
     native: string | null;
   };
 }) {
+  const { data, isLoading, isFetching, error } = useQuery({
+    queryKey: ["libraryItem", id],
+    queryFn: () => fetchLibraryItem(id),
+  });
+
+  if (isLoading || isFetching)
+    return (
+      <div className="flex my-20 w-full items-center justify-center">
+        <Loader2 className="animate-spin" />
+      </div>
+    );
+  if (error) return <div>{error ? error.message : "Fetch Error..."}</div>;
+
   return (
     <div className="sm:h-[19rem] lg:mx-auto lg:w-[63rem] lg:px-[0] md:px-[3rem] sm:px-[1rem] px-[1rem] relative">
       {/* cover + actions */}
@@ -68,16 +87,12 @@ function MangaMetaData({
             )}
           </div>
           <div className="w-full flex flex-col gap-[0.5rem]">
-            <ButtonWithIcon className="w-full" type="plus">
-              Add to Library
-            </ButtonWithIcon>
+            <AddLibraryButton id={id} inLibrary={!!data} />
             <ReadMangaDex titles={titles} />
           </div>
         </div>
         <div className="w-full flex-col gap-[0.5rem] sm:flex hidden">
-          <ButtonWithIcon className="w-full" type="plus">
-            Add to Library
-          </ButtonWithIcon>
+          <AddLibraryButton id={id} inLibrary={!!data} />
           <ReadMangaDex titles={titles} />
         </div>
       </div>

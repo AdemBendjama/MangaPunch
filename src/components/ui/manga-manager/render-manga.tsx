@@ -2,7 +2,6 @@ import { Manga } from "@/lib/types";
 import CardRegular from "../card/card-regular";
 import CardLarge from "../card/card-large";
 import CardSmall from "../card/card-small";
-import { LibraryData } from "@/app/user/library/page";
 
 function RenderManga({
   mangaData,

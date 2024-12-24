@@ -8,7 +8,6 @@ import { useState } from "react";
 import { CardWithForm } from "../card-modal/card-modal";
 import EllipsisIcon from "@/components/icons/ellipsis-icon";
 import { useRouter } from "next/navigation";
-import { LibraryData } from "@/app/user/library/page";
 
 function CardSmall({
   coverImage,

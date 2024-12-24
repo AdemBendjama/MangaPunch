@@ -53,6 +53,7 @@ function MangaDetailsPage() {
       )}
       <div className="bg-background-secondary lg:pb-[1rem]">
         <MangaMetaData
+          id={id}
           coverImage={coverImage?.extraLarge}
           popularity={popularity}
           averageScore={averageScore}

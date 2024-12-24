@@ -9,7 +9,6 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import XIcon from "@/components/icons/x-icon";
-import { LibraryData } from "@/app/user/library/page";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";

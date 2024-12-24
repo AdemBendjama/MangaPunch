@@ -2,7 +2,6 @@
 import { useInView } from "react-intersection-observer";
 import { Suspense, useEffect, useState } from "react";
 import FetchManga from "./fetch-manga";
-import { LibraryData } from "@/app/user/library/page";
 
 function MangaManager({
   query,
