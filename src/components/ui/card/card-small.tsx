@@ -5,7 +5,7 @@ import ArrowRightIcon from "@/components/icons/arrow-right-icon";
 import StarIcon from "@/components/icons/star-icon";
 import Link from "next/link";
 import { useState } from "react";
-import { CardWithForm } from "../card-modal/card-modal";
+import { EditLibraryModal } from "../card-modal/edit-library";
 import EllipsisIcon from "@/components/icons/ellipsis-icon";
 import { useRouter } from "next/navigation";
 
@@ -119,6 +119,7 @@ function CardSmall({
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           libraryData={{ id: id, ...trackedData }}
+          title={title}
         />
       )}
     </div>
@@ -131,10 +132,12 @@ const Modal = ({
   isOpen,
   onClose,
   libraryData,
+  title,
 }: {
   isOpen: boolean;
   onClose: () => void;
   libraryData: LibraryData;
+  title: string;
 }) => {
   return (
     <div
@@ -143,7 +146,11 @@ const Modal = ({
         fixed w-screen min-h-screen inset-0 
         flex items-center justify-center z-50`}
     >
-      <CardWithForm onClose={onClose} libraryData={libraryData} />
+      <EditLibraryModal
+        onClose={onClose}
+        libraryData={libraryData}
+        title={title}
+      />
       <div
         className="fixed inset-0 bg-black opacity-50 -z-10"
         onClick={onClose}

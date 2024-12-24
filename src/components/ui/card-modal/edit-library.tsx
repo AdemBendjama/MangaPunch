@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,8 +14,10 @@ import InputField from "../fields/input-field";
 import { Form } from "../form";
 import SelectField from "../fields/select-field";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateLibrary } from "@/actions/library_actions";
+import { removelibrary, updateLibrary } from "@/actions/library_actions";
 import { toast } from "sonner";
+import { ConfirmRemovalModal } from "./confirm-remove-library";
+import { useState } from "react";
 
 const schema = z.object({
   status: z.enum(["planning", "reading", "completed"]),
@@ -27,13 +27,17 @@ const schema = z.object({
 
 type TEditLibrary = z.infer<typeof schema>;
 
-export function CardWithForm({
+export function EditLibraryModal({
   onClose,
   libraryData,
+  title,
 }: {
   onClose: () => void;
   libraryData: LibraryData;
+  title: string;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   const queryclient = useQueryClient();
   const form = useForm<TEditLibrary>({
     resolver: zodResolver(schema),
@@ -46,7 +50,7 @@ export function CardWithForm({
 
   const { control, handleSubmit, watch } = form;
 
-  const { mutate, isPending } = useMutation({
+  const { mutate: mutateUpdate, isPending: isPendingUpdate } = useMutation({
     mutationKey: ["updateLibrary"],
     mutationFn: (data: LibraryData) => updateLibrary(data),
     onSuccess: () => {
@@ -62,11 +66,35 @@ export function CardWithForm({
       }
     },
   });
+  const { mutate: mutateRemove, isPending: isPendingRemove } = useMutation({
+    mutationKey: ["removeLibrary"],
+    mutationFn: (data: number) => removelibrary(data),
+    onSuccess: () => {
+      toast.success("Removed Successfully");
+      onClose();
+      queryclient.invalidateQueries({ queryKey: ["library"] });
+    },
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Error Updating library");
+      }
+    },
+  });
+
+  const handleOnOpen = (open: boolean) => {
+    setIsOpen(open);
+  };
 
   const onSubmit: SubmitHandler<TEditLibrary> = async (data) => {
     // console.log("data :", data);
 
-    mutate({ id: libraryData.id, ...data });
+    mutateUpdate({ id: libraryData.id, ...data });
+  };
+
+  const onRemove = async () => {
+    mutateRemove(libraryData.id);
   };
 
   return (
@@ -113,17 +141,17 @@ export function CardWithForm({
           <CardFooter className="flex justify-between">
             <Button
               className="xs:text-sm text-xs xs:p-[1rem] p-[0.5rem]"
-              disabled={isPending}
+              disabled={isPendingUpdate || isPendingRemove}
             >
               Save Changes
             </Button>
-            <Button
-              className="xs:text-sm text-xs xs:p-[1rem] p-[0.5rem]"
-              variant="destructive"
-              disabled={isPending}
-            >
-              Remove from Library
-            </Button>
+            <ConfirmRemovalModal
+              isOpen={isOpen}
+              onOpenChange={handleOnOpen}
+              onConfirm={onRemove}
+              isPending={isPendingUpdate || isPendingRemove}
+              title={title}
+            />
           </CardFooter>
         </form>
       </Form>

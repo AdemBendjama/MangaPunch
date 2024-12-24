@@ -29,7 +29,7 @@ function AddLibraryButton({
     },
   });
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (inLibrary) {
     } else {
       mutate(id);
