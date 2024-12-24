@@ -57,6 +57,9 @@ export function EditLibraryModal({
       toast.success("Updated Successfully");
       onClose();
       queryclient.invalidateQueries({ queryKey: ["library"] });
+      queryclient.invalidateQueries({
+        queryKey: ["libraryItem", libraryData.id],
+      });
     },
     onError: (error) => {
       if (error instanceof Error) {
@@ -73,6 +76,9 @@ export function EditLibraryModal({
       toast.success("Removed Successfully");
       onClose();
       queryclient.invalidateQueries({ queryKey: ["library"] });
+      queryclient.invalidateQueries({
+        queryKey: ["libraryItem", libraryData.id],
+      });
     },
     onError: (error) => {
       if (error instanceof Error) {

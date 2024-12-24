@@ -20,7 +20,7 @@ function LibraryDashboard() {
 
   if (isLoading || isFetching)
     return (
-      <div className="flex w-full my-20 items-center justify-center">
+      <div className="flex w-full py-20 items-center justify-center">
         <Loader2 className="animate-spin" />
       </div>
     );

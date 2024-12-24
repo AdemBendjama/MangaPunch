@@ -18,7 +18,9 @@ function AddLibraryButton({
     onSuccess: () => {
       toast.success("Added Successfully");
       queryclient.invalidateQueries({ queryKey: ["library"] });
-      queryclient.invalidateQueries({ queryKey: ["libraryItem"] });
+      queryclient.invalidateQueries({
+        queryKey: ["libraryItem", id],
+      });
     },
     onError: (error) => {
       if (error instanceof Error) {

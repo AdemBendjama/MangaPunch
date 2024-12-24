@@ -48,7 +48,7 @@ export const fetchLibraryItem = async (
 
     const user = await users.findOne(
       { email, "library.id": id },
-      { projection: { library: 1 } }
+      { projection: { "library.$": 1 } }
     );
 
     if (!user || user.library.length === 0) {

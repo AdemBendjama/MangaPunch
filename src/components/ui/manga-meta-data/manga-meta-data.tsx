@@ -49,7 +49,7 @@ function MangaMetaData({
 
   if (isLoading || isFetching)
     return (
-      <div className="flex my-20 w-full items-center justify-center">
+      <div className="flex py-20 w-full items-center justify-center">
         <Loader2 className="animate-spin" />
       </div>
     );
@@ -152,31 +152,25 @@ function MangaMetaData({
             </span>
             <span>{chapters ? chapters : "Ongoing"}</span>
           </div>
-          {averageScore && (
+          {data && (
             <div className="flex gap-[1rem] leading-[1.25rem]">
               <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
                 Rating:
               </span>
               <div className="flex sm:gap-[0.5rem] gap-[0.25rem] items-center">
-                {Array.from(
-                  { length: Math.floor(averageScore / 10) },
-                  (_, index) => (
-                    <StarIcon
-                      key={index}
-                      className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
-                    />
-                  )
-                )}
-                {Array.from(
-                  { length: 10 - Math.floor(averageScore / 10) },
-                  (_, index) => (
-                    <StarIcon
-                      key={index}
-                      className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
-                      fill="none"
-                    />
-                  )
-                )}
+                {Array.from({ length: data.rating }, (_, index) => (
+                  <StarIcon
+                    key={index}
+                    className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
+                  />
+                ))}
+                {Array.from({ length: 10 - data.rating }, (_, index) => (
+                  <StarIcon
+                    key={index}
+                    className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
+                    fill="none"
+                  />
+                ))}
               </div>
             </div>
           )}
