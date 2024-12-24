@@ -1,7 +1,9 @@
+"use client";
 import { Manga } from "@/lib/types";
 import CardRegular from "../card/card-regular";
 import CardLarge from "../card/card-large";
 import CardSmall from "../card/card-small";
+import { useEffect } from "react";
 
 function RenderManga({
   mangaData,
@@ -18,10 +20,12 @@ function RenderManga({
   hover?: boolean;
   data?: LibraryData[];
 }) {
-  if (mangaData.length === 0 && toggleLimitReached) {
-    toggleLimitReached();
-    return;
-  }
+  useEffect(() => {
+    if (mangaData.length === 0 && toggleLimitReached) {
+      toggleLimitReached();
+    }
+  }, [mangaData, toggleLimitReached]);
+
   return (
     <>
       {mangaData.map((manga) => {
