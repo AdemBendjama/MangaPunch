@@ -22,7 +22,7 @@ function CardSmall({
   coverImage: string;
   id: number;
   title: string;
-  titles: Manga["title"];
+  titles?: Manga["title"];
   hover?: boolean;
   trackedData?: Omit<LibraryData, "id">;
 }) {
@@ -75,7 +75,8 @@ function CardSmall({
                   <div />
                 )}
                 <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
-                  {trackedData?.chapter}/<ChapterCount titles={titles} />
+                  {trackedData?.chapter}/
+                  {titles && <ChapterCount titles={titles} />}
                 </div>
               </div>
             </div>
@@ -97,7 +98,8 @@ function CardSmall({
                   <div className="h-8 pt-[0.125rem]" />
                 )}
                 <div className="text-[1.375rem] leading-[1.375rem]">
-                  {trackedData?.chapter}/<ChapterCount titles={titles} />
+                  {trackedData?.chapter}/
+                  {titles && <ChapterCount titles={titles} />}
                 </div>
               </div>
               <div className="flex gap-[0.5rem] h-[2rem]">

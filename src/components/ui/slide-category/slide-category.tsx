@@ -45,10 +45,12 @@ function SlideCategory({
   title,
   query,
   perPage,
+  link,
 }: {
   title: string;
   query: { name: string; body: string };
   perPage: number;
+  link: string;
 }) {
   const { mangaData, loading, error } = useGraphQLQuery(query, {
     perPage: perPage,
@@ -61,7 +63,7 @@ function SlideCategory({
     }
     return (
       <div className="w-full flex flex-col pt-[1rem] lg:px-[7%] px-[9.9vw] items-start lg:gap-[1rem] sm:[0.75rem] gap-[0.5rem] slider-container">
-        <SlideCategoryHeader title={title} />
+        <SlideCategoryHeader title={title} link={link} />
         <Slider {...settings} className="w-full">
           {slides}
         </Slider>
@@ -74,7 +76,7 @@ function SlideCategory({
 
   return (
     <div className="w-full flex flex-col pt-[1rem] lg:px-[7%] px-[9.9vw] items-start lg:gap-[1rem] sm:[0.75rem] gap-[0.5rem] slider-container">
-      <SlideCategoryHeader title={title} />
+      <SlideCategoryHeader title={title} link={link} />
       <Slider {...settings} className="w-full">
         {mangaData.map((manga, index) => (
           <CardExtraLarge

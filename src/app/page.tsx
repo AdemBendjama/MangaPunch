@@ -18,6 +18,7 @@ function Home() {
             title="Trending"
             query={GET_TRENDING_MANGA}
             perPage={10}
+            link="/manga/search?sort=TRENDING_DESC"
           />
         </Suspense>
         <Suspense>
@@ -25,10 +26,16 @@ function Home() {
             title="Shounen"
             query={GET_SHOUNEN_MANGA}
             perPage={10}
+            link="/manga/search?sort=TRENDING_DESC&tag=shounen"
           />
         </Suspense>
         <Suspense>
-          <SlideCategory title="Seinen" query={GET_SEINEN_MANGA} perPage={10} />
+          <SlideCategory
+            title="Seinen"
+            query={GET_SEINEN_MANGA}
+            perPage={10}
+            link="/manga/search?sort=TRENDING_DESC&tag=seinen"
+          />
         </Suspense>
       </div>
     </>
