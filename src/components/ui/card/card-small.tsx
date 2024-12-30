@@ -123,7 +123,7 @@ function CardSmall({
         </span>
       </Link>
       {trackedData && (
-        <Modal
+        <EditLibraryModal
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           libraryData={{ id: id, ...trackedData }}
@@ -135,34 +135,3 @@ function CardSmall({
 }
 
 export default CardSmall;
-
-const Modal = ({
-  isOpen,
-  onClose,
-  libraryData,
-  title,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  libraryData: LibraryData;
-  title: string;
-}) => {
-  return (
-    <div
-      className={`${!isOpen ? "hidden opacity-0" : "opacity-100"}
-        transition-all duration-1000 ease-in-out 
-        fixed w-screen min-h-screen inset-0 
-        flex items-center justify-center z-50`}
-    >
-      <EditLibraryModal
-        onClose={onClose}
-        libraryData={libraryData}
-        title={title}
-      />
-      <div
-        className="fixed inset-0 bg-black opacity-50 -z-10"
-        onClick={onClose}
-      />
-    </div>
-  );
-};

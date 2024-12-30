@@ -6,10 +6,13 @@ import { formatStartDate, toTitleCase } from "@/lib/utils";
 import ReadMangaDex from "./read-mangadex";
 import AddLibraryButton from "@/components/forms/add-library-button";
 import { useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
+import { FilePenLine, Loader2, Pen, PenIcon } from "lucide-react";
 import { fetchLibraryItem } from "@/actions/library_actions";
 import ChangeStatusButton from "@/components/forms/change-status-button";
 import StarRatings from "@/components/forms/star-ratings";
+import { Button } from "../button";
+import { EditLibraryModal } from "../card-modal/edit-library";
+import { useState } from "react";
 
 function MangaMetaData({
   id,
@@ -44,6 +47,16 @@ function MangaMetaData({
     native: string | null;
   };
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleEditClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ["libraryItem", id],
     queryFn: () => fetchLibraryItem(id),
@@ -101,7 +114,16 @@ function MangaMetaData({
           {!data ? (
             <AddLibraryButton id={id} />
           ) : (
-            <ChangeStatusButton data={data} />
+            <div className="flex gap-2">
+              <ChangeStatusButton data={data} />
+              <Button
+                onClick={handleEditClick}
+                className="flex items-center gap-2"
+              >
+                <span>Edit</span>
+                <FilePenLine size={14} className="mb-0.5" />
+              </Button>
+            </div>
           )}
           <ReadMangaDex titles={titles} />
         </div>
@@ -172,6 +194,14 @@ function MangaMetaData({
           )}
         </div>
       </div>
+      {data && (
+        <EditLibraryModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          libraryData={data}
+          title={title}
+        />
+      )}
     </div>
   );
 }
