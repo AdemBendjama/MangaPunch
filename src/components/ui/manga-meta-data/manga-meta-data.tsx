@@ -14,6 +14,7 @@ import { Button } from "../button";
 import { EditLibraryModal } from "../card-modal/edit-library";
 import { useState } from "react";
 import ChapterCount from "./chapter-count";
+import { useSession } from "next-auth/react";
 
 function MangaMetaData({
   id,
@@ -48,6 +49,7 @@ function MangaMetaData({
     native: string | null;
   };
 }) {
+  const { data: session } = useSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEditClick = () => {
@@ -103,7 +105,27 @@ function MangaMetaData({
             )}
           </div>
           <div className="w-full flex flex-col gap-[0.5rem]">
-            {!data ? (
+            {session &&
+              (!data ? (
+                <AddLibraryButton id={id} />
+              ) : (
+                <div className="flex gap-2">
+                  <ChangeStatusButton data={data} />
+                  <Button
+                    onClick={handleEditClick}
+                    className="flex items-center gap-2"
+                  >
+                    <span>Edit</span>
+                    <FilePenLine size={14} className="mb-0.5" />
+                  </Button>
+                </div>
+              ))}
+            <ReadMangaDex titles={titles} />
+          </div>
+        </div>
+        <div className="w-full flex-col gap-[0.5rem] sm:flex hidden">
+          {session &&
+            (!data ? (
               <AddLibraryButton id={id} />
             ) : (
               <div className="flex gap-2">
@@ -116,25 +138,7 @@ function MangaMetaData({
                   <FilePenLine size={14} className="mb-0.5" />
                 </Button>
               </div>
-            )}
-            <ReadMangaDex titles={titles} />
-          </div>
-        </div>
-        <div className="w-full flex-col gap-[0.5rem] sm:flex hidden">
-          {!data ? (
-            <AddLibraryButton id={id} />
-          ) : (
-            <div className="flex gap-2">
-              <ChangeStatusButton data={data} />
-              <Button
-                onClick={handleEditClick}
-                className="flex items-center gap-2"
-              >
-                <span>Edit</span>
-                <FilePenLine size={14} className="mb-0.5" />
-              </Button>
-            </div>
-          )}
+            ))}
           <ReadMangaDex titles={titles} />
         </div>
       </div>
