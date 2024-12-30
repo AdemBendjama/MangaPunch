@@ -138,3 +138,10 @@ export const sortItems: FilterItem[] = [
   { label: "Rating", value: sort.SCORE_DESC },
   { label: "Latest", value: sort.UPDATED_AT_DESC },
 ];
+
+export const tagItems: FilterItem[] = [
+  { label: "Seinen", value: "seinen" },
+  { label: "Shounen", value: "shounen" },
+  { label: "Shoujo", value: "shoujo" },
+  { label: "Josei", value: "josei" },
+];

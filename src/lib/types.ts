@@ -158,7 +158,7 @@ export type FilterItem = {
 };
 
 export type FormSelectFields = {
-  name: "genre" | "format" | "year" | "status" | "country";
+  name: "genre" | "format" | "year" | "status" | "country" | "tag";
   label: string;
   items: FilterItem[];
 };

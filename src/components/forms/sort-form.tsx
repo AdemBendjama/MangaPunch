@@ -90,7 +90,7 @@ export function SortForm() {
                   defaultValue={field.value}
                   onOpenChange={toggleFilterOpen}
                 >
-                  <FormControl className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs">
+                  <FormControl className="lg:w-[10rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs">
                     <SelectTrigger>
                       <SelectValue placeholder="Sort By" />
                     </SelectTrigger>

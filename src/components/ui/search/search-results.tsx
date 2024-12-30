@@ -18,6 +18,7 @@ const possibleSearchParams = [
   "status",
   "country",
   "sort",
+  "tag",
 ];
 
 function SearchResults() {

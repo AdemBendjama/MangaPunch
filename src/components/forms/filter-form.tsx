@@ -24,6 +24,7 @@ import {
   formatItems,
   genreItems,
   statusItems,
+  tagItems,
   yearItems,
 } from "@/lib/filter-data";
 import { FormSelectFields } from "@/lib/types";
@@ -31,7 +32,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./select-slider.css";
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useFilterContext } from "@/context/filter-context-provider";
 
 const formSelectFields: FormSelectFields[] = [
@@ -60,6 +61,7 @@ const formSelectFields: FormSelectFields[] = [
     label: "Country of Origin",
     items: countryItems,
   },
+  { name: "tag", label: "Demographic", items: tagItems },
 ];
 
 const FormSchema = z.object({
@@ -68,6 +70,7 @@ const FormSchema = z.object({
   year: z.string(),
   status: z.string(),
   country: z.string(),
+  tag: z.string(),
 });
 var settings = {
   infinite: false,
@@ -91,6 +94,7 @@ export function FilterForm() {
       year: searchParams.get("year") || "",
       status: searchParams.get("status") || "",
       country: searchParams.get("country") || "",
+      tag: searchParams.get("tag") || "",
     },
   });
 
@@ -115,13 +119,14 @@ export function FilterForm() {
     form.setValue("year", searchParams.get("year") || "");
     form.setValue("status", searchParams.get("status") || "");
     form.setValue("country", searchParams.get("country") || "");
+    form.setValue("tag", searchParams.get("tag") || "");
   }, [searchParams]);
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="sm:flex w-full pb-[2rem] justify-between hidden"
+        className="sm:grid lg:grid-cols-6 sm:grid-cols-3 gap-x-2 gap-y-6 w-full pb-[2rem] hidden"
       >
         {formSelectFields.map(({ name, label, items }) => {
           return (
@@ -131,10 +136,10 @@ export function FilterForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-[0.375rem] space-y-0">
-                  <FormLabel className="font-medium md:text-base text-sm">
+                  <FormLabel className="font-medium lg:text-base text-sm">
                     {label}
                   </FormLabel>
-                  <div className="w-fit">
+                  <div className="w-full">
                     <Select
                       value={form.getValues(name)}
                       onValueChange={(value) => {
@@ -144,7 +149,7 @@ export function FilterForm() {
                       defaultValue={field.value}
                       onOpenChange={toggleFilterOpen}
                     >
-                      <FormControl className="lg:w-[10.875rem] md:w-[8.5rem] sm:w-[7rem] w-[37vw] md:text-sm text-xs">
+                      <FormControl className="lg:text-sm text-xs">
                         <SelectTrigger>
                           <SelectValue placeholder="Any" />
                         </SelectTrigger>
