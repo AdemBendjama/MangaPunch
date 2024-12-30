@@ -8,6 +8,7 @@ import AddLibraryButton from "@/components/forms/add-library-button";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { fetchLibraryItem } from "@/actions/library_actions";
+import ChangeStatusButton from "@/components/forms/change-status-button";
 
 function MangaMetaData({
   id,
@@ -87,12 +88,20 @@ function MangaMetaData({
             )}
           </div>
           <div className="w-full flex flex-col gap-[0.5rem]">
-            <AddLibraryButton id={id} inLibrary={!!data} />
+            {!data ? (
+              <AddLibraryButton id={id} />
+            ) : (
+              <ChangeStatusButton data={data} />
+            )}
             <ReadMangaDex titles={titles} />
           </div>
         </div>
         <div className="w-full flex-col gap-[0.5rem] sm:flex hidden">
-          <AddLibraryButton id={id} inLibrary={!!data} />
+          {!data ? (
+            <AddLibraryButton id={id} />
+          ) : (
+            <ChangeStatusButton data={data} />
+          )}
           <ReadMangaDex titles={titles} />
         </div>
       </div>

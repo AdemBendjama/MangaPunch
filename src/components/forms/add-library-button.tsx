@@ -4,13 +4,7 @@ import { ButtonWithIcon } from "../ui/button-variants/button-with-icon";
 import { addLibrary } from "@/actions/library_actions";
 import { toast } from "sonner";
 
-function AddLibraryButton({
-  id,
-  inLibrary,
-}: {
-  id: number;
-  inLibrary: boolean;
-}) {
+function AddLibraryButton({ id }: { id: number }) {
   const queryclient = useQueryClient();
   const { mutate, isPending } = useMutation({
     mutationFn: (data: number) => addLibrary(data),
@@ -32,10 +26,7 @@ function AddLibraryButton({
   });
 
   const onSubmit = async () => {
-    if (inLibrary) {
-    } else {
-      mutate(id);
-    }
+    mutate(id);
   };
 
   return (
@@ -45,7 +36,7 @@ function AddLibraryButton({
       onClick={onSubmit}
       disabled={isPending}
     >
-      {inLibrary ? "Change Status" : isPending ? "Adding..." : "Add to Library"}
+      {isPending ? "Adding..." : "Add to Library"}
     </ButtonWithIcon>
   );
 }
