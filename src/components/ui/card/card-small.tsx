@@ -60,12 +60,16 @@ function CardSmall({
                 <EllipsisIcon className="sm:w-[1.5rem] sm:h-[1.5rem] w-[1rem] h-[1rem] stroke-primary-foreground" />
               </div>
               <div className="z-20 bg-card-description flex justify-between items-center sm:p-[0.5rem] py-[0.375rem] px-[0.25rem]">
-                <div className="flex gap-[0.125rem]">
-                  <StarIcon className="w-[0.75rem] h-[0.75rem]" />
-                  <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem] mt-[0.0625rem] text-justify">
-                    {trackedData?.rating}
+                {trackedData?.rating !== 0 ? (
+                  <div className="flex gap-[0.125rem]">
+                    <StarIcon className="w-[0.75rem] h-[0.75rem]" />
+                    <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem] mt-[0.0625rem] text-justify">
+                      {trackedData?.rating}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div />
+                )}
                 <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
                   {trackedData?.chapter}/
                 </div>
@@ -78,12 +82,16 @@ function CardSmall({
                 transition-all duration-200 ease-in-out"
             >
               <div className="flex flex-col items-center gap-[1rem] pt-[1rem] font-semibold">
-                <div className="flex gap-[0.25rem]">
-                  <StarIcon className="w-[1.75rem] h-[1.75rem]" />
-                  <div className="text-[2rem] leading-[2rem] pt-[0.125rem] text-justify">
-                    {trackedData?.rating}
+                {trackedData?.rating !== 0 ? (
+                  <div className="flex gap-[0.25rem]">
+                    <StarIcon className="w-[1.75rem] h-[1.75rem]" />
+                    <div className="text-[2rem] leading-[2rem] pt-[0.125rem] text-justify">
+                      {trackedData?.rating}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="h-8 pt-[0.125rem]" />
+                )}
                 <div className="text-[1.375rem] leading-[1.375rem]">
                   {trackedData?.chapter}/
                 </div>

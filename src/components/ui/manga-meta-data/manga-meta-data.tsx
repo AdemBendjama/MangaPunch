@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { fetchLibraryItem } from "@/actions/library_actions";
 import ChangeStatusButton from "@/components/forms/change-status-button";
+import StarRatings from "@/components/forms/star-ratings";
 
 function MangaMetaData({
   id,
@@ -166,21 +167,7 @@ function MangaMetaData({
               <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
                 Rating:
               </span>
-              <div className="flex sm:gap-[0.5rem] gap-[0.25rem] items-center">
-                {Array.from({ length: data.rating }, (_, index) => (
-                  <StarIcon
-                    key={index}
-                    className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
-                  />
-                ))}
-                {Array.from({ length: 10 - data.rating }, (_, index) => (
-                  <StarIcon
-                    key={index}
-                    className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
-                    fill="none"
-                  />
-                ))}
-              </div>
+              <StarRatings data={data} />
             </div>
           )}
         </div>
