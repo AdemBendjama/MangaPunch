@@ -77,6 +77,7 @@ function RenderManga({
                 title={
                   manga.title.english ? manga.title.english : manga.title.romaji
                 }
+                titles={manga.title}
                 coverImage={manga.coverImage.large}
                 hover={hover}
                 trackedData={trackedData}

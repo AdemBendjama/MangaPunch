@@ -1,17 +1,20 @@
+"use client";
 import { useEffect, useState } from "react";
 import { MangaDex } from "./types";
 import { normalizeTitletoEmptySpace, normalizeTitletoSpace } from "./utils";
 
-function useMangaDex(titles: {
+function useMangaDex(titles?: {
   romaji: string;
   english: string | null;
   native: string | null;
 }) {
   const [mangaDexData, setMangaDexData] = useState<MangaDex[]>([]);
+  const [latestChapter, setLatestChapter] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
+    if (!titles) return;
     setLoading(true);
     const cachedData = localStorage.getItem(`${titles.romaji}`);
     const cachedTimestamp = localStorage.getItem(`${titles.romaji}_timestamp`);
@@ -22,7 +25,8 @@ function useMangaDex(titles: {
       const timeDiff = now - timestamp;
 
       if (timeDiff < 3 * 60 * 60 * 1000) {
-        setMangaDexData(parsedData);
+        setMangaDexData(parsedData.data);
+        setLatestChapter(parsedData.latestChapter);
         setLoading(false);
         return;
       }
@@ -51,6 +55,32 @@ function useMangaDex(titles: {
       }
     };
 
+    const fetchLatestChapter = async (id: string): Promise<string> => {
+      try {
+        const response = await fetch(
+          `https://api.mangadex.org/manga/${encodeURIComponent(
+            id
+          )}/feed?translatedLanguage[]=en&order[chapter]=desc&limit=1`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch manga: ${response.status}`);
+        }
+
+        const { data } = await response.json();
+
+        return data[0].attributes.chapter;
+      } catch (error) {
+        throw error;
+      }
+    };
+
     const fetchData = async () => {
       try {
         let data: MangaDex[] = [];
@@ -67,7 +97,9 @@ function useMangaDex(titles: {
         if (data.length === 0)
           data = await fetchByTitle(normalizeTitletoSpace(titles.romaji));
 
-        return data;
+        const latestChapter = await fetchLatestChapter(data[0].id);
+
+        return { data, latestChapter };
       } catch (error) {
         console.error("Error fetching data:", error);
         throw new Error(
@@ -83,7 +115,8 @@ function useMangaDex(titles: {
           `${titles.romaji}_timestamp`,
           String(new Date().getTime())
         );
-        setMangaDexData(data);
+        setMangaDexData(data.data);
+        setLatestChapter(data.latestChapter);
         setLoading(false);
       })
       .catch((error) => {
@@ -94,9 +127,9 @@ function useMangaDex(titles: {
         }
         setLoading(false);
       });
-  }, []);
+  }, [titles]);
 
-  return { mangaDexData, loading, error };
+  return { mangaDexData, latestChapter, loading, error };
 }
 
 export default useMangaDex;

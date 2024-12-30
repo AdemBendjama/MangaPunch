@@ -13,6 +13,7 @@ import StarRatings from "@/components/forms/star-ratings";
 import { Button } from "../button";
 import { EditLibraryModal } from "../card-modal/edit-library";
 import { useState } from "react";
+import ChapterCount from "./chapter-count";
 
 function MangaMetaData({
   id,
@@ -105,7 +106,16 @@ function MangaMetaData({
             {!data ? (
               <AddLibraryButton id={id} />
             ) : (
-              <ChangeStatusButton data={data} />
+              <div className="flex gap-2">
+                <ChangeStatusButton data={data} />
+                <Button
+                  onClick={handleEditClick}
+                  className="flex items-center gap-2"
+                >
+                  <span>Edit</span>
+                  <FilePenLine size={14} className="mb-0.5" />
+                </Button>
+              </div>
             )}
             <ReadMangaDex titles={titles} />
           </div>
@@ -182,7 +192,10 @@ function MangaMetaData({
             <span className="sm:min-w-[100px] min-w-[75px] font-semibold">
               Chapters:
             </span>
-            <span>{chapters ? chapters : "Ongoing"}</span>
+            <span>
+              {data && data?.chapter + "/"}
+              <ChapterCount titles={titles} />
+            </span>
           </div>
           {data && (
             <div className="flex gap-[1rem] leading-[1.25rem]">

@@ -8,17 +8,21 @@ import { useState } from "react";
 import { EditLibraryModal } from "../card-modal/edit-library";
 import EllipsisIcon from "@/components/icons/ellipsis-icon";
 import { useRouter } from "next/navigation";
+import ChapterCount from "../manga-meta-data/chapter-count";
+import { Manga } from "@/lib/types";
 
 function CardSmall({
   coverImage,
   id,
   title,
+  titles,
   hover,
   trackedData,
 }: {
   coverImage: string;
   id: number;
   title: string;
+  titles: Manga["title"];
   hover?: boolean;
   trackedData?: Omit<LibraryData, "id">;
 }) {
@@ -71,7 +75,7 @@ function CardSmall({
                   <div />
                 )}
                 <div className="sm:text-[0.875rem] sm:leading-[0.875rem] sm:h-[0.875rem] text-[0.75rem] leading-[0.75rem] h-[0.75rem]">
-                  {trackedData?.chapter}/
+                  {trackedData?.chapter}/<ChapterCount titles={titles} />
                 </div>
               </div>
             </div>
@@ -93,7 +97,7 @@ function CardSmall({
                   <div className="h-8 pt-[0.125rem]" />
                 )}
                 <div className="text-[1.375rem] leading-[1.375rem]">
-                  {trackedData?.chapter}/
+                  {trackedData?.chapter}/<ChapterCount titles={titles} />
                 </div>
               </div>
               <div className="flex gap-[0.5rem] h-[2rem]">
