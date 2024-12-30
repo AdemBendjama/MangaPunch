@@ -24,8 +24,7 @@ function LibraryDashboard() {
         <Loader2 className="animate-spin" />
       </div>
     );
-  if (error || !libraryData)
-    return <div>{error ? error.message : "Fetch Error..."}</div>;
+  if (error || !libraryData) return;
   return (
     <div className="dark:bg-background-secondary flex flex-col gap-[1rem] bg-background pt-[1rem] pb-[10rem] lg:mx-auto lg:w-[63rem] lg:px-[0] sm:px-[3rem] px-[1rem]">
       <div className="flex flex-col gap-[0.625rem]">

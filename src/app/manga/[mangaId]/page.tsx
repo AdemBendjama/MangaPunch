@@ -18,7 +18,7 @@ function MangaDetailsPage() {
   });
 
   if (loading) return;
-  if (error) return <div>{error.message}</div>;
+  if (error) return;
   if (mangaData.length === 0) return notFound();
 
   const {

@@ -71,7 +71,7 @@ function MangaMetaData({
         <Loader2 className="animate-spin" />
       </div>
     );
-  if (error) return <div>{error ? error.message : "Fetch Error..."}</div>;
+  if (error) return;
 
   return (
     <div className="sm:h-[19rem] lg:mx-auto lg:w-[63rem] lg:px-[0] md:px-[3rem] sm:px-[1rem] px-[1rem] relative">
