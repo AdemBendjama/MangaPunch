@@ -3,8 +3,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import StarIcon from "../icons/star-icon";
 import { updateLibrary } from "@/actions/library_actions";
 import { toast } from "sonner";
+import { useState } from "react";
 
 function StarRatings({ data }: { data: LibraryData }) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const queryclient = useQueryClient();
   const { mutate, isPending } = useMutation({
     mutationFn: (data: LibraryData) => updateLibrary(data),
@@ -30,15 +32,27 @@ function StarRatings({ data }: { data: LibraryData }) {
   };
 
   return (
-    <div className="flex sm:gap-[0.5rem] gap-[0.25rem] items-center cursor-pointer">
-      {Array.from({ length: 10 }, (_, index) => (
-        <StarIcon
-          key={index}
-          className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem] cursor-pointer"
-          onClick={() => onSubmit(index + 1)}
-          fill={index >= data.rating ? "none" : ""}
-        />
-      ))}
+    <div className="flex items-center cursor-pointer">
+      {Array.from({ length: 10 }, (_, index) => {
+        const isFilled =
+          hoveredIndex === null ? index >= data.rating : index > hoveredIndex;
+        return (
+          <div
+            key={index}
+            className={`cursor-pointer ${
+              index === 0 ? "sm:pr-1 pr-0.5" : "sm:px-1 px-0.5"
+            }`}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => onSubmit(index + 1)}
+          >
+            <StarIcon
+              className="sm:w-5 sm:h-5 w-[0.875rem] h-[0.875rem]"
+              fill={isFilled ? "none" : ""}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
