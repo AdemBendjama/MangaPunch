@@ -58,9 +58,7 @@ function useMangaDex(titles?: {
     const fetchLatestChapter = async (id: string): Promise<string> => {
       try {
         const response = await fetch(
-          `https://api.mangadex.org/manga/${encodeURIComponent(
-            id
-          )}/feed?translatedLanguage[]=en&order[chapter]=desc&limit=1`,
+          `/api/manga/latest_chapter?id=${encodeURIComponent(id)}`,
           {
             method: "GET",
             headers: {
@@ -73,9 +71,9 @@ function useMangaDex(titles?: {
           throw new Error(`Failed to fetch manga: ${response.status}`);
         }
 
-        const { data } = await response.json();
+        const latest_chapter = await response.json();
 
-        return data[0].attributes.chapter;
+        return latest_chapter;
       } catch (error) {
         throw error;
       }
