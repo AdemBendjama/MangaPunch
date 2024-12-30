@@ -7,7 +7,7 @@ function ChapterCount({ titles }: { titles: Manga["title"] }) {
   const { latestChapter, loading, error } = useMangaDex(titles);
 
   if (loading) return;
-  if (error) return <div>{error.message}</div>;
+  if (error) return;
 
   return <>{latestChapter}</>;
 }

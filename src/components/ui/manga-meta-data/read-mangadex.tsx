@@ -15,7 +15,7 @@ function ReadMangaDex({
   const { mangaDexData, loading, error } = useMangaDex(titles);
 
   if (loading) return;
-  if (error) return <div>{error.message}</div>;
+  if (error) return;
 
   return (
     <>
