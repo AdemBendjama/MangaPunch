@@ -229,8 +229,9 @@ export const GET_MANGA_RECOMMENDATIONS = {
 export const GET_MANGA_SEARCH = {
   name: "GET_MANGA_SEARCH",
   body: `query GetMangaSearch($sort: [MediaSort]=POPULARITY_DESC, $search: String, $genre: String, $format: MediaFormat,
-   $year_lesser: FuzzyDateInt, $year_greater: FuzzyDateInt, $status: MediaStatus, $country: CountryCode, $tag: String) {
-    Page(perPage: 50) {
+   $year_lesser: FuzzyDateInt, $year_greater: FuzzyDateInt, $status: MediaStatus, $country: CountryCode, $tag: String,
+   $page: Int!, $perPage: Int! ) {
+    Page(page: $page, perPage: $perPage) {
       media(sort: $sort, search: $search, type: MANGA, isAdult: false, 
       genre: $genre, format: $format,
       startDate_lesser: $year_lesser, startDate_greater: $year_greater,

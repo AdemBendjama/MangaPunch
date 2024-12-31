@@ -10,6 +10,7 @@ function FetchManga({
   cardType,
   toggleLimitReached,
   variables,
+  shouldntFetch,
   hover,
   data,
 }: {
@@ -19,14 +20,19 @@ function FetchManga({
   cardType: "large" | "regular" | "small";
   toggleLimitReached: () => void;
   variables?: { [key: string]: string | number | number[] };
+  shouldntFetch?: boolean;
   hover?: boolean;
   data?: LibraryData[];
 }) {
-  const { mangaData, loading, error } = useGraphQLQuery(query, {
-    ...variables,
-    page: page,
-    perPage: perPage,
-  });
+  const { mangaData, loading, error } = useGraphQLQuery(
+    query,
+    {
+      ...variables,
+      page: page,
+      perPage: perPage,
+    },
+    shouldntFetch
+  );
 
   if (loading) {
     return <MangaLoading perPage={perPage} cardType={cardType} />;

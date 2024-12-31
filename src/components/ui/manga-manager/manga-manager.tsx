@@ -9,6 +9,7 @@ function MangaManager({
   cardType,
   infiniteScroll,
   variables,
+  shouldntFetch,
   hover,
   data,
 }: {
@@ -17,6 +18,7 @@ function MangaManager({
   cardType: "large" | "regular" | "small";
   infiniteScroll?: boolean;
   variables?: { [key: string]: string | number | number[] };
+  shouldntFetch?: boolean;
   hover?: boolean;
   data?: LibraryData[];
 }) {
@@ -47,6 +49,7 @@ function MangaManager({
         <Suspense key={page}>
           <FetchManga
             variables={variables}
+            shouldntFetch={shouldntFetch}
             page={page}
             perPage={perPage}
             query={query}
