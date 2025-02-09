@@ -1,14 +1,15 @@
 # ![manga_64x64](https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/88af71e0-8d26-4f5a-a880-d3032d506c39) MangaPunch
 
-## ![cog](https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/f805d633-11c5-4061-be8b-acc8e24e861b) *Still Under Development*
-## Overview
+<!-- ## ![cog](https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/f805d633-11c5-4061-be8b-acc8e24e861b) *Still Under Development* -->
 
+## Overview
 
 This is a website that lists metadata about manga, allowing users to search, discover manga, read reviews and get recommendations. Users can sign up for an account to access additional features such as adding manga to their library, tracking , rating and reviewing.
 
 ## [Live Preview](https://mangapunch.vercel.app)
 
 ## Getting Started
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
@@ -45,4 +46,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **AniList API**: An API for accessing manga metadata using GraphQL.
 - **Vercel**: A cloud platform for static sites and serverless functions.
 
-> Logo designed by [FreePik](https://www.freepik.com/) 
+> Logo designed by [FreePik](https://www.freepik.com/)
