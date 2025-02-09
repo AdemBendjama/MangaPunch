@@ -1,12 +1,12 @@
-<div style="padding-top:32px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px">
-  <img src="https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/88af71e0-8d26-4f5a-a880-d3032d506c39" alt="logo" width="64" height="64">
-  <p style="font-size: 32px; font-weight: bold; margin: 0;">MangaPunch</p>
-</div>
+<h3 align="center">
+    <a target="_blank" href="https://mangapunch.vercel.app"><img src="https://github.com/user-attachments/assets/a71577fd-e1da-4342-bbb7-6f21bc510a57" alt="manga_punch" />
+</h3>
 
-<!-- <div style="padding-top:32px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px">
-  <img src="https://github.com/AdemBendjama/Manga-Tracker-App/assets/93732841/f805d633-11c5-4061-be8b-acc8e24e861b" alt="cog" width="48" height="48">
-  <p style="font-size: 32px; font-style: italic; margin: 0;">Still Under Development</p>
-</div> -->
+</br>
+
+<!-- <p align="start">
+    <a target="_blank" href="https://mugiwaraboshi.vercel.app"><img  src="https://github.com/user-attachments/assets/39339367-3ac7-4a3b-b3c6-3bc4eeb6d118" alt="still_under_development" />
+</p> -->
 
 ## Overview
 
