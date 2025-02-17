@@ -10,7 +10,7 @@
 
 ## Overview
 
-This is a website that lists metadata about manga, allowing users to search, discover manga, read reviews and get recommendations. Users can sign up for an account to access additional features such as adding manga to their library, tracking , rating and reviewing.
+This is a website that lists metadata about manga , allowing users to search, discover manga, read reviews and get recommendations. Users can sign up for an account to access additional features such as adding manga to their library, tracking , rating and reviewing.
 
 - [Live Preview](https://mangapunch.vercel.app)
 
